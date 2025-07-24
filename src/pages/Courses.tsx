@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Clock, Users, Award, ArrowRight, Star, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import medicalStudents from '@/assets/medical-students.jpg';
 import clinicInterior from '@/assets/clinic-interior.jpg';
+import HeadingWithUnderline from '@/components/HeadingWithUnderline';
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const navigate = useNavigate();
 
   const categories = [
     { id: 'all', name: 'All Programs' },
@@ -137,10 +140,12 @@ const Courses = () => {
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 gradient-hero opacity-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="font-manrope text-5xl lg:text-7xl text-primary mb-6 leading-tight">
-              Our Programs
-            </h1>
+          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <HeadingWithUnderline className="mb-8">
+              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight">
+                Our Programs
+              </h1>
+            </HeadingWithUnderline>
             <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
               Comprehensive healthcare training programs designed to prepare you for a successful career in the medical field.
             </p>
@@ -151,10 +156,12 @@ const Courses = () => {
       {/* Features Section */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
-              Why Choose Our Programs?
-            </h2>
+          <div className="text-center mb-16" data-aos="fade-up">
+            <HeadingWithUnderline className="mb-8">
+              <h2 className="font-manrope text-4xl lg:text-5xl text-primary">
+                Why Choose Our Programs?
+              </h2>
+            </HeadingWithUnderline>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Experience the difference with our comprehensive approach to healthcare education.
             </p>
@@ -164,8 +171,9 @@ const Courses = () => {
             {features.map((feature, index) => (
               <Card 
                 key={index}
-                className="text-center shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="text-center shadow-card hover-lift hover:shadow-hover transition-all duration-300"
+                data-aos="zoom-in"
+                data-aos-delay={index * 100}
               >
                 <CardContent className="p-6">
                   <div className="gradient-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -183,10 +191,12 @@ const Courses = () => {
       {/* Course Categories */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-8">
-              Browse Programs
-            </h2>
+          <div className="text-center mb-12" data-aos="fade-up">
+            <HeadingWithUnderline className="mb-8">
+              <h2 className="font-manrope text-4xl lg:text-5xl text-primary">
+                Browse Programs
+              </h2>
+            </HeadingWithUnderline>
             
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -208,10 +218,11 @@ const Courses = () => {
             {filteredCourses.map((course, index) => (
               <Card 
                 key={course.id}
-                className={`overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in ${
+                className={`overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 ${
                   course.featured ? 'ring-2 ring-primary/20' : ''
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
                 {course.featured && (
                   <div className="gradient-primary text-primary-foreground text-center py-2 text-sm font-medium">
@@ -277,7 +288,11 @@ const Courses = () => {
                     </div>
                   </div>
                   
-                  <Button variant="outline" className="w-full group">
+                  <Button 
+                    variant="metallic" 
+                    className="w-full group"
+                    onClick={() => navigate(`/course/${course.id}`)}
+                  >
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -291,10 +306,12 @@ const Courses = () => {
       {/* Enrollment Process */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
-              Enrollment Process
-            </h2>
+          <div className="text-center mb-16" data-aos="fade-up">
+            <HeadingWithUnderline className="mb-8">
+              <h2 className="font-manrope text-4xl lg:text-5xl text-primary">
+                Enrollment Process
+              </h2>
+            </HeadingWithUnderline>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Simple steps to start your healthcare education journey with us.
             </p>
@@ -308,8 +325,9 @@ const Courses = () => {
             ].map((item, index) => (
               <div 
                 key={index}
-                className="text-center animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="text-center"
+                data-aos="zoom-in"
+                data-aos-delay={index * 200}
               >
                 <div className="gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-primary-foreground">{item.step}</span>
@@ -325,15 +343,17 @@ const Courses = () => {
       {/* CTA Section */}
       <section className="py-20 gradient-hero">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-3xl mx-auto animate-scale-in">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-primary-foreground mb-6">
-              Ready to Begin?
-            </h2>
+          <div className="max-w-3xl mx-auto" data-aos="fade-up">
+            <HeadingWithUnderline className="mb-8">
+              <h2 className="font-manrope text-4xl lg:text-5xl text-primary-foreground">
+                Ready to Begin?
+              </h2>
+            </HeadingWithUnderline>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
               Take the next step toward your healthcare career. Our admissions team is here to help you choose the right program.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button size="xl" variant="metallic">
                 Apply Now
               </Button>
               <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">

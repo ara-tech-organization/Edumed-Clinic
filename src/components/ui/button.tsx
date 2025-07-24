@@ -20,6 +20,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         gradient: "gradient-primary text-primary-foreground hover:opacity-90 shadow-elegant hover:shadow-hover transition-all duration-300",
         hero: "gradient-hero text-primary-foreground hover:opacity-95 shadow-card hover:shadow-hover transition-all duration-300 font-medium",
+        metallic: "bg-gradient-to-r from-slate-300 via-slate-200 to-slate-300 text-slate-800 border border-slate-400 hover:from-slate-200 hover:via-slate-100 hover:to-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700",
       },
       size: {
         default: "h-10 px-4 py-2",
