@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/ara-tech-organization/Edumed-Clinic",
+  "homepage": "https://ara-tech-organization.github.io/Edumed-Clinic",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
