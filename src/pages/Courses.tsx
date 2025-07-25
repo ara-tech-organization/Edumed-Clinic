@@ -1,153 +1,449 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Clock, Users, Award, ArrowRight, Star, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import medicalStudents from '@/assets/medical-students.jpg';
-import clinicInterior from '@/assets/clinic-interior.jpg';
-import HeadingWithUnderline from '@/components/HeadingWithUnderline';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Clock, Users, Award, ArrowRight, Star, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import medicalStudents from "@/assets/medical-students.jpg";
+import clinicInterior from "@/assets/clinic-interior.jpg";
+import Facialinjectables from "@/assets/Facial-injectables.png";
+import HairTransplant from "@/assets/Hair-Transplant.png";
+import ClinicalCosmetology from "@/assets/Clinical-Cosmetology.png";
+import DiplomaFacialInjectables from "@/assets/Diploma-Facial-Injectables.png";
+import SkinTechnician from "@/assets/Skin-Technician.png";
+import DiplomaClinicalCosmetology from "@/assets/Diploma-Clinical-Cosmetology.png";
+import FacialAesthetics from "@/assets/Facial-Aesthetics.png";
+import ClinicalTrichology from "@/assets/Clinical-Trichology.png";
+import MediFacial from "@/assets/Medi-Facial.png";
+import ChemicalPeel from "@/assets/Chemical-Peel.png";
+import Lasers from "@/assets/Lasers.png";
+import Makeup from "@/assets/Makeup.png";
+import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
+import CertificateInjectables from "@/assets/Certificate-Injectables.png";
+import Hydrafacial from "@/assets/Hydrafacial.png";
+import HeadingWithUnderline from "@/components/HeadingWithUnderline";
+import Underline from "/line.png";
+import { Link } from "react-router-dom";
+
 
 const Courses = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const navigate = useNavigate();
 
   const categories = [
-    { id: 'all', name: 'All Programs' },
-    { id: 'medical', name: 'Medical Assistant' },
-    { id: 'nursing', name: 'Nursing' },
-    { id: 'pharmacy', name: 'Pharmacy' },
-    { id: 'clinical', name: 'Clinical Research' }
+    { id: "all", name: "All Programs" },
+    { id: "master", name: "Master Courses" },
+    { id: "pg", name: "PG Diploma" },
+    { id: "fellowship", name: "Fellowship Courses" },
+    { id: "certificate", name: "Certificate Courses" },
+    { id: "workshop", name: "Live Workshop" },
   ];
 
   const courses = [
     {
       id: 1,
-      title: "Medical Assistant Certification",
-      category: "medical",
-      duration: "12 months",
-      students: "24-32",
-      schedule: "Day & Evening",
+      title: "Master in Facial Injectables",
+      category: "master",
+      duration: "5 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
       rating: 4.9,
-      price: "$18,500",
-      description: "Comprehensive training in patient care, medical procedures, administrative tasks, and electronic health records management.",
-      features: ["Clinical Externship", "EHR Training", "Lab Procedures", "Administrative Skills"],
-      image: medicalStudents,
-      featured: true
+      price: "$TBD",
+      description:
+        "This specialized postgraduate program trains medical professionals in injectable treatments like Botox, dermal fillers, and threads. Emphasizing facial aesthetics and aging, it delivers deep theoretical insights and hands-on experience.",
+      features: [
+        "Botox & Dermal Fillers",
+        "Thread Lifting Techniques",
+        "Non-Surgical Facial Aesthetics",
+        "Gravity of Aging Rejuvenation",
+      ],
+      image: Facialinjectables, // replace with actual image import if needed
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
     },
     {
       id: 2,
-      title: "Registered Nursing Program",
-      category: "nursing",
-      duration: "24 months",
-      students: "16-20",
-      schedule: "Full-time",
+      title: "Master in Hair Transplant",
+      category: "master",
+      duration: "3 Months",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
       rating: 4.8,
-      price: "$32,000",
-      description: "Advanced nursing education with extensive clinical rotations in various healthcare settings.",
-      features: ["Clinical Rotations", "NCLEX Prep", "Simulation Labs", "Nursing Theory"],
-      image: clinicInterior,
-      featured: true
+      price: "$TBD",
+      description:
+        "Designed for surgeons and dermatologists aiming to specialize in hair restoration. Covers both surgical and non-surgical techniques for effective hair transplant procedures, including patient confidence building.",
+      features: [
+        "Surgical Hair Transplant Techniques",
+        "Non-Surgical Hair Retention Methods",
+        "Advanced Restoration Skills",
+        "Patient Confidence Enhancement",
+      ],
+      image: HairTransplant, // replace with actual image import
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
     },
     {
       id: 3,
-      title: "Pharmacy Technician",
-      category: "pharmacy",
-      duration: "9 months",
-      students: "20-25",
-      schedule: "Day & Weekend",
-      rating: 4.7,
-      price: "$14,500",
-      description: "Learn pharmaceutical calculations, drug interactions, pharmacy operations, and customer service.",
-      features: ["Pharmacy Law", "Drug Calculations", "Compounding", "Retail Experience"],
-      image: medicalStudents,
-      featured: false
+      title: "PG Diploma in Clinical Cosmetology",
+      category: "pg",
+      duration: "2 Months",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.9,
+      price: "$TBD",
+      description:
+        "An advanced program tailored for medical professionals looking to master cosmetic treatments for skin, hair, and laser. Blends deep theoretical knowledge with practical training using the latest aesthetic equipment.",
+      features: [
+        "Advanced Skin, Hair & Laser Treatments",
+        "Use of Modern Aesthetic Equipment",
+        "Medical Safety & Ethics",
+        "Real-World Confidence Building",
+      ],
+      image: ClinicalCosmetology, // swap with your real asset
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
     },
     {
       id: 4,
-      title: "Clinical Research Coordinator",
-      category: "clinical",
-      duration: "15 months",
-      students: "12-16",
-      schedule: "Day",
-      rating: 4.9,
-      price: "$22,000",
-      description: "Specialized training in clinical trial management, research protocols, and regulatory compliance.",
-      features: ["GCP Certification", "Research Methods", "Data Management", "Regulatory Affairs"],
-      image: clinicInterior,
-      featured: false
+      title: "PG Diploma in Facial Injectables",
+      category: "pg",
+      duration: "3 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.8,
+      price: "$TBD",
+      description:
+        "A short yet power-packed diploma for mastering Botox, dermal fillers, and thread lifts. Focused on medical aesthetics, this program ensures legal, ethical, and confident practice in your clinical journey.",
+      features: [
+        "Injectable Mastery: Botox, Fillers & Threads",
+        "Ethics & Safety in Aesthetic Practice",
+        "Non-Surgical Rejuvenation Skills",
+        "Career Boost in Competitive Aesthetic Field",
+      ],
+      image: DiplomaFacialInjectables,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
     },
     {
       id: 5,
-      title: "Medical Office Administration",
-      category: "medical",
-      duration: "8 months",
-      students: "20-28",
-      schedule: "Evening",
-      rating: 4.6,
-      price: "$12,500",
-      description: "Administrative skills for medical offices including billing, coding, and patient management systems.",
-      features: ["Medical Billing", "ICD-10 Coding", "Insurance Processing", "Office Management"],
-      image: medicalStudents,
-      featured: false
+      title: "Diploma in Aesthetic Skin Technician",
+      category: "pg",
+      duration: "5 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.7,
+      price: "$TBD",
+      description:
+        "Comprehensive hands-on training for Nurses and OT professionals to perform advanced skin care procedures. This career-boosting diploma mixes theory with practice under expert guidance.",
+      features: [
+        "Advanced Aesthetic Skin Care",
+        "Hands-On Training for Nurses & OT Techs",
+        "Career Pathway in Aesthetic Medicine",
+        "Guided Practical Sessions",
+      ],
+      image: SkinTechnician,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Nurses, OT Technicians, MDS (Oral Maxillofacial Surgeon)",
     },
     {
       id: 6,
-      title: "Licensed Practical Nurse",
-      category: "nursing",
-      duration: "18 months",
-      students: "18-22",
-      schedule: "Day",
+      title: "Fellowship in Clinical Cosmetology",
+      category: "fellowship",
+      duration: "6 months",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.9,
+      price: "$TBD",
+      description:
+        "In-depth training in clinical cosmetology with a focus on advanced skin care, anti-aging treatments, and non-surgical aesthetic techniques. Blends theoretical learning with real-world skills.",
+      features: [
+        "Advanced Skin Treatments",
+        "Non-Surgical Aesthetics",
+        "Customized Treatment Planning",
+        "Clinical Application",
+      ],
+      image: DiplomaClinicalCosmetology,
+      featured: true,
+      eligibility: "MBBS, MDS, BDS, BHMS, BAMS, BUMS, BNYS",
+    },
+    {
+      id: 7,
+      title: "Fellowship in Facial Aesthetics",
+      category: "fellowship",
+      duration: "6 months",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.9,
+      price: "$TBD",
+      description:
+        "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
+      features: [
+        "Facial Rejuvenation Techniques",
+        "Non-Surgical Procedures",
+        "Medical Ethics & Safety",
+        "Hair & Skin Science",
+      ],
+      image: FacialAesthetics,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh",
+    },
+    {
+      id: 8,
+      title: "Fellowship in Clinical Trichology",
+      category: "fellowship",
+      duration: "6 months",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
       rating: 4.8,
-      price: "$24,500",
-      description: "Practical nursing program preparing students for direct patient care in various healthcare settings.",
-      features: ["Patient Care", "Medication Administration", "Clinical Skills", "NCLEX-PN Prep"],
-      image: clinicInterior,
-      featured: false
-    }
+      price: "$TBD",
+      description:
+        "Specialized training in diagnosis and treatment of hair and scalp disorders. Includes modern trichology techniques and alternative treatments like prosthetics and scalp micropigmentation.",
+      features: [
+        "Hair & Scalp Disorder Management",
+        "Micropigmentation",
+        "Hair Restoration Options",
+        "Clinical Trichology Foundations",
+      ],
+      image: ClinicalTrichology,
+      featured: false,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MD DVL, MS, MCh",
+    },
+
+    {
+      id: 9,
+      title: "Certificate Course in Medi Facial",
+      category: "certificate",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.7,
+      price: "$TBD",
+      description:
+        "Covers advanced facial treatments targeting skin concerns like acne, pigmentation, and dullness. Focuses on rejuvenation using non-invasive techniques with an emphasis on patient assessment and treatment customization.",
+      features: [
+        "Skin Rejuvenation Techniques",
+        "Non-Invasive Treatments",
+        "Custom Facial Protocols",
+        "Post-Procedure Care",
+      ],
+      image: MediFacial,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Non-Doctors, Paramedical, MDS (Oral Maxillofacial Surgeon)",
+    },
+    {
+      id: 10,
+      title: "Certificate Course in Chemical Peel",
+      category: "certificate",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.8,
+      price: "$TBD",
+      description:
+        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
+      features: [
+        "Superficial to Deep Peels",
+        "Skin Layer Science",
+        "Pigmentation & Acne Solutions",
+        "Combination & Complication Management",
+      ],
+      image: ChemicalPeel,
+      featured: false,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
+    },
+    {
+      id: 11,
+      title: "Certificate Course in Lasers",
+      category: "certificate",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.9,
+      price: "$TBD",
+      description:
+        "A deep dive into laser technology in medical aesthetics. Learn laser physics, patient assessment, and perform treatments like hair removal, pigmentation correction, and scar revision safely.",
+      features: [
+        "Laser Physics & Skin Interaction",
+        "Hair & Pigmentation Treatments",
+        "Scar Revision Techniques",
+        "Laser Safety & Patient Handling",
+      ],
+      image: Lasers,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Paramedical, MDS (Oral Maxillofacial Surgeon)",
+    },
+    {
+      id: 12,
+      title: "Certificate Course in Semi-permanent Make Up",
+      category: "certificate",
+      duration: "3 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.7,
+      price: "$TBD",
+      description:
+        "Trains practitioners in cosmetic tattooing including microblading, lip blush, eyeliner, and scalp micropigmentation. Includes safety, pigment theory, and client customization.",
+      features: [
+        "Microblading & Lip Blush",
+        "Eyeliner Tattooing",
+        "Scalp Micropigmentation",
+        "Color Theory & Aftercare",
+      ],
+      image: Makeup,
+      featured: false,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Paramedical, MDS (Oral Maxillofacial Surgeon), Non Medical",
+    },
+    {
+      id: 13,
+      title: "Certificate Course in Advanced Semi-Permanent Makeup",
+      category: "certificate",
+      duration: "5 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.9,
+      price: "$TBD",
+      description:
+        "An advanced version of the SPMU course, covering detailed cosmetic tattooing with expert-level techniques and tools for enhanced facial aesthetics.",
+      features: [
+        "Advanced Microblading",
+        "Multi-Zone Pigmentation Techniques",
+        "Natural Look Design",
+        "Complication Handling",
+      ],
+      image: AdvancedMakeup,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
+    },
+    {
+      id: 14,
+      title: "Certificate Course in Injectables",
+      category: "certificate",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.8,
+      price: "$TBD",
+      description:
+        "Specialized training in skin rejuvenation and injectable procedures such as botulinum toxin and dermal fillers. Combines facial anatomy with hands-on skills in contouring and anti-aging.",
+      features: [
+        "Botulinum Toxin & Dermal Fillers",
+        "Facial Mapping & Marking",
+        "Threads & Lifting Techniques",
+        "Minimally Invasive Rejuvenation",
+      ],
+      image: CertificateInjectables,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
+    },
+    {
+      id: 15,
+      title: "Workshop in HydraFacial & Basic Chemical Peels",
+      category: "workshop",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.8,
+      price: "$TBD",
+      description:
+        "Hands-on training in HydraFacial and basic chemical peels. Learn cleansing, exfoliation, hydration, serum infusion, and peel application techniques. Master safety protocols, client needs, and post-treatment care.",
+      features: [
+        "HydraFacial Techniques & Serums",
+        "Skin Analysis & Peel Selection",
+        "Application & Post-Treatment Protocols",
+        "Complication Management",
+      ],
+      image: Hydrafacial, // or whatever image asset you're using
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Paramedical, MDS (Oral Maxillofacial Surgeon)",
+    },
+    {
+      id: 16,
+      title: "Workshop in Semi-Permanent Makeup (SPMU)",
+      category: "workshop",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.8,
+      price: "$TBD",
+      description:
+        "Comprehensive workshop on microblading, powder brows, lip blush, and eyeliner enhancement. Covers client consultation, pigment selection, tool handling, and aftercare guidance.",
+      features: [
+        "Microblading & Powder Brows",
+        "Lip Blush & Eyeliner Techniques",
+        "Skin Prep & Pigment Selection",
+        "Safety Protocols & Client Aftercare",
+      ],
+      image: Makeup,
+      featured: true,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Paramedical, MDS (Oral Maxillofacial Surgeon)",
+    },
   ];
 
-  const filteredCourses = selectedCategory === 'all' 
-    ? courses 
-    : courses.filter(course => course.category === selectedCategory);
+  const filteredCourses =
+    selectedCategory === "all"
+      ? courses
+      : courses.filter((course) => course.category === selectedCategory);
 
   const features = [
     {
       icon: Award,
       title: "Industry Certification",
-      description: "All programs include preparation for industry-standard certifications"
+      description:
+        "All programs include preparation for industry-standard certifications",
     },
     {
       icon: Users,
       title: "Small Class Sizes",
-      description: "Personalized attention with low student-to-instructor ratios"
+      description:
+        "Personalized attention with low student-to-instructor ratios",
     },
     {
       icon: Calendar,
       title: "Flexible Scheduling",
-      description: "Day, evening, and weekend options to fit your lifestyle"
+      description: "Day, evening, and weekend options to fit your lifestyle",
     },
     {
       icon: Star,
       title: "Expert Instructors",
-      description: "Learn from experienced healthcare professionals"
-    }
+      description: "Learn from experienced healthcare professionals",
+    },
   ];
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 gradient-hero opacity-10" />
+      <section
+        className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{
+          backgroundImage: "url('/src/assets/about.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
+        {/* Optional blur overlay */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <HeadingWithUnderline className="mb-8">
-              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight">
-                Our Programs
+            <div className="inline-block relative">
+              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
+                Our Courses
               </h1>
-            </HeadingWithUnderline>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-              Comprehensive healthcare training programs designed to prepare you for a successful career in the medical field.
+            </div>
+            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+              Global & Pan-India Internship & Career Opportunities
             </p>
           </div>
         </div>
@@ -157,19 +453,25 @@ const Courses = () => {
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
-            <HeadingWithUnderline className="mb-8">
-              <h2 className="font-manrope text-4xl lg:text-5xl text-primary">
+            <div className="text-center">
+              <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
                 Why Choose Our Programs?
               </h2>
-            </HeadingWithUnderline>
+              <img
+                src={Underline}
+                alt="Decorative Line"
+                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+              />
+            </div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Experience the difference with our comprehensive approach to healthcare education.
+              Experience the difference with our comprehensive approach to
+              healthcare education.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="text-center shadow-card hover-lift hover:shadow-hover transition-all duration-300"
                 data-aos="zoom-in"
@@ -179,8 +481,12 @@ const Courses = () => {
                   <div className="gradient-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <feature.icon className="h-8 w-8 text-primary-foreground" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <h3 className="text-l font-semibold text-primary mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -192,18 +498,25 @@ const Courses = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12" data-aos="fade-up">
-            <HeadingWithUnderline className="mb-8">
-              <h2 className="font-manrope text-4xl lg:text-5xl text-primary">
-                Browse Programs
+            <div className="text-center">
+              <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
+                Why Choose Our Programs?
               </h2>
-            </HeadingWithUnderline>
-            
+              <img
+                src={Underline}
+                alt="Decorative Line"
+                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+              />
+            </div>
+
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {categories.map((category) => (
                 <Button
                   key={category.id}
-                  variant={selectedCategory === category.id ? "gradient" : "outline"}
+                  variant={
+                    selectedCategory === category.id ? "gradient" : "outline"
+                  }
                   onClick={() => setSelectedCategory(category.id)}
                   className="transition-all"
                 >
@@ -216,64 +529,73 @@ const Courses = () => {
           {/* Course Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course, index) => (
-              <Card 
+              <Card
                 key={course.id}
                 className={`overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 ${
-                  course.featured ? 'ring-2 ring-primary/20' : ''
+                  course.featured ? "ring-2 ring-primary/20" : ""
                 }`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                {course.featured && (
+                {/* {course.featured && (
                   <div className="gradient-primary text-primary-foreground text-center py-2 text-sm font-medium">
                     Most Popular
                   </div>
-                )}
-                
+                )} */}
+
                 <div className="aspect-video overflow-hidden">
-                  <img 
+                  <img
                     src={course.image}
                     alt={course.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                
+
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
                     <Badge variant="secondary" className="text-xs">
-                      {categories.find(cat => cat.id === course.category)?.name}
+                      {
+                        categories.find((cat) => cat.id === course.category)
+                          ?.name
+                      }
                     </Badge>
                     <div className="flex items-center space-x-1">
                       <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                      <span className="text-sm font-medium">{course.rating}</span>
+                      <span className="text-sm font-medium">
+                        {course.rating}
+                      </span>
                     </div>
                   </div>
-                  
-                  <h3 className="text-xl font-semibold text-primary mb-3">{course.title}</h3>
+
+                  <h3 className="text-xl font-semibold text-primary mb-3">
+                    {course.title}
+                  </h3>
                   <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
                     {course.description}
                   </p>
-                  
+
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center justify-between text-sm">
+                    {/* <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center space-x-2">
                         <Clock className="h-4 w-4 text-muted-foreground" />
                         <span>Duration: {course.duration}</span>
                       </div>
                       <span className="font-semibold text-primary">{course.price}</span>
-                    </div>
-                    
-                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    </div> */}
+
+                    {/* <div className="flex items-center justify-between text-sm text-muted-foreground">
                       <div className="flex items-center space-x-2">
                         <Users className="h-4 w-4" />
                         <span>Class size: {course.students}</span>
                       </div>
                       <span>{course.schedule}</span>
-                    </div>
+                    </div> */}
                   </div>
-                  
+
                   <div className="mb-6">
-                    <p className="text-sm font-medium text-muted-foreground mb-2">Includes:</p>
+                    <p className="text-sm font-medium text-muted-foreground mb-2">
+                      Includes:
+                    </p>
                     <div className="flex flex-wrap gap-1">
                       {course.features.slice(0, 2).map((feature, idx) => (
                         <Badge key={idx} variant="outline" className="text-xs">
@@ -287,9 +609,9 @@ const Courses = () => {
                       )}
                     </div>
                   </div>
-                  
-                  <Button 
-                    variant="metallic" 
+
+                  <Button
+                    variant="metallic"
                     className="w-full group"
                     onClick={() => navigate(`/course/${course.id}`)}
                   >
@@ -304,7 +626,7 @@ const Courses = () => {
       </section>
 
       {/* Enrollment Process */}
-      <section className="py-20 bg-secondary/30">
+      {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <HeadingWithUnderline className="mb-8">
@@ -323,7 +645,7 @@ const Courses = () => {
               { step: "2", title: "Interview", description: "Schedule a consultation with our admissions team" },
               { step: "3", title: "Start Learning", description: "Begin your journey to a rewarding healthcare career" }
             ].map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="text-center"
                 data-aos="zoom-in"
@@ -338,27 +660,35 @@ const Courses = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 gradient-hero">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto" data-aos="fade-up">
-            <HeadingWithUnderline className="mb-8">
-              <h2 className="font-manrope text-4xl lg:text-5xl text-primary-foreground">
+            <div className="text-center">
+              <h2 className="font-manrope text-3xl lg:text-3xl text-white">
                 Ready to Begin?
               </h2>
-            </HeadingWithUnderline>
+              <img
+                src={Underline}
+                alt="Decorative Line"
+                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+              />
+            </div>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Take the next step toward your healthcare career. Our admissions team is here to help you choose the right program.
+              Take the next step toward your healthcare career. Our admissions
+              team is here to help you choose the right program.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" variant="metallic">
-                Apply Now
-              </Button>
-              <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <Link to="/contact">
+                <Button size="xl" variant="metallic">
+                  Apply Now
+                </Button>
+              </Link>
+              {/* <Button size="xl" variant="outline" className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10">
                 Request Information
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

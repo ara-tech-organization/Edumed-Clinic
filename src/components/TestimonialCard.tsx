@@ -12,7 +12,7 @@ interface TestimonialCardProps {
 const TestimonialCard = ({ name, role, content, rating, image }: TestimonialCardProps) => {
   return (
     <Card className="shadow-card hover:shadow-hover transition-all duration-300 hover-lift border-border/50">
-      <CardContent className="p-6">
+      <CardContent className="p-12">
         {/* Rating Stars */}
         <div className="flex space-x-1 mb-4">
           {[...Array(5)].map((_, i) => (
@@ -38,7 +38,7 @@ const TestimonialCard = ({ name, role, content, rating, image }: TestimonialCard
             <img
               src={image}
               alt={name}
-              className="w-12 h-12 rounded-full object-cover border-2 border-border"
+              className="w-8 h-8 rounded-full object-cover border-2 border-border"
             />
           )}
           <div>

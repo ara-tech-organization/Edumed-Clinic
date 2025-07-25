@@ -1,5 +1,18 @@
-import { Link } from 'react-router-dom';
-import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from "react-router-dom";
+import {
+  GraduationCap,
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Globe,
+  Youtube,
+} from "lucide-react";
+import { Global } from "recharts";
+import Logo from "@/assets/logo.png"
 
 const Footer = () => {
   return (
@@ -10,26 +23,46 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="bg-primary-foreground/20 p-2 rounded-lg">
-                <GraduationCap className="h-6 w-6" />
+              <div>
+                <img
+                  src={Logo}
+                  alt="MedEdu Logo"
+                  className="h-40 w-40 object-contain"
+                />
               </div>
-              <span className="font-manrope text-xl">MedEdu Institute</span>
+
+              <span className="font-manrope text-xl">
+                DrEduMed Medical & Aesthetic Training Academy
+              </span>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
-              Leading the future of medical education with innovative training programs and world-class facilities.
+              Leading the future of medical education with innovative training
+              programs and world-class facilities.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors">
+              <a
+                href="https://www.facebook.com/dr.edumedcoimbatore"
+                className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a
+                href="https://g.co/kgs/RcKpGE7"
+                className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors"
+              >
+                <Globe className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors">
+              <a
+                href="https://www.instagram.com/dr.edumedcoimbatore/"
+                className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors">
-                <Linkedin className="h-5 w-5" />
+              <a
+                href="#"
+                className="hover:bg-primary-foreground/20 p-2 rounded-lg transition-colors"
+              >
+                <Youtube className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -38,16 +71,28 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Quick Links</h3>
             <nav className="space-y-2">
-              <Link to="/about" className="block hover:text-primary-foreground/80 transition-colors">
+              <Link
+                to="/about"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
                 About Us
               </Link>
-              <Link to="/courses" className="block hover:text-primary-foreground/80 transition-colors">
+              <Link
+                to="/courses"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
                 Our Courses
               </Link>
-              <Link to="/internship" className="block hover:text-primary-foreground/80 transition-colors">
+              <Link
+                to="/internship"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
                 Internship Program
               </Link>
-              <Link to="/contact" className="block hover:text-primary-foreground/80 transition-colors">
+              <Link
+                to="/contact"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
                 Contact Us
               </Link>
             </nav>
@@ -57,17 +102,29 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Programs</h3>
             <nav className="space-y-2">
-              <a href="#" className="block hover:text-primary-foreground/80 transition-colors">
-                Medical Assistant
+              <a
+                href="/courses"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
+                Master in Facial Injectables
               </a>
-              <a href="#" className="block hover:text-primary-foreground/80 transition-colors">
-                Nursing
+              <a
+                href="/courses"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
+                Diploma in Aesthetic Skin Technician
               </a>
-              <a href="#" className="block hover:text-primary-foreground/80 transition-colors">
-                Pharmacy Tech
+              <a
+                href="/courses"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
+               Fellowship in Facial Aesthetics
               </a>
-              <a href="#" className="block hover:text-primary-foreground/80 transition-colors">
-                Clinical Research
+              <a
+                href="/courses"
+                className="block hover:text-primary-foreground/80 transition-colors"
+              >
+                Certificate Course in Chemical Peel
               </a>
             </nav>
           </div>
@@ -79,17 +136,26 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>123 Medical Center Drive</p>
-                  <p>Healthcare City, HC 12345</p>
+                  <p>3rd Floor, 64, Variety Hall Rd,</p>
+                  <p>Town Hall,Coimbatore - 641001</p>
+                  <p> Tamil Nadu </p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 flex-shrink-0" />
-                <p>(555) 123-4567</p>
+                <a href="tel:9751510000" className="text-sm sm:text-base">
+                  97515 10000
+                </a>
               </div>
+
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 flex-shrink-0" />
-                <p>info@mededu.institute</p>
+                <a
+                  href="mailto:coimbatore@dredumed.com"
+                  className="text-sm sm:text-base"
+                >
+                  coimbatore@dredumed.com
+                </a>
               </div>
             </div>
           </div>
@@ -97,22 +163,41 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="border-t border-primary-foreground/20 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-primary-foreground/80 text-sm">
-              © 2024 MedEdu Institute. All rights reserved.
+          <div className="flex flex-col justify-center items-center text-center space-y-4">
+            <p className="text-primary-foreground/80 text-sm max-w-4xl">
+              © 2025 MedEdu Institute. All rights reserved. Website created by{" "}
+              <a
+                href="https://discovertechnologies.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline transition-colors"
+              >
+                ARA Discover Technologies
+              </a>{" "}
+              – A unit of ARA Discoveries Pvt. Ltd.
             </p>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="hover:text-primary-foreground/80 transition-colors">
+          </div>
+
+          {/* <div className="flex space-x-6 text-sm">
+              <a
+                href="#"
+                className="hover:text-primary-foreground/80 transition-colors"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-primary-foreground/80 transition-colors">
+              <a
+                href="#"
+                className="hover:text-primary-foreground/80 transition-colors"
+              >
                 Terms of Service
               </a>
-              <a href="#" className="hover:text-primary-foreground/80 transition-colors">
+              <a
+                href="#"
+                className="hover:text-primary-foreground/80 transition-colors"
+              >
                 Accessibility
               </a>
-            </div>
-          </div>
+            </div> */}
         </div>
       </div>
     </footer>

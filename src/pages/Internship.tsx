@@ -1,62 +1,170 @@
-import { ArrowRight, MapPin, Clock, Users, Award, CheckCircle, Calendar, Briefcase } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import medicalStudents from '@/assets/medical-students.jpg';
-import clinicInterior from '@/assets/clinic-interior.jpg';
+import {
+  ArrowRight,
+  MapPin,
+  Clock,
+  Users,
+  Award,
+  CheckCircle,
+  Calendar,
+  Briefcase,
+  Stethoscope,
+  Microscope,
+  Globe,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import medicalStudents from "@/assets/medical-students.jpg";
+import clinicInterior from "@/assets/clinic-interior.jpg";
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
+import Underline from "./line.png";
+import { useRef } from "react";
+import { ArrowLeft } from "lucide-react";
+import { CalendarDays } from "lucide-react";
+import dayjs from "dayjs";
+import CountUp from "react-countup";
+import duration from "dayjs/plugin/duration";
+import { useEffect, useState } from "react";
+
+// ✅ Correct if assets are in 'src/assets'
+import Facialinjectables from "@/assets/Facial-injectables.png";
+import ClinicalCosmetology from "@/assets/Clinical-Cosmetology.png";
+import DiplomaClinicalCosmetology from "@/assets/Diploma-Clinical-Cosmetology.png";
+import FacialAesthetics from "@/assets/Facial-Aesthetics.png";
+import MediFacial from "@/assets/Medi-Facial.png";
+import Makeup from "@/assets/Makeup.png";
+
+dayjs.extend(duration);
+
+const targetDate = dayjs("2025-07-31T00:00:00");
 
 const Internship = () => {
+  const courses = [
+    {
+      title: "Master in Facial Injectables",
+      duration: "5 Days",
+      description:
+        "This specialized postgraduate program trains medical professionals in injectable treatments like Botox, dermal fillers, and threads. Emphasizing facial aesthetics and aging, it delivers deep theoretical insights and hands-on experience.",
+      image: Facialinjectables,
+    },
+    {
+      title: "PG Diploma in Clinical Cosmetology",
+      duration: "2 Months",
+      description:
+        "An advanced program tailored for medical professionals looking to master cosmetic treatments for skin, hair, and laser. Blends deep theoretical knowledge with practical training using the latest aesthetic equipment.",
+      image: ClinicalCosmetology,
+    },
+    {
+      title: "Fellowship in Clinical Cosmetology",
+      duration: "6 months",
+      description:
+        "In-depth training in clinical cosmetology with a focus on advanced skin care, anti-aging treatments, and non-surgical aesthetic techniques. Blends theoretical learning with real-world skills.",
+      image: DiplomaClinicalCosmetology,
+    },
+    {
+      title: "Fellowship in Facial Aesthetics",
+      duration: "6 months",
+      description:
+        "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
+      image: FacialAesthetics,
+    },
+    {
+      title: "Certificate Course in Medi Facial",
+      duration: "2 Days",
+      description:
+        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
+      image: MediFacial,
+    },
+    {
+      title: "Workshop in Semi-Permanent Makeup (SPMU)",
+      duration: "2 Days",
+      description:
+        "Comprehensive workshop on microblading, powder brows, lip blush, and eyeliner enhancement. Covers client consultation, pigment selection, tool handling, and aftercare guidance.",
+      image: Makeup,
+    },
+  ];
   const programs = [
     {
       title: "Clinical Medical Assistant Internship",
       duration: "8 weeks",
       locations: "15+ Partner Clinics",
       students: "12-16",
-      description: "Hands-on experience in patient care, medical procedures, and clinic operations.",
-      requirements: ["Completed Medical Assistant Program", "CPR Certification", "Background Check"],
-      benefits: ["Real clinic experience", "Mentorship program", "Job placement assistance"]
+      description:
+        "Hands-on experience in patient care, medical procedures, and clinic operations.",
+      requirements: [
+        "Completed Medical Assistant Program",
+        "CPR Certification",
+        "Background Check",
+      ],
+      benefits: [
+        "Real clinic experience",
+        "Mentorship program",
+        "Job placement assistance",
+      ],
     },
     {
       title: "Hospital Nursing Internship",
       duration: "12 weeks",
       locations: "8 Major Hospitals",
       students: "8-12",
-      description: "Comprehensive nursing experience across multiple hospital departments.",
-      requirements: ["Nursing Program Completion", "Current Immunizations", "Drug Screening"],
-      benefits: ["Multiple department rotations", "Experienced preceptors", "Professional references"]
+      description:
+        "Comprehensive nursing experience across multiple hospital departments.",
+      requirements: [
+        "Nursing Program Completion",
+        "Current Immunizations",
+        "Drug Screening",
+      ],
+      benefits: [
+        "Multiple department rotations",
+        "Experienced preceptors",
+        "Professional references",
+      ],
     },
     {
       title: "Pharmacy Operations Internship",
       duration: "6 weeks",
       locations: "20+ Pharmacies",
       students: "10-15",
-      description: "Practical experience in retail and hospital pharmacy environments.",
-      requirements: ["Pharmacy Tech Certification", "State Registration", "Clean Background"],
-      benefits: ["Retail & hospital exposure", "Customer service training", "Career networking"]
-    }
+      description:
+        "Practical experience in retail and hospital pharmacy environments.",
+      requirements: [
+        "Pharmacy Tech Certification",
+        "State Registration",
+        "Clean Background",
+      ],
+      benefits: [
+        "Retail & hospital exposure",
+        "Customer service training",
+        "Career networking",
+      ],
+    },
   ];
 
   const benefits = [
     {
       icon: Briefcase,
       title: "Real-World Experience",
-      description: "Work alongside healthcare professionals in actual medical facilities"
+      description:
+        "Work alongside healthcare professionals in actual medical facilities",
     },
     {
       icon: Users,
       title: "Professional Mentorship",
-      description: "Paired with experienced professionals who guide your learning"
+      description:
+        "Paired with experienced professionals who guide your learning",
     },
     {
       icon: Award,
       title: "Industry Connections",
-      description: "Build relationships that often lead to job opportunities"
+      description: "Build relationships that often lead to job opportunities",
     },
     {
       icon: CheckCircle,
       title: "Skill Validation",
-      description: "Apply classroom knowledge in real clinical settings"
-    }
+      description: "Apply classroom knowledge in real clinical settings",
+    },
   ];
 
   const process = [
@@ -64,26 +172,28 @@ const Internship = () => {
       step: "1",
       title: "Application Submission",
       description: "Complete internship application during your final semester",
-      timeframe: "8 weeks before graduation"
+      timeframe: "8 weeks before graduation",
     },
     {
       step: "2",
       title: "Interview Process",
-      description: "Meet with potential placement sites and our coordination team",
-      timeframe: "4-6 weeks before start"
+      description:
+        "Meet with potential placement sites and our coordination team",
+      timeframe: "4-6 weeks before start",
     },
     {
       step: "3",
       title: "Placement Confirmation",
       description: "Receive your internship placement and orientation schedule",
-      timeframe: "2 weeks before start"
+      timeframe: "2 weeks before start",
     },
     {
       step: "4",
       title: "Begin Internship",
-      description: "Start your hands-on learning experience at your assigned facility",
-      timeframe: "Program completion"
-    }
+      description:
+        "Start your hands-on learning experience at your assigned facility",
+      timeframe: "Program completion",
+    },
   ];
 
   const requirements = [
@@ -92,7 +202,7 @@ const Internship = () => {
     "Completed background check and drug screening",
     "Current immunizations as required by placement facility",
     "Professional liability insurance (provided by the institute)",
-    "Attendance at mandatory orientation session"
+    "Attendance at mandatory orientation session",
   ];
 
   const partnerFacilities = [
@@ -101,22 +211,201 @@ const Internship = () => {
     "Community Medical Centers",
     "Regional Specialty Clinics",
     "Urgent Care Associates",
-    "Rehabilitation Services Inc."
+    "Rehabilitation Services Inc.",
   ];
+
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const calculateTimeLeft = () => {
+    const now = dayjs();
+    const diff = targetDate.diff(now);
+    const dur = dayjs.duration(diff);
+
+    return {
+      days: String(dur.days()).padStart(2, "0"),
+      hours: String(dur.hours()).padStart(2, "0"),
+      minutes: String(dur.minutes()).padStart(2, "0"),
+      seconds: String(dur.seconds()).padStart(2, "0"),
+    };
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 gradient-hero opacity-10" />
+      <section
+        className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{
+          backgroundImage: "url('/src/assets/about.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
+        {/* Optional blur overlay */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="font-manrope text-5xl lg:text-7xl text-primary mb-6 leading-tight">
-              Internship Program
-            </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-              Bridge the gap between classroom learning and professional practice with our comprehensive internship program.
+          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <div className="inline-block relative">
+              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
+                Experience-Based Learning
+              </h1>
+            </div>
+            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+              Global & Pan-India Internship & Career Opportunities
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-24 bg-white overflow-hidden">
+        {/* Floating Icons */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 0.15, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="absolute left-10 top-10 text-[#032c40]"
+        >
+          <Stethoscope size={50} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.15, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="absolute right-16 top-1/2 text-[#032c40]"
+        >
+          <Microscope size={50} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 0.1, x: 0 }}
+          transition={{ duration: 1.2 }}
+          className="absolute left-1/4 bottom-12 text-[#032c40]"
+        >
+          <Globe size={50} />
+        </motion.div>
+
+        <div className="container mx-auto px-6 z-10 relative">
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-3xl mx-auto backdrop-blur-md bg-white/70 shadow-xl rounded-3xl p-10 border border-gray-200"
+          >
+            <h2 className="text-3xl font-bold text-center text-[#032c40] mb-6 leading-snug">
+              <span className="bg-gradient-to-r from-[#032c40] to-[#065f7a] text-transparent bg-clip-text">
+                Unlock Your Career
+              </span>{" "}
+              with Dr. EduMed
+            </h2>
+            <p className="text-lg text-gray-700 text-center mb-8 leading-relaxed">
+              At Dr. EduMed, we empower students with the skills and expertise
+              to
+              <span className="text-[#032c40] font-medium"> excel</span> in the
+              competitive field of medical aesthetics. Upon completing the
+              course, students gain exclusive access to a wide range of{" "}
+              <span className="text-[#032c40] font-medium">
+                national and international internships
+              </span>{" "}
+              that offer hands-on experience and exposure to the latest industry
+              innovations. Work alongside experts, stay ahead of emerging
+              trends, and build a successful career with us.
+            </p>
+            <div className="flex justify-center">
+              <a href="#featured-courses">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-3 bg-[#032c40] text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  Explore Internships
+                </motion.button>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2
+              className="font-manrope text-3xl lg:text-3xl"
+              style={{ color: "#032c40" }}
+            >
+              Our Core Values
+            </h2>
+            {/* <img
+              src={Underline}
+              alt="Decorative Line"
+              className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+            /> */}
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              These principles guide everything we do, from curriculum
+              development to student success.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-10 max-w-6xl mx-auto">
+            {[
+              {
+                title: "In-Depth Expert Training",
+                description:
+                  "Comprehensive, hands-on training led by industry experts.",
+              },
+              {
+                title: "Govt. & International Accredited Certificate",
+                description:
+                  "Recognized certifications to enhance your professional credibility.",
+              },
+              {
+                title: "Guaranteed Placement & Refund Policy",
+                description:
+                  "Confidence in your career with assured placement and refund options.",
+              },
+              {
+                title: "Medico-Legal Expert & Vendor Assist",
+                description:
+                  "Guidance on legal matters and vendor partnerships to support your journey.",
+              },
+              {
+                title: "Business Launch Support",
+                description:
+                  "Help to successfully start, scale, and sustain your aesthetic practice.",
+              },
+              {
+                title: "Lifelong Alumni Access",
+                description:
+                  "Stay connected, upskill and grow through our lifetime alumni support.",
+              },
+            ].map((value, index) => (
+              <div
+                key={index}
+                className="relative group bg-white/60 backdrop-blur-sm border border-[#032c40]/20 p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.03]"
+                data-aos="zoom-in"
+                data-aos-delay={index * 100}
+              >
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full blur-lg opacity-50 group-hover:opacity-80 transition-all duration-300" />
+                <h3 className="text-lg font-bold text-[#032c40] mb-2">
+                  {value.title}
+                </h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -125,17 +414,25 @@ const Internship = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
-              Why Our Internships Matter
-            </h2>
+            <div className="text-center">
+              <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
+                Why Our Internships Matter
+              </h2>
+              {/* <img
+                src={Underline}
+                alt="Decorative Line"
+                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+              /> */}
+            </div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Our internship program provides the real-world experience employers value most.
+              Our internship program provides the real-world experience
+              employers value most.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="text-center shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -144,8 +441,12 @@ const Internship = () => {
                   <div className="gradient-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <benefit.icon className="h-8 w-8 text-primary-foreground" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">{benefit.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  <h3 className="text-xl font-semibold text-primary mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {benefit.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -153,35 +454,166 @@ const Internship = () => {
         </div>
       </section>
 
+      <section
+        className="py-20 bg-white"
+        id="featured-courses"
+        data-aos="fade-down"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="text-center">
+              <h2 className="font-manrope text-3xl lg:text-3xl text-black">
+                Featured Coures
+              </h2>
+              {/* <img
+                src={Underline}
+                alt="Decorative Line"
+                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+              /> */}
+            </div>
+            <p className="text-lg text-black max-w-2xl mx-auto leading-relaxed">
+              Discover our most popular training programs designed to launch
+              your healthcare career with confidence and expertise.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Scroll Buttons */}
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+            >
+              <ArrowLeft className="h-6 w-6 text-primary" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+            >
+              <ArrowRight className="h-6 w-6 text-primary" />
+            </button>
+
+            {/* Carousel */}
+            <div
+              ref={scrollRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
+            >
+              {courses.map((course, index) => (
+                <Card
+                  key={index}
+                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xl font-semibold text-primary">
+                        {course.title}
+                      </h3>
+                      <span className="text-sm font-medium text-muted-foreground bg-secondary px-3 py-1 rounded-full">
+                        {/* {course.duration} */}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {course.description}
+                    </p>
+                    <Button variant="outline" className="w-full group">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* <section className="relative w-full my-20 px-4 sm:px-6 lg:px-8 pb-[50px]">
+        <div className="relative">
+          <img
+            src="/src/assets/Banner.png"
+            alt="Workshop Banner"
+            className="w-full rounded-2xl object-cover"
+          />
+        </div>
+
+        <div className="absolute left-1/2 top-[70%] transform -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-6xl z-10">
+          <div className="bg-[#032c40] text-white py-8 px-4 sm:px-6 md:px-10 lg:px-12 rounded-xl shadow-xl flex flex-col md:flex-row flex-wrap justify-between items-center gap-6 sm:gap-8">
+            <div className="flex items-center gap-3 ">
+              <CalendarDays className="w-6 h-6 text-white" />
+              <div>
+                <p className="text-sm opacity-80">Starting at</p>
+                <p className="text-xl font-semibold whitespace-nowrap">
+                  July 31, 2025
+                </p>
+              </div>
+            </div>
+
+
+            <div className="flex flex-wrap justify-center gap-4 text-center">
+              {[
+                { label: "days", value: timeLeft.days },
+                { label: "hours", value: timeLeft.hours },
+                { label: "minutes", value: timeLeft.minutes },
+                { label: "seconds", value: timeLeft.seconds },
+              ].map((item, idx) => (
+                <div key={idx} className="space-y-1">
+                  <div className="bg-[#063949] px-4 py-2 rounded-md text-2xl font-bold w-16 text-center">
+                    {String(item.value).padStart(2, "0")}
+                  </div>
+                  <div className="text-sm">{item.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <button className="border border-white text-white px-6 py-2 rounded-md hover:bg-white hover:text-[#032c40] transition whitespace-nowrap">
+              Enrol now
+            </button>
+          </div>
+        </div>
+        <div className="mt-28" />
+      </section> */}
+
       {/* Available Programs */}
-      <section className="py-20 bg-secondary/30">
+      {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
               Available Programs
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Choose from our specialized internship tracks designed for different healthcare career paths.
+              Choose from our specialized internship tracks designed for
+              different healthcare career paths.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {programs.map((program, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-primary mb-4">{program.title}</h3>
+                  <h3 className="text-xl font-semibold text-primary mb-4">
+                    {program.title}
+                  </h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {program.description}
                   </p>
-                  
+
                   <div className="space-y-3 mb-6">
                     <div className="flex items-center space-x-3">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span className="text-sm">Duration: {program.duration}</span>
+                      <span className="text-sm">
+                        Duration: {program.duration}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <MapPin className="h-5 w-5 text-primary" />
@@ -189,27 +621,39 @@ const Internship = () => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <Users className="h-5 w-5 text-primary" />
-                      <span className="text-sm">Class size: {program.students}</span>
+                      <span className="text-sm">
+                        Class size: {program.students}
+                      </span>
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <p className="text-sm font-medium text-muted-foreground mb-3">Requirements:</p>
+                    <p className="text-sm font-medium text-muted-foreground mb-3">
+                      Requirements:
+                    </p>
                     <div className="space-y-1">
                       {program.requirements.map((req, idx) => (
                         <div key={idx} className="flex items-start space-x-2">
                           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-muted-foreground">{req}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {req}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <p className="text-sm font-medium text-muted-foreground mb-3">Benefits:</p>
+                    <p className="text-sm font-medium text-muted-foreground mb-3">
+                      Benefits:
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {program.benefits.map((benefit, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
+                        <Badge
+                          key={idx}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {benefit}
                         </Badge>
                       ))}
@@ -225,10 +669,10 @@ const Internship = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Application Process */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up">
@@ -236,31 +680,40 @@ const Internship = () => {
                 Application Process
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Our streamlined process ensures you're matched with the right internship opportunity for your career goals.
+                Our streamlined process ensures you're matched with the right
+                internship opportunity for your career goals.
               </p>
-              
+
               <div className="space-y-6">
                 {process.map((step, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex space-x-4 animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="gradient-primary w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-sm font-bold text-primary-foreground">{step.step}</span>
+                      <span className="text-sm font-bold text-primary-foreground">
+                        {step.step}
+                      </span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-primary mb-1">{step.title}</h3>
-                      <p className="text-muted-foreground mb-1">{step.description}</p>
-                      <p className="text-sm text-primary font-medium">{step.timeframe}</p>
+                      <h3 className="text-lg font-semibold text-primary mb-1">
+                        {step.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-1">
+                        {step.description}
+                      </p>
+                      <p className="text-sm text-primary font-medium">
+                        {step.timeframe}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            
+
             <div className="animate-fade-in">
-              <img 
+              <img
                 src={medicalStudents}
                 alt="Students in clinical setting"
                 className="rounded-lg shadow-elegant hover:shadow-hover transition-all duration-500"
@@ -268,47 +721,51 @@ const Internship = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Requirements & Partners */}
-      <section className="py-20 bg-secondary/30">
+      {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Requirements */}
+
             <div className="animate-slide-up">
               <h2 className="font-manrope text-3xl lg:text-4xl text-primary mb-6">
                 General Requirements
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                To ensure success in our internship program, all participants must meet these requirements.
+                To ensure success in our internship program, all participants
+                must meet these requirements.
               </p>
-              
+
               <div className="space-y-4">
                 {requirements.map((requirement, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-start space-x-3 animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                    <p className="text-muted-foreground leading-relaxed">{requirement}</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {requirement}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Partner Facilities */}
+
             <div className="animate-slide-up">
               <h2 className="font-manrope text-3xl lg:text-4xl text-primary mb-6">
                 Partner Facilities
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                We've partnered with leading healthcare organizations to provide diverse internship experiences.
+                We've partnered with leading healthcare organizations to provide
+                diverse internship experiences.
               </p>
-              
+
               <div className="grid gap-3">
                 {partnerFacilities.map((facility, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-center space-x-3 p-3 bg-background rounded-lg border border-border animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
@@ -321,10 +778,10 @@ const Internship = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Success Stats */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
@@ -340,9 +797,9 @@ const Internship = () => {
               { stat: "92%", label: "Job Placement Rate" },
               { stat: "89%", label: "Hired at Internship Site" },
               { stat: "4.8/5", label: "Student Satisfaction" },
-              { stat: "95%", label: "Employer Satisfaction" }
+              { stat: "95%", label: "Employer Satisfaction" },
             ].map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="text-center animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -357,7 +814,7 @@ const Internship = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 gradient-hero">
@@ -367,15 +824,27 @@ const Internship = () => {
               Start Your Professional Journey
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Take the first step toward hands-on experience in your chosen healthcare field.
+              Take the first step toward hands-on experience in your chosen
+              healthcare field.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                Apply for Internship
-              </Button>
-              <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <Link to="/contact">
+                <Button
+                  size="xl"
+                  variant="outline"
+                  className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
+                >
+                  Apply for Internship
+                </Button>
+              </Link>
+
+              {/* <Button
+                size="xl"
+                variant="outline"
+                className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
+              >
                 Learn More
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

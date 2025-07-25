@@ -35,7 +35,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <LoadingSpinner />
+          {/* <LoadingSpinner /> */}
           <ScrollToTop />
           <Layout>
             <Routes>
