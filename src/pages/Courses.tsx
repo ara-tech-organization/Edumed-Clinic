@@ -36,6 +36,8 @@ import Hydrafacial from "@/assets/Hydrafacial.png";
 import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -432,13 +434,31 @@ const Courses = () => {
       title: "Business Launch Support",
     },
   ];
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const category = params.get("category");
+
+    if (category) {
+      setSelectedCategory(category); // <- You already have this in your state
+      const filterElement = document.getElementById("category-filter");
+
+      if (filterElement) {
+        setTimeout(() => {
+          filterElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100); // timeout ensures DOM is ready
+      }
+    }
+  }, [location.search]);
   return (
     <div>
       {/* Hero Section */}
       <section
         className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{
-          backgroundImage: "url('./src/assets/about.png')",
+          backgroundImage: "url('/src/assets/about.png')",
         }}
       >
         <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
@@ -550,20 +570,19 @@ const Courses = () => {
             </div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  variant={
-                    selectedCategory === category.id ? "gradient" : "outline"
-                  }
-                  onClick={() => setSelectedCategory(category.id)}
-                  className="transition-all"
-                >
-                  {category.name}
-                </Button>
-              ))}
-            </div>
+<div id="category-filter" className="flex flex-wrap justify-center gap-3 mb-12">
+  {categories.map((category) => (
+    <Button
+      key={category.id}
+      variant={selectedCategory === category.id ? "gradient" : "outline"}
+      onClick={() => setSelectedCategory(category.id)}
+      className="transition-all"
+    >
+      {category.name}
+    </Button>
+  ))}
+</div>
+
           </div>
 
           {/* Course Grid */}

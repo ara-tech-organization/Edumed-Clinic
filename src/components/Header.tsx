@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Logo from "@/assets/logo.png"
+import Logo from "@/assets/logo.png";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,21 +40,54 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(item.path) ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {item.name}
-                {isActive(item.path) && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 gradient-primary rounded-full" />
-                )}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.name === "Courses" ? (
+                <div key="Courses" className="relative group">
+                  <button
+                    className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                      location.pathname.startsWith("/courses")
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    Courses
+                  </button>
+
+                  <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-50">
+                    {[
+                      { id: "all", name: "All Programs" },
+                      { id: "master", name: "Master Courses" },
+                      { id: "pg", name: "PG Diploma" },
+                      { id: "fellowship", name: "Fellowship Courses" },
+                      { id: "certificate", name: "Certificate Courses" },
+                      { id: "workshop", name: "Live Workshop" },
+                    ].map((category) => (
+                      <Link
+                        key={category.id}
+                        to={`/courses?category=${category.id}`}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                    isActive(item.path)
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* CTA Button */}
@@ -76,20 +115,46 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-border animate-fade-in">
             <nav className="py-4 space-y-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                    isActive(item.path)
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:text-primary hover:bg-secondary"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.name === "Courses" ? (
+                  <div key="Courses" className="space-y-1">
+                    <span className="block px-3 py-2 text-base font-medium text-muted-foreground">
+                      Courses
+                    </span>
+                    {[
+                      { id: "all", name: "All Programs" },
+                      { id: "master", name: "Master Courses" },
+                      { id: "pg", name: "PG Diploma" },
+                      { id: "fellowship", name: "Fellowship Courses" },
+                      { id: "certificate", name: "Certificate Courses" },
+                      { id: "workshop", name: "Live Workshop" },
+                    ].map((category) => (
+                      <Link
+                        key={category.id}
+                        to={`/courses?category=${category.id}`}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block ml-4 px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-primary rounded-md"
+                      >
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                      isActive(item.path)
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:text-primary hover:bg-secondary"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
+
               {/* <div className="pt-2">
                 <Button className="w-full gradient-primary shadow-elegant">
                   Apply Now
