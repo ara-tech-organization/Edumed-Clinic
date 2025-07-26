@@ -4,8 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -16,6 +16,8 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 import ScrollToTop from "./components/ScrollToTop";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 const queryClient = new QueryClient();
 
@@ -25,7 +27,7 @@ const App = () => {
       duration: 1000,
       once: true,
       offset: 100,
-      easing: 'ease-out-cubic'
+      easing: "ease-out-cubic",
     });
   }, []);
 
@@ -34,7 +36,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-       <BrowserRouter basename="/Edumed-Clinic">
+        <BrowserRouter basename="/Edumed-Clinic">
           {/* <LoadingSpinner /> */}
           <ScrollToTop />
           <Layout>
@@ -49,6 +51,14 @@ const App = () => {
             </Routes>
           </Layout>
         </BrowserRouter>
+        <a
+          href="https://wa.me/919876543210" // replace with your number
+          className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 z-50"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-whatsapp text-2xl"></i>
+        </a>
       </TooltipProvider>
     </QueryClientProvider>
   );

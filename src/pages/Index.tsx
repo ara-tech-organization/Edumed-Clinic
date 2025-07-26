@@ -23,6 +23,20 @@ import { CalendarDays } from "lucide-react";
 import dayjs from "dayjs";
 import { useRef } from "react";
 import { useEffect, useState } from "react";
+import Facialinjectables from "@/assets/Facial-injectables.png";
+import HairTransplant from "@/assets/Hair-Transplant.png";
+import ClinicalCosmetology from "@/assets/Clinical-Cosmetology.png";
+import DiplomaFacialInjectables from "@/assets/Diploma-Facial-Injectables.png";
+import SkinTechnician from "@/assets/Skin-Technician.png";
+import DiplomaClinicalCosmetology from "@/assets/Diploma-Clinical-Cosmetology.png";
+import FacialAesthetics from "@/assets/Facial-Aesthetics.png";
+import ClinicalTrichology from "@/assets/Clinical-Trichology.png";
+import MediFacial from "@/assets/Medi-Facial.png";
+import ChemicalPeel from "@/assets/Chemical-Peel.png";
+import Lasers from "@/assets/Lasers.png";
+import Makeup from "@/assets/Makeup.png";
+import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
+import CertificateInjectables from "@/assets/Certificate-Injectables.png";
 
 import duration from "dayjs/plugin/duration";
 
@@ -73,46 +87,91 @@ const Index = () => {
 
   const courses = [
     {
-      title: "Medical Assistant",
-      duration: "12 months",
+      title: "Master in Facial Injectables",
+      duration: "5 Days",
       description:
-        "Comprehensive training in patient care, medical procedures, and administrative tasks.",
-      image: medicalStudents,
+        "This specialized postgraduate program trains medical professionals in injectable treatments like Botox, dermal fillers, and threads. Emphasizing facial aesthetics and aging, it delivers deep theoretical insights and hands-on experience.",
+      image: Facialinjectables,
     },
     {
-      title: "Nursing Program",
-      duration: "18 months",
+      title: "PG Diploma in Clinical Cosmetology",
+      duration: "2 Months",
       description:
-        "Advanced nursing education with clinical rotations and hands-on experience.",
-      image: medicalStudents,
+        "An advanced program tailored for medical professionals looking to master cosmetic treatments for skin, hair, and laser. Blends deep theoretical knowledge with practical training using the latest aesthetic equipment.",
+      image: ClinicalCosmetology,
     },
     {
-      title: "Pharmacy Technician",
-      duration: "9 months",
+      title: "Fellowship in Clinical Cosmetology",
+      duration: "6 months",
       description:
-        "Learn pharmaceutical calculations, drug interactions, and pharmacy operations.",
-      image: medicalStudents,
+        "In-depth training in clinical cosmetology with a focus on advanced skin care, anti-aging treatments, and non-surgical aesthetic techniques. Blends theoretical learning with real-world skills.",
+      image: DiplomaClinicalCosmetology,
     },
     {
-      title: "Dental Assistant",
-      duration: "10 months",
+      title: "Fellowship in Facial Aesthetics",
+      duration: "6 months",
       description:
-        "Master dental procedures, patient prep, and lab work essentials.",
-      image: medicalStudents,
+        "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
+      image: FacialAesthetics,
     },
     {
-      title: "Radiology Technician",
-      duration: "15 months",
+      title: "Certificate Course in Medi Facial",
+      duration: "2 Days",
       description:
-        "Train in X-ray imaging, safety protocols, and diagnostic support.",
-      image: medicalStudents,
+        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
+      image: MediFacial,
     },
     {
-      title: "Health Admin Course",
-      duration: "8 months",
+      title: "Workshop in Semi-Permanent Makeup (SPMU)",
+      duration: "2 Days",
       description:
-        "Get skilled in healthcare management, billing systems, and hospital admin tasks.",
-      image: medicalStudents,
+        "Comprehensive workshop on microblading, powder brows, lip blush, and eyeliner enhancement. Covers client consultation, pigment selection, tool handling, and aftercare guidance.",
+      image: Makeup,
+    },
+  ];
+
+  const certificationcourses = [
+    {
+      title: "Certificate Course in Medi Facial",
+      duration: "5 Days",
+      description:
+        "Covers advanced facial treatments targeting skin concerns like acne, pigmentation, and dullness. Focuses on rejuvenation using non-invasive techniques with an emphasis on patient assessment and treatment customization.",
+      image: MediFacial,
+    },
+    {
+      title: "Certificate Course in Chemical Peel",
+      duration: "2 Months",
+      description:
+        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
+      image: ChemicalPeel,
+    },
+    {
+      title: "Certificate Course in Lasersy",
+      duration: "6 months",
+      description:
+        "A deep dive into laser technology in medical aesthetics. Learn laser physics, patient assessment, and perform treatments like hair removal, pigmentation correction, and scar revision safely.",
+      image: Lasers,
+    },
+    {
+      title: "Certificate Course in Semi-permanent Make Up",
+      duration: "6 months",
+      description:
+        "Trains practitioners in cosmetic tattooing including microblading, lip blush, eyeliner, and scalp micropigmentation. Includes safety, pigment theory, and client customization.",
+      image: Makeup,
+    },
+    {
+      title: "Certificate Course in Advanced Semi-Permanent Makeup",
+      duration: "2 Days",
+      description:
+        "An advanced version of the SPMU course, covering detailed cosmetic tattooing with expert-level techniques and tools for enhanced facial aesthetics.",
+      image: AdvancedMakeup,
+    },
+    {
+      title: "Certificate Course in Injectables",
+      duration: "2 Days",
+      description:
+        "Specialized training in skin rejuvenation and injectable procedures such as botulinum toxin and dermal fillers. Combines facial anatomy with hands-on skills in contouring and anti-aging.",
+      image: CertificateInjectables,
     },
   ];
 
@@ -162,19 +221,21 @@ const Index = () => {
     },
   ];
 
-  const scrollRef = useRef(null);
+  const featuredRef = useRef(null);
+  const certificationRef = useRef(null);
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
+  const scroll = (ref, direction) => {
+    if (ref.current) {
       const scrollAmount = direction === "left" ? -300 : 300;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background image and gradient overlay */}
         <div className="absolute inset-0 z-0" data-aos="fade-down">
           <img
             src={heroImage}
@@ -184,39 +245,41 @@ const Index = () => {
           <div className="absolute inset-0 gradient-hero opacity-80" />
         </div>
 
+        {/* Content block centered */}
         <div
-          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+          className="relative z-10 w-full px-4 sm:px-6 lg:px-8 flex justify-center items-center"
           data-aos="fade-up"
         >
-          <div className="max-w-4xl animate-fade-in">
+          <div className="max-w-4xl text-center animate-fade-in">
             <h1 className="font-manrope text-3xl lg:text-5xl mb-3 text-primary-foreground leading-tight">
               Welcome to DrEduMed Coimbatore!
             </h1>
             <h5 className="font-manrope text-2xl lg:text-4xl mb-5 text-primary-foreground leading-tight">
-              Your Path to a Successful Career in Medical & Aesthetics
+              Your Path to a Successful Career in <br />
+              Medical & Aesthetics
             </h5>
             <p className="text-lg lg:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
               Are you looking to expand your skills in the growing field of
-              aesthetics? Join DrEduMed’s expert-led programs in Coimbatore and
-              become a certified professional in medical aesthetics.
+              aesthetics? <br />
+              Join DrEduMed’s expert-led programs in Coimbatore and become a
+              certified professional in medical aesthetics.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="xl" variant="hero" className="group">
-                Explore Our Courses
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              {/* <Button size="xl" variant="outline" className="border-primary-foreground/30 hover:bg-primary-foreground/10 hover:text-primary-foreground">
-                Learn More
-              </Button> */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/courses">
+                <Button size="xl" variant="hero" className="group">
+                  Explore Our Courses
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-24 bg-secondary/30 overflow-hidden">
-        {/* Abstract Blob Background */}
-        <div className="absolute inset-0-z-10">
+      {/* <section className="relative py-24 bg-secondary/30 overflow-hidden"> */}
+      {/* Abstract Blob Background */}
+      {/* <div className="absolute inset-0-z-10">
           <svg
             className="absolute top-[-5rem] left-[-4rem] w-[350px] h-[350px] opacity-10"
             viewBox="0 0 200 200"
@@ -245,14 +308,14 @@ const Index = () => {
                 className="bg-white shadow-xl rounded-3xl p-8 text-center transform hover:scale-105 transition-all duration-300 animate-fade-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
                 data-aos="fade-left"
-              >
-                {/* Icon Bubble */}
-                <div className="bg-gradient-to-br from-primary to-[#1e6f72] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+              > */}
+      {/* Icon Bubble */}
+      {/* <div className="bg-gradient-to-br from-primary to-[#1e6f72] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <stat.icon className="text-white h-8 w-8" />
-                </div>
+                </div> */}
 
-                {/* Count-up Number */}
-                <div
+      {/* Count-up Number */}
+      {/* <div
                   className="text-4xl lg:text-5xl font-manrope font-extrabold text-primary mb-2"
                   data-aos="fade-left"
                 >
@@ -266,17 +329,17 @@ const Index = () => {
                   ) : (
                     "0"
                   )}
-                </div>
+                </div> */}
 
-                {/* Label */}
-                <div className="text-muted-foreground text-base font-medium tracking-wide">
+      {/* Label */}
+      {/* <div className="text-muted-foreground text-base font-medium tracking-wide">
                   {stat.label}
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
 
       {/* About Preview Section */}
       <section className="py-20">
@@ -313,10 +376,12 @@ const Index = () => {
                 that our students are prepared to excel in the field of
                 aesthetics.
               </p>
-              <Button variant="gradient" size="lg" className="group">
-                Discover Our Story
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/about">
+                <Button variant="gradient" size="lg" className="group">
+                  Discover Our Story
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
             <div className="animate-fade-in" data-aos="fade-left">
               <img
@@ -366,13 +431,13 @@ const Index = () => {
       <section className="py-20 bg-foreground" data-aos="fade-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-white mb-6">
-              Featured Programs
+            <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
+              Featured Courses
             </h2>
             <img
               src={underlineImage} // Replace with actual import or path
               alt="Underline design"
-              className="w-[180px] lg:w-[220px] mx-auto mt-2 mb-6 inline-block"
+              className="w-[180px] lg:w-[220px] mx-auto mt-3 mb-6 inline-block"
               data-aos="fade-up"
             />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -383,28 +448,31 @@ const Index = () => {
 
           <div className="relative">
             {/* Scroll Buttons */}
+            {/* Buttons */}
             <button
-              onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+              onClick={() => scroll(featuredRef, "left")}
+              className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
             >
               <ArrowLeft className="h-6 w-6 text-primary" />
             </button>
             <button
-              onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+              onClick={() => scroll(featuredRef, "right")}
+              className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
             >
               <ArrowRight className="h-6 w-6 text-primary" />
             </button>
 
             {/* Carousel */}
             <div
-              ref={scrollRef}
+              ref={featuredRef}
               className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
             >
+              {/* course cards here */}
+
               {courses.map((course, index) => (
                 <Card
                   key={index}
-                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in"
+                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="aspect-video overflow-hidden">
@@ -414,22 +482,132 @@ const Index = () => {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <CardContent className="p-6">
+
+                  {/* Make CardContent grow and push button to bottom */}
+                  <CardContent className="p-6 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-xl font-semibold text-primary">
                         {course.title}
                       </h3>
-                      <span className="text-sm font-medium text-muted-foreground bg-secondary px-3 py-1 rounded-full">
-                        {course.duration}
-                      </span>
+                      {/* If you want to add duration badge again, do it here */}
                     </div>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
+
+                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
                       {course.description}
                     </p>
-                    <Button variant="outline" className="w-full group">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+
+                    {/* Button aligned at bottom */}
+                    <div className="mt-auto pt-4">
+                      <Link to="/courses" className="block">
+                        <Button
+                          variant="outline"
+                          className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link to="/courses">
+                <Button
+                  size="xl"
+                  variant="hero"
+                  className="group bg-[#032c40] text-white hover:bg-[#054458] transition-colors"
+                >
+                  Explore Our Courses
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20" data-aos="fade-up">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
+              Certification Courses
+            </h2>
+            <img
+              src={underlineImage} // Replace with actual import or path
+              alt="Underline design"
+              className="w-[180px] lg:w-[220px] mx-auto mt-3 mb-6 inline-block"
+              data-aos="fade-up"
+            />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Discover our most popular training programs designed to launch
+              your healthcare career with confidence and expertise.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Scroll Buttons */}
+            {/* Buttons */}
+            <button
+              onClick={() => scroll(certificationRef, "left")}
+              className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+            >
+              <ArrowLeft className="h-6 w-6 text-primary" />
+            </button>
+            <button
+              onClick={() => scroll(certificationRef, "right")}
+              className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+            >
+              <ArrowRight className="h-6 w-6 text-primary" />
+            </button>
+
+            {/* Carousel */}
+            <div
+              ref={certificationRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
+            >
+              {/* certification course cards here */}
+
+              {certificationcourses.map((course, index) => (
+                <Card
+                  key={index}
+                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+
+                  {/* Make CardContent grow and push button to bottom */}
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xl font-semibold text-primary">
+                        {course.title}
+                      </h3>
+                      {/* If you want to add duration badge again, do it here */}
+                    </div>
+
+                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
+                      {course.description}
+                    </p>
+
+                    {/* Button aligned at bottom */}
+                    <div className="mt-auto pt-4">
+                      <Link to="/courses" className="block">
+                        <Button
+                          variant="outline"
+                          className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
                   </CardContent>
                 </Card>
               ))}

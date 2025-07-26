@@ -18,25 +18,32 @@ import medicalStudents from "@/assets/medical-students.jpg";
 import clinicInterior from "@/assets/clinic-interior.jpg";
 import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
-import Facialinjectables from '@/assets/Facial-injectables.png';
-import HairTransplant from '@/assets/Hair-Transplant.png';
-import ClinicalCosmetology from '@/assets/Clinical-Cosmetology.png';
-import DiplomaFacialInjectables from '@/assets/Diploma-Facial-Injectables.png';
-import SkinTechnician from '@/assets/Skin-Technician.png';
-import DiplomaClinicalCosmetology from '@/assets/Diploma-Clinical-Cosmetology.png';
-import FacialAesthetics from '@/assets/Facial-Aesthetics.png';
-import ClinicalTrichology from '@/assets/Clinical-Trichology.png';
-import MediFacial from '@/assets/Medi-Facial.png';
-import ChemicalPeel from '@/assets/Chemical-Peel.png';
-import Lasers from '@/assets/Lasers.png';
-import Makeup from '@/assets/Makeup.png';
-import AdvancedMakeup from '@/assets/Advanced-Makeup.png';
-import CertificateInjectables from '@/assets/Certificate-Injectables.png';
-import Hydrafacial from '@/assets/Hydrafacial.png';
+import Facialinjectables from "@/assets/Facial-injectables.png";
+import HairTransplant from "@/assets/Hair-Transplant.png";
+import ClinicalCosmetology from "@/assets/Clinical-Cosmetology.png";
+import DiplomaFacialInjectables from "@/assets/Diploma-Facial-Injectables.png";
+import SkinTechnician from "@/assets/Skin-Technician.png";
+import DiplomaClinicalCosmetology from "@/assets/Diploma-Clinical-Cosmetology.png";
+import FacialAesthetics from "@/assets/Facial-Aesthetics.png";
+import ClinicalTrichology from "@/assets/Clinical-Trichology.png";
+import MediFacial from "@/assets/Medi-Facial.png";
+import ChemicalPeel from "@/assets/Chemical-Peel.png";
+import Lasers from "@/assets/Lasers.png";
+import Makeup from "@/assets/Makeup.png";
+import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
+import CertificateInjectables from "@/assets/Certificate-Injectables.png";
+import Hydrafacial from "@/assets/Hydrafacial.png";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const CourseDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [openIndex, setOpenIndex] = useState(0); // First one open by default
+
+  const toggleFAQ = (index) => {
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
 
   const courses = [
     {
@@ -1276,59 +1283,60 @@ const CourseDetail = () => {
 
         {/* Cards Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 px-4 sm:px-6 lg:px-8">
-          {/* Duration */}
-          <Card className="shadow-card w-full hover:bg-pastel-teal transition-colors duration-300">
-            <CardContent className="flex items-start space-x-3 p-6">
-              <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-              <span className="font-medium text-muted-foreground">
+          {/* Duration (renamed to Training Mode) */}
+          <Card className="shadow-card w-full hover:bg-grey transition-colors duration-300">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-3 mb-2">
+                <Clock className="h-5 w-5 text-primary mt-1" />
+                <h3 className="font-semibold text-primary">Training Mode</h3>
+              </div>
+              <p className="font-medium text-muted-foreground ml-8">
                 {course.duration}
-              </span>
+              </p>
             </CardContent>
           </Card>
 
           {/* Schedule */}
-          <Card className="shadow-card w-full hover:bg-pastel-teal transition-colors duration-300">
-            <CardContent className="flex items-start space-x-3 p-6">
-              <div className="flex-shrink-0">
-                <Calendar className="h-5 w-5 text-primary" />
+          <Card className="shadow-card w-full hover:bg-grey transition-colors duration-300">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-3 mb-2">
+                <Calendar className="h-5 w-5 text-primary mt-1" />
+                <h3 className="font-semibold text-primary">Duration</h3>
               </div>
-              <div>
-                <span className="font-medium text-muted-foreground">
-                  {course.schedule}
-                </span>
-              </div>
+              <p className="font-medium text-muted-foreground ml-8">
+                {course.schedule}
+              </p>
             </CardContent>
           </Card>
 
           {/* Eligibility */}
-          <Card className="shadow-card w-full hover:bg-pastel-teal transition-colors duration-300">
-            <CardContent className="flex items-start space-x-3 p-6">
-              <div className="flex-shrink-0">
-                <CheckCircle className="h-5 w-5 text-primary" />
+          <Card className="shadow-card w-full hover:bg-grey transition-colors duration-300">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-3 mb-2">
+                <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                <h3 className="font-semibold text-primary">Eligible for</h3>
               </div>
-              <div>
-                <span className="font-medium text-muted-foreground">
-                  {course.eligibility} Eligibility
-                </span>
-              </div>
+              <p className="font-medium text-muted-foreground ml-8">
+                {course.eligibility}
+              </p>
             </CardContent>
           </Card>
         </div>
 
         {/* Apply Now Button Centered */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-8 ">
           <Button
-            className="bg-pastel-teal text-black hover:bg-pastel-teal/80 transition-colors duration-300 shadow-md"
-            size="lg"
-            // variant="metallic"
-          >
-            Apply Now
-          </Button>
+  className="w-[300px] bg-pastel-teal text-black hover:bg-pastel-teal/80 transition-colors duration-300 shadow-md"
+  size="lg"
+>
+  Apply Now
+</Button>
+
         </div>
       </section>
 
       {/* Requirements Section */}
-      <section className="py-20 bg-secondary/30">
+      {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <div className="text-center">
@@ -1346,22 +1354,6 @@ const CourseDetail = () => {
           <div className="max-w-3xl mx-auto">
             <Card className="shadow-card" data-aos="zoom-in">
               <CardContent className="p-8">
-                {/* <div className="grid md:grid-cols-2 gap-8"> */}
-                {/* <div>
-                    <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
-                      <Award className="h-6 w-6 mr-3" />
-                      Prerequisites
-                    </h3>
-                    <div className="space-y-3">
-                      {course.requirements.map((req, index) => (
-                        <div key={index} className="flex items-start space-x-3">
-                          <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{req}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div> */}
-
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
                     <Globe className="h-6 w-6 mr-3" />
@@ -1376,12 +1368,12 @@ const CourseDetail = () => {
                     ))}
                   </div>
                 </div>
-                {/* </div> */}
+
               </CardContent>
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Curriculum Section */}
       <section className="py-20">
@@ -1431,14 +1423,20 @@ const CourseDetail = () => {
               data-aos="fade-left"
             >
               <CardContent className="p-6">
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-2">
                   <Target className="h-6 w-6 text-primary mr-3" />
                   <h3 className="text-xl font-semibold text-primary">
-                    Career Outcomes
+                    Key Features
                   </h3>
+
                 </div>
+
+            <h3 className="text-sm  text-primary  mb-3">
+              This course is for those seeking to:
+            </h3>
+
                 <div className="space-y-3">
-                  {course.careerOutcomes.map((item, index) => (
+                  {course.features.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{item}</span>
@@ -1448,6 +1446,9 @@ const CourseDetail = () => {
               </CardContent>
             </Card>
           </div>
+
+
+
         </div>
       </section>
 
@@ -1466,17 +1467,26 @@ const CourseDetail = () => {
           </div>
 
           <div className="max-w-3xl mx-auto" data-aos="zoom-in">
-            <Card className="shadow-card">
+            <Card className="border-none shadow-none bg-transparent">
               <CardContent className="p-8">
                 <div className="space-y-4">
                   {course.faq.map((item, index) => (
-                    <details
+                    <div
                       key={index}
-                      className="group border border-gray-200 rounded-lg p-4 cursor-pointer transition-all duration-300 open:shadow-md"
+                      className={`group border border-gray-200 rounded-lg p-4 transition-all duration-300 ${
+                        openIndex === index ? "shadow-md" : ""
+                      }`}
                     >
-                      <summary className="font-semibold text-primary text-lg list-none flex justify-between items-center">
+                      <div
+                        className="font-semibold text-primary text-lg flex justify-between items-center cursor-pointer"
+                        onClick={() => toggleFAQ(index)}
+                      >
                         {item.question}
-                        <span className="ml-2 transform transition-transform group-open:rotate-180">
+                        <span
+                          className={`ml-2 transform transition-transform ${
+                            openIndex === index ? "rotate-180" : ""
+                          }`}
+                        >
                           <svg
                             className="w-5 h-5 text-primary"
                             fill="none"
@@ -1492,11 +1502,24 @@ const CourseDetail = () => {
                             />
                           </svg>
                         </span>
-                      </summary>
-                      <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </details>
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {openIndex === index && (
+                          <motion.div
+                            key="content"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
+                            <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
+                              {item.answer}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   ))}
                 </div>
               </CardContent>

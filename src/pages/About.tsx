@@ -163,7 +163,7 @@ const About = () => {
       <section
         className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{
-          backgroundImage: "url('./about.jpg')",
+          backgroundImage: "url('./src/assets/about.png')",
         }}
       >
         <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
@@ -314,8 +314,11 @@ const About = () => {
         </div>
       </section> */}
 
-      <section className="bg-[#032c40] text-white py-16 px-6 lg:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="bg-[#032c40] text-white py-16 px-6 lg:px-24 relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+          {/* Center Vertical Divider (visible only on md+) */}
+          <div className="hidden md:block absolute left-1/2 top-0 h-full w-px bg-white opacity-30 transform -translate-x-1/2" />
+
           {/* VISION */}
           <div className="animate-on-scroll opacity-0 transition-opacity duration-1000">
             <h2 className="text-3xl font-bold mb-4 text-[#20B2AA]">Vision</h2>
@@ -342,7 +345,15 @@ const About = () => {
       </section>
 
       {/* Values - Diamond Grid Pattern */}
-      <section className="py-24 bg-white">
+      <section
+        className="py-24 mt-10 mb-8"
+        style={{
+          backgroundColor: "#e0f7f4", // light pastel teal
+          marginLeft: "2rem", // left gap
+          marginRight: "2rem", // right gap
+          borderRadius: "1rem", // optional: soft rounded edges
+        }}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2
@@ -415,9 +426,9 @@ const About = () => {
       </section>
 
       {/* Leadership Team - Staggered Cards */}
-      <section className="py-24 relative overflow-hidden bg-white">
-        {/* Diagonal Line Background */}
-        <svg
+      {/* <section className="py-24 relative overflow-hidden bg-white"> */}
+      {/* Diagonal Line Background */}
+      {/* <svg
           className="absolute top-0 left-0 w-full h-full opacity-10 -z-10"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -432,15 +443,15 @@ const About = () => {
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#line-pattern)" />
-        </svg>
+        </svg> */}
 
-        {/* Floating gradient blobs */}
-        <div className="absolute w-[30rem] h-[30rem] bg-gradient-to-br from-cyan-300 via-blue-400 to-indigo-400 opacity-20 rounded-full blur-[140px] top-[-100px] left-[-120px] animate-[float_12s_ease-in-out_infinite]" />
+      {/* Floating gradient blobs */}
+      {/* <div className="absolute w-[30rem] h-[30rem] bg-gradient-to-br from-cyan-300 via-blue-400 to-indigo-400 opacity-20 rounded-full blur-[140px] top-[-100px] left-[-120px] animate-[float_12s_ease-in-out_infinite]" />
         <div className="absolute w-[35rem] h-[35rem] bg-gradient-to-br from-purple-200 via-pink-300 to-yellow-200 opacity-20 rounded-full blur-[160px] bottom-[-120px] right-[-140px] animate-[float_14s_ease-in-out_infinite]" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Animated gradient bar under heading */}
-          <div className="relative text-center mb-20" data-aos="fade-up">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"> */}
+      {/* Animated gradient bar under heading */}
+      {/* <div className="relative text-center mb-20" data-aos="fade-up">
             <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-64 h-2 bg-gradient-to-r from-cyan-400 via-teal-300 to-transparent rounded-full blur-md rotate-2 opacity-40 z-0" />
             <div className="text-center">
               <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
@@ -455,11 +466,11 @@ const About = () => {
             <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed relative z-10">
               Explore our regional offices across Tamil Nadu.
             </p>
-          </div>
+          </div> */}
 
-          {/* Cards */}
+      {/* Cards */}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {branches.map((branch, index) => (
               <Card key={index} className="flex flex-col h-full">
                 <CardContent className="flex flex-col justify-between flex-grow px-6 pb-6 pt-0 relative z-10">
@@ -496,7 +507,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Achievements - Asymmetric Layout */}
       {/* <section className="py-20 bg-secondary/30 relative overflow-hidden">
@@ -560,7 +571,7 @@ const About = () => {
           <div className="max-w-3xl mx-auto" data-aos="zoom-in">
             <div className="text-center">
               <h2 className="font-manrope text-3xl lg:text-3xl text-white">
-                Join Our Community
+                Enroll in Career-Focused Training
               </h2>
               <img
                 src={Underline}
@@ -569,17 +580,13 @@ const About = () => {
               />
             </div>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Become part of a legacy of excellence and start your journey in
-              healthcare education.
+              Launch your aesthetic career with hands-on, real-world internships
+              designed to prepare you for success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button
-                  size="xl"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300"
-                >
-                 Contact Admissions
+              <Link to="/contact" className="inline-block">
+                <Button size="xl" variant="metallic">
+                  Contact Admissions
                 </Button>
               </Link>
               {/* <Button

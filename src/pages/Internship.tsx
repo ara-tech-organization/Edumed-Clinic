@@ -10,8 +10,11 @@ import {
   Stethoscope,
   Microscope,
   Globe,
+  UserCheck,
+  FileText,
+  ShieldCheck,
+  MessageSquare,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -19,7 +22,7 @@ import medicalStudents from "@/assets/medical-students.jpg";
 import clinicInterior from "@/assets/clinic-interior.jpg";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import Underline from "./line.png";
+import Underline from "/line.png";
 import { useRef } from "react";
 import { ArrowLeft } from "lucide-react";
 import { CalendarDays } from "lucide-react";
@@ -27,14 +30,16 @@ import dayjs from "dayjs";
 import CountUp from "react-countup";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
-
-// ✅ Correct if assets are in 'src/assets'
 import Facialinjectables from "@/assets/Facial-injectables.png";
 import ClinicalCosmetology from "@/assets/Clinical-Cosmetology.png";
 import DiplomaClinicalCosmetology from "@/assets/Diploma-Clinical-Cosmetology.png";
 import FacialAesthetics from "@/assets/Facial-Aesthetics.png";
 import MediFacial from "@/assets/Medi-Facial.png";
 import Makeup from "@/assets/Makeup.png";
+import { Line } from "recharts";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 dayjs.extend(duration);
 
@@ -213,14 +218,45 @@ const Internship = () => {
     "Urgent Care Associates",
     "Rehabilitation Services Inc.",
   ];
+  const features = [
+    {
+      icon: UserCheck,
+      title: "In-Depth Expert Training",
+    },
+    {
+      icon: FileText,
+      title: "Government and International Accredited Certificate",
+    },
+    {
+      icon: Briefcase,
+      title: "Guaranteed Placement with Refund Policy",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Medico-Legal Expert and Vendor Assistance",
+    },
+    {
+      icon: MessageSquare,
+      title: "Business Launch Support",
+    },
+  ];
 
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
+
 
   const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -300 : 300;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
+    if (!scrollRef.current) return;
+    const { scrollLeft, clientWidth } = scrollRef.current;
+    const scrollAmount = clientWidth * 0.9;
+
+    scrollRef.current.scrollTo({
+      left:
+        direction === "left"
+          ? scrollLeft - scrollAmount
+          : scrollLeft + scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   const calculateTimeLeft = () => {
@@ -251,7 +287,7 @@ const Internship = () => {
       <section
         className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{
-          backgroundImage: "url('/src/assets/about.jpg')",
+          backgroundImage: "url('./src/assets/about.png')",
         }}
       >
         <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
@@ -324,21 +360,27 @@ const Internship = () => {
               trends, and build a successful career with us.
             </p>
             <div className="flex justify-center">
-              <a href="#featured-courses">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-[#032c40] text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  Explore Internships
-                </motion.button>
-              </a>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 bg-[#032c40] text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                Explore Internships
+              </motion.button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section
+        className="py-24"
+        style={{
+          backgroundColor: "#e0f7f4", // light pastel teal
+          marginLeft: "2rem", // left gap
+          marginRight: "2rem", // right gap
+          borderRadius: "1rem", // optional: soft rounded edges
+        }}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2
@@ -347,11 +389,11 @@ const Internship = () => {
             >
               Our Core Values
             </h2>
-            {/* <img
+            <img
               src={Underline}
               alt="Decorative Line"
               className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
-            /> */}
+            />
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               These principles guide everything we do, from curriculum
               development to student success.
@@ -411,85 +453,62 @@ const Internship = () => {
       </section>
 
       {/* Program Benefits */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="text-center">
-              <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
-                Why Our Internships Matter
-              </h2>
-              {/* <img
-                src={Underline}
-                alt="Decorative Line"
-                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
-              /> */}
-            </div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Our internship program provides the real-world experience
-              employers value most.
-            </p>
-          </div>
+      <section className="py-20 px-4 bg-white" data-aos="fade-up">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold font-manrope">
+            Why Choose{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
+              Dr.EduMed?
+            </span>
+          </h2>
+          <img
+            src={Underline}
+            alt="Decorative Line"
+            className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+          />
+        </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card
-                key={index}
-                className="text-center shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6">
-                  <div className="gradient-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <benefit.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-[#e0f2fe] via-white to-[#ccfbf1] rounded-2xl shadow-md text-center p-6 transition-transform duration-300 transform hover:scale-105 backdrop-blur-md"
+            >
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4">
+                <feature.icon className="w-10 h-10 text-gradient-primary" />
+              </div>
+              <p className="text-base font-medium text-gray-800">
+                {feature.title}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section
-        className="py-20 bg-white"
-        id="featured-courses"
-        data-aos="fade-down"
-      >
+      <section className="py-20 " data-aos="fade-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-center">
-              <h2 className="font-manrope text-3xl lg:text-3xl text-black">
-                Featured Coures
-              </h2>
-              {/* <img
-                src={Underline}
-                alt="Decorative Line"
-                className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
-              /> */}
-            </div>
-            <p className="text-lg text-black max-w-2xl mx-auto leading-relaxed">
+            <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
+              Expert Level Courses
+            </h2>
+            <img
+              src={Underline} // Replace with actual import or path
+              alt="Underline design"
+              className="w-[180px] lg:w-[220px] mx-auto mt-2 mb-6 inline-block"
+              data-aos="fade-up"
+            />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Discover our most popular training programs designed to launch
               your healthcare career with confidence and expertise.
             </p>
           </div>
 
           <div className="relative">
-            {/* Scroll Buttons */}
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10  bg-pastel-teal/80 hover:bg-white rounded-full p-2 shadow transition"
             >
-              <ArrowLeft className="h-6 w-6 text-primary" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
-            >
-              <ArrowRight className="h-6 w-6 text-primary" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </button>
 
             {/* Carousel */}
@@ -500,7 +519,7 @@ const Internship = () => {
               {courses.map((course, index) => (
                 <Card
                   key={index}
-                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in"
+                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="aspect-video overflow-hidden">
@@ -510,26 +529,57 @@ const Internship = () => {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <CardContent className="p-6">
+
+                  {/* Make CardContent grow and push button to bottom */}
+                  <CardContent className="p-6 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-xl font-semibold text-primary">
                         {course.title}
                       </h3>
-                      <span className="text-sm font-medium text-muted-foreground bg-secondary px-3 py-1 rounded-full">
-                        {/* {course.duration} */}
-                      </span>
+                      {/* If you want to add duration badge again, do it here */}
                     </div>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
+
+                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
                       {course.description}
                     </p>
-                    <Button variant="outline" className="w-full group">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+
+                    {/* Button aligned at bottom */}
+                    <div className="mt-auto pt-4">
+                      <Link to="/courses" className="block">
+                        <Button
+                          variant="outline"
+                          className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
+                          onClick={() => navigate("/course")}
+
+
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
             </div>
+            <div className="mt-10 text-center">
+              <Link to="/courses">
+                <Button
+                  size="xl"
+                  variant="hero"
+                  className="group bg-[#032c40] text-white hover:bg-[#054458] transition-colors"
+                >
+                  Explore Our Courses
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+            <button
+              onClick={() => scroll("right")}
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-pastel-teal/80 hover:bg-white rounded-full p-2 shadow transition"
+            >
+              <ArrowRight className="h-5 w-5 text-primary" />
+            </button>
           </div>
         </div>
       </section>
@@ -828,23 +878,22 @@ const Internship = () => {
               healthcare field.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button
-                  size="xl"
-                  variant="outline"
-                  className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
-                >
-                  Apply for Internship
-                </Button>
-              </Link>
-
-              {/* <Button
+              <Button
                 size="xl"
                 variant="outline"
                 className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
+                onClick={() => navigate("/contact")}
+              >
+                Apply for Internship
+              </Button>
+              <Button
+                size="xl"
+                variant="outline"
+                className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
+                onClick={() => navigate("/courses")}
               >
                 Learn More
-              </Button> */}
+              </Button>
             </div>
           </div>
         </div>

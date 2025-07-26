@@ -36,7 +36,7 @@ const Contact = () => {
     message: "",
   });
 
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
   const contentRefs = useRef([]);
 
   const toggleFAQ = (index) => {
@@ -65,7 +65,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["97515 10000"],
+      details: ["+91 97515 10000"],
       action: "Call Now",
     },
     {
@@ -213,13 +213,11 @@ const Contact = () => {
                         {info.action}
                       </Button>
                     </a>
-                  ) : 
-                  (
+                  ) : (
                     <Button variant="outline" size="sm" className="text-xs">
                       {info.action}
                     </Button>
-                  )
-                  }
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -385,36 +383,18 @@ const Contact = () => {
               <img
                 src={clinicInterior}
                 alt="Campus facility"
-                className="rounded-lg shadow-elegant hover:shadow-hover transition-all duration-500 mb-8"
+                className="rounded-lg shadow-elegant hover:shadow-hover transition-all duration-500 w-full h-full object-cover"
               />
-
-              <Card className="shadow-card">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-primary mb-4">
-                    Visit Our Campus
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    Schedule a tour to see our state-of-the-art facilities,
-                    simulation labs, and meet with our admissions team.
-                  </p>
-                  <div className="flex space-x-3">
-                    <Button variant="gradient" size="sm" className="flex-1">
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Schedule Tour
-                    </Button>
-                    {/* <Button variant="outline" size="sm" className="flex-1">
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      Live Chat
-                    </Button> */}
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full py-16 bg-white px-4 sm:px-6 lg:px-20" id="map-section" data-aos="fade-up">
+      <section
+        className="w-full py-16 bg-white px-4 sm:px-6 lg:px-20"
+        id="map-section"
+        data-aos="fade-up"
+      >
         <div className="max-w-7xl mx-auto text-center">
           {/* Section Heading */}
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
@@ -426,7 +406,10 @@ const Contact = () => {
           </p>
 
           {/* Responsive Google Map Embed */}
-          <div className="w-full h-80 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg" data-aos="fade-down">
+          <div
+            className="w-full h-80 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg"
+            data-aos="fade-down"
+          >
             <iframe
               title="Our Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.536312597718!2d76.96151427451981!3d10.998329655062575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85984a3ad0e93%3A0xcc72770a13ad57ac!2sDr.EduMed%20-%20Coimbatore!5e0!3m2!1sen!2sin!4v1753426216142!5m2!1sen!2sin"

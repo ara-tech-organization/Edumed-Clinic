@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Clock, Users, Award, ArrowRight, Star, Calendar } from "lucide-react";
+import {
+  Clock,
+  Users,
+  Award,
+  ArrowRight,
+  Star,
+  Calendar,
+  UserCheck,
+  FileText,
+  ShieldCheck,
+  MessageSquare,
+  Briefcase
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,7 +36,6 @@ import Hydrafacial from "@/assets/Hydrafacial.png";
 import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
 import { Link } from "react-router-dom";
-
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -401,36 +412,33 @@ const Courses = () => {
 
   const features = [
     {
-      icon: Award,
-      title: "Industry Certification",
-      description:
-        "All programs include preparation for industry-standard certifications",
+      icon: UserCheck,
+      title: "In-Depth Expert Training",
     },
     {
-      icon: Users,
-      title: "Small Class Sizes",
-      description:
-        "Personalized attention with low student-to-instructor ratios",
+      icon: FileText,
+      title: "Government and International Accredited Certificate",
     },
     {
-      icon: Calendar,
-      title: "Flexible Scheduling",
-      description: "Day, evening, and weekend options to fit your lifestyle",
+      icon: Briefcase,
+      title: "Guaranteed Placement with Refund Policy",
     },
     {
-      icon: Star,
-      title: "Expert Instructors",
-      description: "Learn from experienced healthcare professionals",
+      icon: ShieldCheck,
+      title: "Medico-Legal Expert and Vendor Assistance",
+    },
+    {
+      icon: MessageSquare,
+      title: "Business Launch Support",
     },
   ];
-
   return (
     <div>
       {/* Hero Section */}
       <section
         className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{
-          backgroundImage: "url('/src/assets/about.jpg')",
+          backgroundImage: "url('./src/assets/about.png')",
         }}
       >
         <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
@@ -450,12 +458,12 @@ const Courses = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-secondary/30">
+      {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <div className="text-center">
               <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
-                Why Choose Our Programs?
+                Why Choose Our ?
               </h2>
               <img
                 src={Underline}
@@ -492,6 +500,38 @@ const Courses = () => {
             ))}
           </div>
         </div>
+      </section> */}
+
+      <section className="py-20 px-4 bg-white" data-aos="fade-up">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold font-manrope">
+            Why Choose{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
+              Dr.EduMed?
+            </span>
+          </h2>
+          <img
+            src={Underline}
+            alt="Decorative Line"
+            className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-[#e0f2fe] via-white to-[#ccfbf1] rounded-2xl shadow-md text-center p-6 transition-transform duration-300 transform hover:scale-105 backdrop-blur-md"
+            >
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4">
+                <feature.icon className="w-10 h-10 text-gradient-primary" />
+              </div>
+              <p className="text-base font-medium text-gray-800">
+                {feature.title}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Course Categories */}
@@ -500,7 +540,7 @@ const Courses = () => {
           <div className="text-center mb-12" data-aos="fade-up">
             <div className="text-center">
               <h2 className="font-manrope text-3xl lg:text-3xl text-primary">
-                Why Choose Our Programs?
+                Why Choose Our Courses?
               </h2>
               <img
                 src={Underline}
@@ -531,11 +571,12 @@ const Courses = () => {
             {filteredCourses.map((course, index) => (
               <Card
                 key={course.id}
-                className={`overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 ${
+                className={`flex flex-col overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 ${
                   course.featured ? "ring-2 ring-primary/20" : ""
                 }`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
+                onClick={() => navigate(`/course/${course.id}`)}
               >
                 {/* {course.featured && (
                   <div className="gradient-primary text-primary-foreground text-center py-2 text-sm font-medium">
@@ -546,73 +587,33 @@ const Courses = () => {
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={course.image}
+                    onClick={() => navigate(`/course/${course.id}`)}
                     alt={course.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge variant="secondary" className="text-xs">
-                      {
-                        categories.find((cat) => cat.id === course.category)
-                          ?.name
-                      }
-                    </Badge>
-                    <div className="flex items-center space-x-1">
-                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                      <span className="text-sm font-medium">
-                        {course.rating}
-                      </span>
+                <CardContent className="p-6 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <Badge variant="secondary" className="text-xs">
+                        {
+                          categories.find((cat) => cat.id === course.category)
+                            ?.name
+                        }
+                      </Badge>
                     </div>
-                  </div>
 
-                  <h3 className="text-xl font-semibold text-primary mb-3">
-                    {course.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
-                    {course.description}
-                  </p>
-
-                  <div className="space-y-3 mb-6">
-                    {/* <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center space-x-2">
-                        <Clock className="h-4 w-4 text-muted-foreground" />
-                        <span>Duration: {course.duration}</span>
-                      </div>
-                      <span className="font-semibold text-primary">{course.price}</span>
-                    </div> */}
-
-                    {/* <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <div className="flex items-center space-x-2">
-                        <Users className="h-4 w-4" />
-                        <span>Class size: {course.students}</span>
-                      </div>
-                      <span>{course.schedule}</span>
-                    </div> */}
-                  </div>
-
-                  <div className="mb-6">
-                    <p className="text-sm font-medium text-muted-foreground mb-2">
-                      Includes:
+                    <h3 className="text-xl font-semibold text-primary mb-3">
+                      {course.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                      {course.description}
                     </p>
-                    <div className="flex flex-wrap gap-1">
-                      {course.features.slice(0, 2).map((feature, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
-                          {feature}
-                        </Badge>
-                      ))}
-                      {course.features.length > 2 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{course.features.length - 2} more
-                        </Badge>
-                      )}
-                    </div>
                   </div>
-
                   <Button
-                    variant="metallic"
-                    className="w-full group"
+                   variant="outline"
+                      className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
                     onClick={() => navigate(`/course/${course.id}`)}
                   >
                     Learn More
@@ -677,18 +678,14 @@ const Courses = () => {
               />
             </div>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Take the next step toward your healthcare career. Our admissions
+              Take the next step toward your Medical and Aesthetic career. Our admissions
               team is here to help you choose the right program.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button size="xl" variant="metallic">
-                  Apply Now
-                </Button>
-              </Link>
-              {/* <Button size="xl" variant="outline" className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10">
-                Request Information
-              </Button> */}
+              <Button size="xl" variant="metallic" onClick={() => navigate("/contact")}>
+                Apply Now
+              </Button>
+
             </div>
           </div>
         </div>

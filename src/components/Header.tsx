@@ -28,7 +28,7 @@ const Header = () => {
               <img
                 src={Logo}
                 alt="MedEdu Logo"
-                className="h-24 w-24 object-contain"
+                className="h-20 w-20 object-contain"
               />
             </div>
           </Link>
