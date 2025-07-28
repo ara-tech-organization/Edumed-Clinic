@@ -38,8 +38,7 @@ import MediFacial from "@/assets/Medi-Facial.png";
 import Makeup from "@/assets/Makeup.png";
 import { Line } from "recharts";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 dayjs.extend(duration);
 
@@ -244,7 +243,6 @@ const Internship = () => {
   const scrollRef = useRef(null);
   const navigate = useNavigate();
 
-
   const scroll = (direction) => {
     if (!scrollRef.current) return;
     const { scrollLeft, clientWidth } = scrollRef.current;
@@ -284,24 +282,30 @@ const Internship = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section
-        className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
-        style={{
-          backgroundImage: "url('./src/assets/about.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
-        {/* Optional blur overlay */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <div className="inline-block relative">
-              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
-                Experience-Based Learning
-              </h1>
+      <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
+        {/* 🟦 Container with background image, padding, and curved corners */}
+        <div
+          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+          style={{
+            backgroundImage: "url('./src/assets/Internship Page.jpg')",
+          }}
+        >
+          {/* Optional semi-transparent overlay for better text visibility */}
+          <div className="absolute inset-0 rounded-3xl" />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
+            <div className="max-w-4xl" data-aos="fade-up">
+              <div className="inline-block relative">
+                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
+                  Experience-Based Learning
+                </h1>
+              </div>
+              <div className="max-w-xl">
+                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+                  Global & Pan-India Internship & Career Opportunities
+                </p>
+              </div>
             </div>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-              Global & Pan-India Internship & Career Opportunities
-            </p>
           </div>
         </div>
       </section>
@@ -550,8 +554,6 @@ const Internship = () => {
                           variant="outline"
                           className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
                           onClick={() => navigate("/course")}
-
-
                         >
                           Learn More
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -517,10 +517,10 @@ const Index = () => {
                 <Button
                   size="xl"
                   variant="hero"
-                  className="group bg-[#032c40] text-white hover:bg-[#054458] transition-colors"
+                  className="group bg-[#032c40] text-white border border-[#032c40] hover:bg-white hover:text-amber-100 transition-all duration-300"
                 >
                   Explore Our Courses
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
             </div>
@@ -701,7 +701,7 @@ const Index = () => {
             Affiliation & Accreditation
           </h2>
 
-          {/* Logos */}
+          {/* Logos Grid */}
           <div
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 place-items-center"
             data-aos="fade-down"
@@ -709,12 +709,12 @@ const Index = () => {
             {affiliations.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-sm border border-blue-100 p-4 w-full max-w-[150px] flex justify-center items-center"
+                className="bg-white rounded-2xl shadow-sm border border-blue-100 w-[150px] h-[150px] flex justify-center items-center overflow-hidden px-4"
               >
                 <img
                   src={item.src}
                   alt={item.alt}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-full object-contain"
                 />
               </div>
             ))}
@@ -733,6 +733,9 @@ const Index = () => {
             <div className="flex items-center gap-3">
               <CalendarDays className="w-6 h-6 text-white" />
               <div>
+                <p className="font-semibold">
+                  Workshop in Semi-Permanent Makeup
+                </p>
                 <p className="text-sm opacity-80">Starting at</p>
                 <p className="text-xl font-semibold whitespace-nowrap">
                   July 31, 2025

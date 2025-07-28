@@ -11,7 +11,7 @@ import {
   FileText,
   ShieldCheck,
   MessageSquare,
-  Briefcase
+  Briefcase,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -455,24 +455,29 @@ const Courses = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section
-        className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
-        style={{
-          backgroundImage: "url('/src/assets/about.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
-        {/* Optional blur overlay */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <div className="inline-block relative">
-              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
-                Our Courses
-              </h1>
+      <section className="relative py-4 lg:py-12 bg-white overflow-hidden">
+        {/* Image Container with Padding and Rounded Corners */}
+        <div
+          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+          style={{
+            backgroundImage: "url('./src/assets/Courses - Detailed.jpg')",
+          }}
+        >
+          <div className="rounded-3xl w-full h-full absolute inset-0" />{" "}
+          {/* Optional overlay */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
+            <div className="max-w-4xl" data-aos="fade-up">
+              <div className="inline-block relative">
+                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
+                  Our Courses
+                </h1>
+              </div>
+              <div className="max-w-xl">
+                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+                  Global & Pan-India Internship & Career Opportunities
+                </p>
+              </div>
             </div>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-              Global & Pan-India Internship & Career Opportunities
-            </p>
           </div>
         </div>
       </section>
@@ -570,19 +575,23 @@ const Courses = () => {
             </div>
 
             {/* Category Filter */}
-<div id="category-filter" className="flex flex-wrap justify-center gap-3 mb-12">
-  {categories.map((category) => (
-    <Button
-      key={category.id}
-      variant={selectedCategory === category.id ? "gradient" : "outline"}
-      onClick={() => setSelectedCategory(category.id)}
-      className="transition-all"
-    >
-      {category.name}
-    </Button>
-  ))}
-</div>
-
+            <div
+              id="category-filter"
+              className="flex flex-wrap justify-center gap-3 mb-12"
+            >
+              {categories.map((category) => (
+                <Button
+                  key={category.id}
+                  variant={
+                    selectedCategory === category.id ? "gradient" : "outline"
+                  }
+                  onClick={() => setSelectedCategory(category.id)}
+                  className="transition-all"
+                >
+                  {category.name}
+                </Button>
+              ))}
+            </div>
           </div>
 
           {/* Course Grid */}
@@ -631,8 +640,8 @@ const Courses = () => {
                     </p>
                   </div>
                   <Button
-                   variant="outline"
-                      className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
+                    variant="outline"
+                    className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
                     onClick={() => navigate(`/course/${course.id}`)}
                   >
                     Learn More
@@ -697,14 +706,17 @@ const Courses = () => {
               />
             </div>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Take the next step toward your Medical and Aesthetic career. Our admissions
-              team is here to help you choose the right program.
+              Take the next step toward your Medical and Aesthetic career. Our
+              admissions team is here to help you choose the right program.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" variant="metallic" onClick={() => navigate("/contact")}>
+              <Button
+                size="xl"
+                variant="metallic"
+                onClick={() => navigate("/contact")}
+              >
                 Apply Now
               </Button>
-
             </div>
           </div>
         </div>

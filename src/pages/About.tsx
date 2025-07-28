@@ -160,25 +160,31 @@ const About = () => {
     <div>
       {/* Hero Section */}
 
-      <section
-        className="relative py-20 lg:py-32 bg-white bg-cover bg-center bg-no-repeat overflow-hidden"
-        style={{
-          backgroundImage: "url('./src/assets/about.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />{" "}
-        {/* Optional blur overlay */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <div className="inline-block relative">
-              <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
-                Our Story
-              </h1>
+      <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
+        {/* Image container with background, padding, and rounded corners */}
+        <div
+          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+          style={{
+            backgroundImage: "url('./src/assets/About Us Page.jpg')",
+          }}
+        >
+          {/* Optional overlay if needed for text readability */}
+          <div className="absolute inset-0 rounded-3xl" />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
+            <div className="max-w-4xl" data-aos="fade-up">
+              <div className="inline-block relative">
+                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
+                  Our Story
+                </h1>
+              </div>
+              <div className="max-w-xl">
+                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+                  Two decades of excellence in medical education, shaping the
+                  future of healthcare one student at a time.
+                </p>
+              </div>
             </div>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-              Two decades of excellence in medical education, shaping the future
-              of healthcare one student at a time.
-            </p>
           </div>
         </div>
       </section>
