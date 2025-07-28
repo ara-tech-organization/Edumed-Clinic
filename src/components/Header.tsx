@@ -9,10 +9,31 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import EnrollModal from "./EnrollModal";
+import { useRef, useEffect } from "react";
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [isCoursesOpen, setIsCoursesOpen] = useState(false);
+
+  const coursesRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  function handleClickOutside(event: MouseEvent) {
+    if (
+      coursesRef.current &&
+      !coursesRef.current.contains(event.target as Node)
+    ) {
+      setIsCoursesOpen(false);
+    }
+  }
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -23,6 +44,8 @@ const Header = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -41,11 +64,13 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           {/* Desktop Navigation */}
+          <div key="Courses" ref={coursesRef} className="relative">
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) =>
               item.name === "Courses" ? (
-                <div key="Courses" className="relative group">
+                <div key="Courses" className="relative">
                   <button
+                    onClick={() => setIsCoursesOpen((prev) => !prev)}
                     className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
                       location.pathname.startsWith("/courses")
                         ? "text-primary"
@@ -55,24 +80,27 @@ const Header = () => {
                     Courses
                   </button>
 
-                  <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-50">
-                    {[
-                      { id: "all", name: "All Programs" },
-                      { id: "master", name: "Master Courses" },
-                      { id: "pg", name: "PG Diploma" },
-                      { id: "fellowship", name: "Fellowship Courses" },
-                      { id: "certificate", name: "Certificate Courses" },
-                      { id: "workshop", name: "Live Workshop" },
-                    ].map((category) => (
-                      <Link
-                        key={category.id}
-                        to={`/courses?category=${category.id}`}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {category.name}
-                      </Link>
-                    ))}
-                  </div>
+                  {isCoursesOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                      {[
+                        { id: "all", name: "All Programs" },
+                        { id: "master", name: "Master Courses" },
+                        { id: "pg", name: "PG Diploma" },
+                        { id: "fellowship", name: "Fellowship Courses" },
+                        { id: "certificate", name: "Certificate Courses" },
+                        { id: "workshop", name: "Live Workshop" },
+                      ].map((category) => (
+                        <Link
+                          key={category.id}
+                          to={`/courses?category=${category.id}`}
+                          onClick={() => setIsCoursesOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <Link
@@ -89,13 +117,17 @@ const Header = () => {
               )
             )}
           </nav>
+          </div>
 
           {/* CTA Button */}
-          {/* <div className="hidden lg:flex">
-            <Button className="gradient-primary shadow-elegant hover:shadow-hover transition-all">
+          <div className="hidden lg:flex">
+            <Button
+              onClick={() => setShowModal(true)}
+              className="bg-[#032c40] text-white hover:bg-white hover:text-[#032c40] border border-[#032c40] transition-all"
+            >
               Apply Now
             </Button>
-          </div> */}
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -155,15 +187,22 @@ const Header = () => {
                 )
               )}
 
-              {/* <div className="pt-2">
-                <Button className="w-full gradient-primary shadow-elegant">
-                  Apply Now
+              <div className="pt-2">
+                <Button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setShowModal(true);
+                  }}
+                  className="w-full bg-[#032c40] text-white hover:bg-white hover:text-[#032c40] border border-[#032c40] transition-all"
+                >
+                  Enroll Now
                 </Button>
-              </div> */}
+              </div>
             </nav>
           </div>
         )}
       </div>
+      <EnrollModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </header>
   );
 };

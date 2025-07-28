@@ -22,6 +22,8 @@ import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
 import React from "react";
 import { useEffect } from "react";
+import AboutUsBg from "@/assets/About Us Page.jpg";
+
 
 const About = () => {
   useEffect(() => {
@@ -165,7 +167,7 @@ const About = () => {
         <div
           className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
           style={{
-            backgroundImage: "url('./src/assets/About Us Page.jpg')",
+             backgroundImage: `url(${AboutUsBg})`,
           }}
         >
           {/* Optional overlay if needed for text readability */}

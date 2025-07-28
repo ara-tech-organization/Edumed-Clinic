@@ -38,6 +38,7 @@ import Underline from "/line.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import CourseBg from "@/assets/Courses - Detailed.jpg";
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -456,11 +457,10 @@ const Courses = () => {
     <div>
       {/* Hero Section */}
       <section className="relative py-4 lg:py-12 bg-white overflow-hidden">
-        {/* Image Container with Padding and Rounded Corners */}
         <div
           className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
           style={{
-            backgroundImage: "url('./src/assets/Courses - Detailed.jpg')",
+            backgroundImage: `url(${CourseBg})`,
           }}
         >
           <div className="rounded-3xl w-full h-full absolute inset-0" />{" "}
@@ -481,7 +481,6 @@ const Courses = () => {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

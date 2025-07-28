@@ -12,7 +12,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { Global } from "recharts";
-import Logo from "@/assets/logo.png"
+import Logo from "@/assets/logo2.png"
 
 const Footer = () => {
   return (
@@ -31,14 +31,14 @@ const Footer = () => {
                 />
               </div>
 
-              <span className="font-manrope text-xl">
+              {/* <span className="font-manrope text-xl">
                 DrEduMed Medical & Aesthetic Training Academy
-              </span>
+              </span> */}
             </div>
-            <p className="text-primary-foreground/80 leading-relaxed">
+            {/* <p className="text-primary-foreground/80 leading-relaxed">
               Leading the future of medical education with innovative training
               programs and world-class facilities.
-            </p>
+            </p> */}
             <div className="flex space-x-4">
               <a
                 href="https://www.facebook.com/dr.edumedcoimbatore"

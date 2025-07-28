@@ -39,6 +39,7 @@ import Makeup from "@/assets/Makeup.png";
 import { Line } from "recharts";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import InternshipBg from "@/assets/InternshipPage.jpg";
 
 dayjs.extend(duration);
 
@@ -287,7 +288,7 @@ const Internship = () => {
         <div
           className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
           style={{
-            backgroundImage: "url('./src/assets/Internship Page.jpg')",
+             backgroundImage: `url(${InternshipBg})`,
           }}
         >
           {/* Optional semi-transparent overlay for better text visibility */}

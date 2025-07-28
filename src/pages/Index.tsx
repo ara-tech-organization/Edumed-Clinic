@@ -37,8 +37,9 @@ import Lasers from "@/assets/Lasers.png";
 import Makeup from "@/assets/Makeup.png";
 import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
 import CertificateInjectables from "@/assets/Certificate-Injectables.png";
-
 import duration from "dayjs/plugin/duration";
+import BannerWithCountdown from "@/components/BannerWithCountdown";
+import ContactFormModal from "../components/ContactFormModal";
 
 dayjs.extend(duration);
 
@@ -61,6 +62,7 @@ const Index = () => {
     { src: "./1750755119_Red_Logo_NoBG.png", alt: "ISO 9001:2015" },
     { src: "./Rectangle+507.png", alt: "Global Business Process" },
   ];
+
 
   const features = [
     {
@@ -726,46 +728,8 @@ const Index = () => {
         className="relative w-full my-10 px-4 sm:px-6 lg:px-8"
         data-aos="fade-up"
       >
-        <div className="max-w-6xl mx-auto">
-          {/* ⏱️ Countdown Box */}
-          <div className="bg-[#032c40] text-white py-8 px-4 sm:px-6 md:px-10 lg:px-12 rounded-xl shadow-xl flex flex-col md:flex-row flex-wrap justify-between items-center gap-6 sm:gap-8">
-            {/* Left: Start Date */}
-            <div className="flex items-center gap-3">
-              <CalendarDays className="w-6 h-6 text-white" />
-              <div>
-                <p className="font-semibold">
-                  Workshop in Semi-Permanent Makeup
-                </p>
-                <p className="text-sm opacity-80">Starting at</p>
-                <p className="text-xl font-semibold whitespace-nowrap">
-                  July 31, 2025
-                </p>
-              </div>
-            </div>
-
-            {/* Center: Countdown */}
-            <div className="flex flex-wrap justify-center gap-4 text-center">
-              {[
-                { label: "days", value: timeLeft.days },
-                { label: "hours", value: timeLeft.hours },
-                { label: "minutes", value: timeLeft.minutes },
-                { label: "seconds", value: timeLeft.seconds },
-              ].map((item, idx) => (
-                <div key={idx} className="space-y-1">
-                  <div className="bg-[#063949] px-4 py-2 rounded-md text-2xl font-bold w-16 text-center">
-                    {String(item.value).padStart(2, "0")}
-                  </div>
-                  <div className="text-sm">{item.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right: CTA Button */}
-            <button className="border border-white text-white px-6 py-2 rounded-md hover:bg-white hover:text-[#032c40] transition whitespace-nowrap">
-              Enroll now
-            </button>
-          </div>
-        </div>
+       <BannerWithCountdown/>
+       
       </section>
     </div>
   );
