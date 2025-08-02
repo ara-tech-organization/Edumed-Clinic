@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import clinicInterior from "@/assets/clinic-interior.jpg";
+import Contactbg from "../assets/Contact Us Cover.png"
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -141,254 +142,137 @@ const Contact = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section
-        className="relative py-20 lg:py-32 overflow-hidden"
-        data-aos="fade-up"
-      >
-        <div className="absolute inset-0 gradient-hero opacity-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="font-manrope text-5xl lg:text-7xl text-primary mb-6 leading-tight">
-              Contact Us
-            </h1>
-            <img
-              src={Underline}
-              alt="Underline design"
-              className="w-[140px] sm:w-[180px] lg:w-[220px] mt-2 mb-6 inline-block"
-              data-aos="fade-up"
-            />
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-              Ready to start your healthcare career? Get in touch with our
+ <section className="relative py-8 lg:py-12 bg-white overflow-hidden" data-aos="fade-up">
+  <div
+    className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+    style={{
+      backgroundImage: `url(${Contactbg})`,
+      // ensure min height so text doesn't crowd
+      minHeight: "400px",
+    }}
+  >
+    {/* overlay for readability */}
+    <div className="absolute inset-0 rounded-3xl bg-black/20 pointer-events-none" />
+
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
+      <div className="max-w-4xl" data-aos="fade-up">
+        <div className="inline-block relative mb-6">
+          <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight mb-5">
+           Contact Us
+          </h1>
+        </div>
+        <div className="max-w-xl">
+          <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+            Ready to start your healthcare career? Get in touch with our
               admissions team to learn more about our programs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      {/* Contact Information Cards */}
+     <section className="text-white w-full py-16 bg-white px-4 sm:px-6 lg:px-20" data-aos="fade-up">
+  <div className="mx-auto py-16 px-16 md:px-8 grid md:grid-cols-2 gap-10 items-start rounded-3xl overflow-hidden bg-[#002B40]">
+    {/* Left Side – Contact Info */}
+    <div>
+      <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get in touch with us</h2>
+      <p className="text-lg text-white/80 mb-10">
+        Fill out this form and await our response if you have an enquiry.
+      </p>
+
+      <div className="space-y-8">
+        {/* Corporate Address */}
+        <div className="flex items-start gap-4">
+          <div className="bg-white text-[#002B40] p-3 rounded-full">
+            <i className="fas fa-map-marker-alt text-xl"></i>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Corporate Address</p>
+            <p className="text-sm text-white/80">
+              Edumed Tech Private Limited, Anugraha Apartments, 4th Floor, Nungambakkam High Rd, Tirumurthy Nagar, Thousand Lights, Chennai, (Tamil Nadu), 600034
             </p>
           </div>
         </div>
-      </section>
 
-      {/* Contact Information Cards */}
-      <section className="py-20" data-aos="fade-down">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="text-center shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6">
-                  <div className="gradient-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <info.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-primary mb-3">
-                    {info.title}
-                  </h3>
-                  <div className="space-y-1 mb-4">
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-muted-foreground text-sm">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                  {info.title === "Campus Location" ? (
-                    <a href="#map-section" className="inline-block">
-                      <Button variant="outline" size="sm" className="text-xs">
-                        {info.action}
-                      </Button>
-                    </a>
-                  ) : info.title === "Phone" ? (
-                    <a
-                      href={`tel:${info.details[0].replace(/\s/g, "")}`}
-                      className="inline-block"
-                    >
-                      <Button variant="outline" size="sm" className="text-xs">
-                        {info.action}
-                      </Button>
-                    </a>
-                  ) : info.title === "Email" ? (
-                    <a
-                      href={`mailto:${info.details[0]}`}
-                      className="inline-block"
-                    >
-                      <Button variant="outline" size="sm" className="text-xs">
-                        {info.action}
-                      </Button>
-                    </a>
-                  ) : (
-                    <Button variant="outline" size="sm" className="text-xs">
-                      {info.action}
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+        {/* WhatsApp */}
+        <div className="flex items-start gap-4">
+          <div className="bg-white text-[#002B40] p-3 rounded-full">
+            <i className="fab fa-whatsapp text-xl"></i>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">WhatsApp</p>
+            <p className="text-sm text-white/80">+91 8072913539</p>
           </div>
         </div>
-      </section>
 
-      {/* Contact Form & Map */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12" data-aos="fade-up">
-            {/* Contact Form */}
-            <div className="animate-slide-up" data-aos="fade-right">
-              <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
-                Send us a Message
-              </h2>
-              <img
-                src={Underline}
-                alt="Underline design"
-                className="w-[140px] sm:w-[180px] lg:w-[220px] mt-2 mb-6"
-                data-aos="fade-up"
-              />
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Have questions about our programs? Fill out the form below and
-                we'll get back to you within 24 hours.
-              </p>
-
-              <Card className="shadow-card">
-                <CardContent className="p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input
-                          id="name"
-                          value={formData.name}
-                          onChange={(e) =>
-                            handleInputChange("name", e.target.value)
-                          }
-                          required
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) =>
-                            handleInputChange("email", e.target.value)
-                          }
-                          required
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input
-                          id="phone"
-                          value={formData.phone}
-                          onChange={(e) =>
-                            handleInputChange("phone", e.target.value)
-                          }
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="program">Program Interest</Label>
-                        <Select
-                          onValueChange={(value) =>
-                            handleInputChange("program", value)
-                          }
-                        >
-                          <SelectTrigger className="mt-1">
-                            <SelectValue placeholder="Select a program" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="medical-assistant">
-                              Medical Assistant
-                            </SelectItem>
-                            <SelectItem value="nursing">
-                              Nursing Program
-                            </SelectItem>
-                            <SelectItem value="pharmacy">
-                              Pharmacy Technician
-                            </SelectItem>
-                            <SelectItem value="clinical-research">
-                              Clinical Research
-                            </SelectItem>
-                            <SelectItem value="other">
-                              Other/General Inquiry
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="inquiry">Inquiry Type</Label>
-                      <Select
-                        onValueChange={(value) =>
-                          handleInputChange("inquiry", value)
-                        }
-                      >
-                        <SelectTrigger className="mt-1">
-                          <SelectValue placeholder="What can we help you with?" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="admissions">
-                            Admissions Information
-                          </SelectItem>
-                          <SelectItem value="financial-aid">
-                            Financial Aid
-                          </SelectItem>
-                          <SelectItem value="program-details">
-                            Program Details
-                          </SelectItem>
-                          <SelectItem value="schedule-tour">
-                            Schedule a Tour
-                          </SelectItem>
-                          <SelectItem value="career-services">
-                            Career Services
-                          </SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) =>
-                          handleInputChange("message", e.target.value)
-                        }
-                        required
-                        rows={4}
-                        className="mt-1"
-                        placeholder="Tell us more about what you'd like to know..."
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full gradient-primary"
-                      size="lg"
-                    >
-                      <Send className="mr-2 h-5 w-5" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Campus Image & Info */}
-            <div className="animate-fade-in" data-aos="fade-left">
-              <img
-                src={clinicInterior}
-                alt="Campus facility"
-                className="rounded-lg shadow-elegant hover:shadow-hover transition-all duration-500 w-full h-full object-cover"
-              />
-            </div>
+        {/* Toll Free Number */}
+        <div className="flex items-start gap-4">
+          <div className="bg-white text-[#002B40] p-3 rounded-full">
+            <i className="fas fa-phone-alt text-xl"></i>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Toll Free Number</p>
+            <p className="text-sm text-white/80">18008904303</p>
           </div>
         </div>
-      </section>
+
+        {/* Email */}
+        <div className="flex items-start gap-4">
+          <div className="bg-white text-[#002B40] p-3 rounded-full">
+            <i className="fas fa-envelope text-xl"></i>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Email</p>
+            <p className="text-sm text-white/80">info@dredumed.com</p>
+          </div>
+        </div>
+
+        {/* Social Icons */}
+        <div className="flex gap-4 mt-6">
+          {["twitter", "instagram", "facebook", "linkedin", "youtube"].map((platform, i) => (
+            <a key={i} href="#" className="text-white transition">
+              <i className={`fab fa-${platform} text-lg`}></i>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Right Side – Contact Form */}
+    <div className="bg-[#f9f9f9] text-gray-800 rounded-2xl shadow-xl p-8">
+      <form className="space-y-6">
+        <div>
+          <label className="text-sm font-medium">First name</label>
+          <input type="text" placeholder="First name" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="text-sm font-medium">Email address</label>
+            <input type="email" placeholder="Email address" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Phone number</label>
+            <input type="tel" placeholder="Phone number" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+        </div>
+
+        <div>
+          <label className="text-sm font-medium">Message</label>
+          <textarea rows={6} placeholder="Write your message here" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+        </div>
+
+        <button type="submit" className="w-full bg-[#002B40] hover:bg-[#01465d] text-white py-3 rounded-lg flex items-center justify-center gap-2 font-semibold">
+          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z"/></svg>
+          SEND MESSAGE
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
 
       <section
         className="w-full py-16 bg-white px-4 sm:px-6 lg:px-20"

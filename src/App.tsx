@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 import ScrollToTop from "./components/ScrollToTop";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Volunteering from "./pages/Volunteering";
 
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => {
               <Route path="/courses" element={<Courses />} />
               <Route path="/course/:id" element={<CourseDetail />} />
               <Route path="/internship" element={<Internship />} />
+              <Route path="/volunteering" element={<Volunteering />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

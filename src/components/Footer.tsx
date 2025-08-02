@@ -12,7 +12,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { Global } from "recharts";
-import Logo from "@/assets/logo2.png"
+import Logo from "@/assets/logo2.png";
 
 const Footer = () => {
   return (
@@ -68,65 +68,82 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
+          {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Quick Links</h3>
-            <nav className="space-y-2">
-              <Link
-                to="/about"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                About Us
-              </Link>
-              <Link
-                to="/courses"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                Our Courses
-              </Link>
-              <Link
-                to="/internship"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                Internship Program
-              </Link>
-              <Link
-                to="/contact"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                Contact Us
-              </Link>
-            </nav>
+            <ul className="space-y-2 list-disc list-inside">
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/courses"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Our Courses
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/internship"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Internship Program
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Programs */}
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Programs</h3>
-            <nav className="space-y-2">
-              <a
-                href="/courses"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                Master in Facial Injectables
-              </a>
-              <a
-                href="/courses"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                Diploma in Aesthetic Skin Technician
-              </a>
-              <a
-                href="/courses"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-               Fellowship in Facial Aesthetics
-              </a>
-              <a
-                href="/courses"
-                className="block hover:text-primary-foreground/80 transition-colors"
-              >
-                Certificate Course in Chemical Peel
-              </a>
-            </nav>
+            <ul className="space-y-2 list-disc list-inside">
+              <li>
+                <a
+                  href="/courses"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Master in Facial Injectables
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/courses"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Diploma in Aesthetic Skin Technician
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/courses"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Fellowship in Facial Aesthetics
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/courses"
+                  className="hover:text-primary-foreground/80 transition-colors"
+                >
+                  Certificate Course in Chemical Peel
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Contact Info */}

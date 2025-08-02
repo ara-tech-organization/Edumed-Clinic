@@ -40,6 +40,7 @@ useEffect(() => {
     { name: "About", path: "/about" },
     { name: "Courses", path: "/courses" },
     { name: "Internship", path: "/internship" },
+    { name: "Volunteering", path: "/volunteering" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -125,7 +126,7 @@ useEffect(() => {
               onClick={() => setShowModal(true)}
               className="bg-[#032c40] text-white hover:bg-white hover:text-[#032c40] border border-[#032c40] transition-all"
             >
-              Apply Now
+              Enroll Now
             </Button>
           </div>
 

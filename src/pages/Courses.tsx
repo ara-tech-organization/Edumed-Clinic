@@ -35,10 +35,9 @@ import CertificateInjectables from "@/assets/Certificate-Injectables.png";
 import Hydrafacial from "@/assets/Hydrafacial.png";
 import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import AboutUsBg from "@/assets/About Us Page.jpg";
 import { useLocation } from "react-router-dom";
-import CourseBg from "@/assets/Courses - Detailed.jpg";
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -456,31 +455,35 @@ const Courses = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-4 lg:py-12 bg-white overflow-hidden">
-        <div
-          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
-          style={{
-            backgroundImage: `url(${CourseBg})`,
-          }}
-        >
-          <div className="rounded-3xl w-full h-full absolute inset-0" />{" "}
-          {/* Optional overlay */}
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
-            <div className="max-w-4xl" data-aos="fade-up">
-              <div className="inline-block relative">
-                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
-                  Our Courses
-                </h1>
-              </div>
-              <div className="max-w-xl">
-                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-                  Global & Pan-India Internship & Career Opportunities
-                </p>
-              </div>
-            </div>
-          </div>
+       <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
+  <div
+    className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+    style={{
+      backgroundImage: `url(${AboutUsBg})`,
+      // ensure min height so text doesn't crowd
+      minHeight: "400px",
+    }}
+  >
+    {/* overlay for readability */}
+    <div className="absolute inset-0 rounded-3xl bg-black/20 pointer-events-none" />
+
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
+      <div className="max-w-4xl" data-aos="fade-up">
+        <div className="inline-block relative mb-6">
+          <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight mb-5">
+            Our Courses
+          </h1>
         </div>
-      </section>
+        <div className="max-w-xl">
+          <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+            Global & Pan-India Internship & Career Opportunities
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       {/* Features Section */}
       {/* <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -526,37 +529,7 @@ const Courses = () => {
         </div>
       </section> */}
 
-      <section className="py-20 px-4 bg-white" data-aos="fade-up">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold font-manrope">
-            Why Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
-              Dr.EduMed?
-            </span>
-          </h2>
-          <img
-            src={Underline}
-            alt="Decorative Line"
-            className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
-          />
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-[#e0f2fe] via-white to-[#ccfbf1] rounded-2xl shadow-md text-center p-6 transition-transform duration-300 transform hover:scale-105 backdrop-blur-md"
-            >
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4">
-                <feature.icon className="w-10 h-10 text-gradient-primary" />
-              </div>
-              <p className="text-base font-medium text-gray-800">
-                {feature.title}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Course Categories */}
       <section className="py-20">
@@ -598,26 +571,32 @@ const Courses = () => {
             {filteredCourses.map((course, index) => (
               <Card
                 key={course.id}
-                className={`flex flex-col overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 ${
+                className={`group relative flex flex-col overflow-hidden shadow-card hover-lift hover:shadow-hover transition-all duration-300 ${
                   course.featured ? "ring-2 ring-primary/20" : ""
                 }`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
                 onClick={() => navigate(`/course/${course.id}`)}
               >
-                {/* {course.featured && (
-                  <div className="gradient-primary text-primary-foreground text-center py-2 text-sm font-medium">
-                    Most Popular
-                  </div>
-                )} */}
+                {/* Internship badge on hover, except for certificate courses */}
+                {course.category !== "certificate" &&
+                  course.category !== "workshop" &&
+                  course.id !== 5 && (
+                    <div className="pointer-events-none absolute top-2 right-2 z-30">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 text-white">
+                        Internship available
+                      </div>
+                    </div>
+                  )}
 
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={course.image}
-                    onClick={() => navigate(`/course/${course.id}`)}
-                    alt={course.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="aspect-video overflow-hidden rounded-lg p-4 bg-white">
+                  <div className="w-full h-full overflow-hidden rounded-md">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
 
                 <CardContent className="p-6 flex flex-col justify-between flex-1">
@@ -650,6 +629,38 @@ const Courses = () => {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-white" data-aos="fade-up">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold font-manrope">
+            Why Choose{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
+              Dr.EduMed?
+            </span>
+          </h2>
+          <img
+            src={Underline}
+            alt="Decorative Line"
+            className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-[#e0f2fe] via-white to-[#ccfbf1] rounded-2xl shadow-md text-center p-6 transition-transform duration-300 transform hover:scale-105 backdrop-blur-md"
+            >
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4">
+                <feature.icon className="w-10 h-10 text-gradient-primary" />
+              </div>
+              <p className="text-base font-medium text-gray-800">
+                {feature.title}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -712,9 +723,10 @@ const Courses = () => {
               <Button
                 size="xl"
                 variant="metallic"
+                data-aos="fade-up"
                 onClick={() => navigate("/contact")}
               >
-                Apply Now
+                Enroll Now
               </Button>
             </div>
           </div>

@@ -43,7 +43,7 @@ import ContactFormModal from "../components/ContactFormModal";
 
 dayjs.extend(duration);
 
-const targetDate = dayjs("2025-07-31T00:00:00");
+const targetDate = dayjs("2025-08-10T00:00:00");
 
 const Index = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
@@ -62,7 +62,6 @@ const Index = () => {
     { src: "./1750755119_Red_Logo_NoBG.png", alt: "ISO 9001:2015" },
     { src: "./Rectangle+507.png", alt: "Global Business Process" },
   ];
-
 
   const features = [
     {
@@ -116,13 +115,7 @@ const Index = () => {
         "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
       image: FacialAesthetics,
     },
-    {
-      title: "Certificate Course in Medi Facial",
-      duration: "2 Days",
-      description:
-        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
-      image: MediFacial,
-    },
+    
     {
       title: "Workshop in Semi-Permanent Makeup (SPMU)",
       duration: "2 Days",
@@ -268,11 +261,14 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/courses">
-                <Button size="xl" variant="hero" className="group">
-                  Explore Our Courses
+                <Button size="xl" variant="metallic" animate-fade-in>
+                  Explore all courses
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
+              {/* <Button size="xl" variant="metallic">
+                                Contact Admissions
+                              </Button> */}
             </div>
           </div>
         </div>
@@ -379,7 +375,12 @@ const Index = () => {
                 aesthetics.
               </p>
               <Link to="/about">
-                <Button variant="gradient" size="lg" className="group">
+                <Button
+                  variant="gradient"
+                  size="lg"
+                  className="group"
+                  data-aos="fade-right"
+                >
                   Discover Our Story
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -459,7 +460,7 @@ const Index = () => {
             </button>
             <button
               onClick={() => scroll(featuredRef, "right")}
-              className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+              className="absolute -right-12 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
             >
               <ArrowRight className="h-6 w-6 text-primary" />
             </button>
@@ -472,9 +473,115 @@ const Index = () => {
               {/* course cards here */}
 
               {courses.map((course, index) => (
+  <Card
+    key={index}
+    className="group relative min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col py-4 px-4"
+    style={{ animationDelay: `${index * 0.2}s` }}
+  >
+    {/* Internship label top-right except excluded categories / specific course */}
+    {course.category !== "certificate" &&
+     course.category !== "workshop" &&
+     course.id !== 5 && (
+      <div className="pointer-events-none absolute top-2 right-2 z-30">
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 text-white">
+          Internship available
+        </div>
+      </div>
+    )}
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg"
+                    />
+                  </div>
+
+                  {/* Make CardContent grow and push button to bottom */}
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xl font-semibold text-primary">
+                        {course.title}
+                      </h3>
+                      {/* If you want to add duration badge again, do it here */}
+                    </div>
+
+                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
+                      {course.description}
+                    </p>
+
+                    {/* Button aligned at bottom */}
+                    <div className="mt-auto pt-4">
+                      <Link to="/courses" className="block">
+                        <Button
+                          variant="outline"
+                          className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link to="/courses">
+                <Button size="xl" variant="metallic" data-aos="fade-up">
+                  Explore Our Courses
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20" data-aos="fade-up">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
+              Certification Courses
+            </h2>
+            <img
+              src={underlineImage} // Replace with actual import or path
+              alt="Underline design"
+              className="w-[180px] lg:w-[220px] mx-auto mt-3 mb-6 inline-block"
+              data-aos="fade-up"
+            />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Discover our most popular training programs designed to launch
+              your healthcare career with confidence and expertise.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Scroll Buttons */}
+            {/* Buttons */}
+            <button
+              onClick={() => scroll(certificationRef, "left")}
+              className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-foreground rounded-full p-2 shadow"
+            >
+              <ArrowLeft className="h-6 w-6 text-white" />
+            </button>
+            <button
+              onClick={() => scroll(certificationRef, "right")}
+              className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-foreground rounded-full p-2 shadow"
+            >
+              <ArrowRight className="h-6 w-6 text-white" />
+            </button>
+
+            {/* Carousel */}
+            <div
+              ref={certificationRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
+            >
+              {/* certification course cards here */}
+
+              {certificationcourses.map((course, index) => (
                 <Card
                   key={index}
-                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col"
+                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col px-4 py-4"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="aspect-video overflow-hidden">
@@ -515,13 +622,10 @@ const Index = () => {
               ))}
             </div>
             <div className="mt-10 text-center">
-              <Link to="/courses">
-                <Button
-                  size="xl"
-                  variant="hero"
-                  className="group bg-[#032c40] text-white border border-[#032c40] hover:bg-white hover:text-amber-100 transition-all duration-300"
-                >
-                  Explore Our Courses
+              <Link to="/courses?category=certificate">
+
+                <Button size="xl" variant="gradient" data-aos="fade-up">
+                  Explore Our Programs
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
@@ -530,109 +634,21 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20" data-aos="fade-up">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
-              Certification Courses
-            </h2>
-            <img
-              src={underlineImage} // Replace with actual import or path
-              alt="Underline design"
-              className="w-[180px] lg:w-[220px] mx-auto mt-3 mb-6 inline-block"
-              data-aos="fade-up"
-            />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Discover our most popular training programs designed to launch
-              your healthcare career with confidence and expertise.
-            </p>
-          </div>
-
-          <div className="relative">
-            {/* Scroll Buttons */}
-            {/* Buttons */}
-            <button
-              onClick={() => scroll(certificationRef, "left")}
-              className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
-            >
-              <ArrowLeft className="h-6 w-6 text-primary" />
-            </button>
-            <button
-              onClick={() => scroll(certificationRef, "right")}
-              className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
-            >
-              <ArrowRight className="h-6 w-6 text-primary" />
-            </button>
-
-            {/* Carousel */}
-            <div
-              ref={certificationRef}
-              className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
-            >
-              {/* certification course cards here */}
-
-              {certificationcourses.map((course, index) => (
-                <Card
-                  key={index}
-                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-
-                  {/* Make CardContent grow and push button to bottom */}
-                  <CardContent className="p-6 flex flex-col flex-grow">
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-xl font-semibold text-primary">
-                        {course.title}
-                      </h3>
-                      {/* If you want to add duration badge again, do it here */}
-                    </div>
-
-                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
-                      {course.description}
-                    </p>
-
-                    {/* Button aligned at bottom */}
-                    <div className="mt-auto pt-4">
-                      <Link to="/courses" className="block">
-                        <Button
-                          variant="outline"
-                          className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
-                        >
-                          Learn More
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
-      <section className="py-20" data-aos="fade-down">
+      {/* <section className="py-20" data-aos="fade-down">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"> */}
             {/* Image Section */}
-            <div className="animate-fade-in w-full flex justify-center">
+            {/* <div className="animate-fade-in w-full flex justify-center">
               <img
                 src={testimonialDoctor}
                 alt="Happy graduate"
                 className="rounded-lg shadow-elegant hover:shadow-hover transition-all duration-500 w-full max-w-md sm:max-w-lg lg:max-w-full"
               />
-            </div>
+            </div> */}
 
             {/* Text & Carousel Section */}
-            <div className="animate-slide-up text-center lg:text-left">
+            {/* <div className="animate-slide-up text-center lg:text-left">
               <h2 className="font-manrope text-3xl sm:text-4xl lg:text-5xl text-primary mb-4">
                 Success Stories
               </h2>
@@ -656,12 +672,12 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 gradient-hero" data-aos="fade-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-3xl mx-auto animate-scale-in">
+          <div className="max-w-3xl mx-auto animate-scale-in" data-aos="fade-up">
             <h2 className="font-manrope text-3xl lg:text-4xl text-primary-foreground mb-6">
               Enroll in DrEduMed Coimbatore Today! Ready to Kickstart Your
               Career?
@@ -680,11 +696,7 @@ const Index = () => {
                 Apply Today
               </Button> */}
               <Link to="/contact">
-                <Button
-                  size="xl"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300"
-                >
+                <Button size="xl" variant="metallic" data-aos="fade-down">
                   Enroll Now
                 </Button>
               </Link>
@@ -728,8 +740,7 @@ const Index = () => {
         className="relative w-full my-10 px-4 sm:px-6 lg:px-8"
         data-aos="fade-up"
       >
-       <BannerWithCountdown/>
-       
+        <BannerWithCountdown />
       </section>
     </div>
   );

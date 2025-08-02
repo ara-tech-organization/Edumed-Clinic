@@ -12,12 +12,11 @@ import {
   Target,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import medicalStudents from "@/assets/medical-students.jpg";
 import clinicInterior from "@/assets/clinic-interior.jpg";
-import HeadingWithUnderline from "@/components/HeadingWithUnderline";
-import Underline from "/line.png";
 import Facialinjectables from "@/assets/Facial-injectables.png";
 import HairTransplant from "@/assets/Hair-Transplant.png";
 import ClinicalCosmetology from "@/assets/Clinical-Cosmetology.png";
@@ -33,6 +32,8 @@ import Makeup from "@/assets/Makeup.png";
 import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
 import CertificateInjectables from "@/assets/Certificate-Injectables.png";
 import Hydrafacial from "@/assets/Hydrafacial.png";
+import HeadingWithUnderline from "@/components/HeadingWithUnderline";
+import Underline from "/line.png";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -1282,7 +1283,7 @@ const CourseDetail = () => {
         </div>
 
         {/* Cards Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 px-6 sm:px-12 lg:px-20">
           {/* Duration (renamed to Training Mode) */}
           <Card className="shadow-card w-full hover:bg-grey transition-colors duration-300">
             <CardContent className="p-6">
@@ -1324,14 +1325,15 @@ const CourseDetail = () => {
         </div>
 
         {/* Apply Now Button Centered */}
-        <div className="flex justify-center mt-8 ">
+        <div className="flex justify-center mt-8">
           <Button
-  className="w-[300px] bg-pastel-teal text-black hover:bg-pastel-teal/80 transition-colors duration-300 shadow-md"
-  size="lg"
->
-  Apply Now
-</Button>
-
+                size="xl"
+                variant="gradient"
+                data-aos="fade-up"
+                onClick={() => navigate("/contact")}
+              >
+                Enroll Now
+              </Button>
         </div>
       </section>
 
@@ -1396,13 +1398,15 @@ const CourseDetail = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
+            {/* Core Subjects */}
             <Card
-              className="shadow-card hover:shadow-hover transition-all duration-300"
+              className="shadow-card hover:shadow-hover transition-all duration-300 relative overflow-hidden"
               data-aos="fade-right"
+              style={{ backgroundColor: "#7ed4ef1a" }}
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <BookOpen className="h-6 w-6 text-primary mr-3" />
+                  <BookOpen className="h-6 w-6 text-[#0f617f] mr-3" />
                   <h3 className="text-xl font-semibold text-primary">
                     Core Subjects
                   </h3>
@@ -1410,7 +1414,7 @@ const CourseDetail = () => {
                 <div className="space-y-3">
                   {course.curriculum.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#0f617f]" />
                       <span className="text-muted-foreground">{item}</span>
                     </div>
                   ))}
@@ -1418,27 +1422,28 @@ const CourseDetail = () => {
               </CardContent>
             </Card>
 
+            {/* Key Features */}
             <Card
-              className="shadow-card hover:shadow-hover transition-all duration-300"
+              className="shadow-card hover:shadow-hover transition-all duration-300 relative overflow-hidden"
               data-aos="fade-left"
+              style={{ backgroundColor: "#66d0981a" }}
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-2">
-                  <Target className="h-6 w-6 text-primary mr-3" />
+                  <Target className="h-6 w-6 text-[#02664f] mr-3" />
                   <h3 className="text-xl font-semibold text-primary">
                     Key Features
                   </h3>
-
                 </div>
 
-            <h3 className="text-sm  text-primary  mb-3">
-              This course is for those seeking to:
-            </h3>
+                <h3 className="text-sm text-primary mb-3">
+                  This course is for those seeking to:
+                </h3>
 
                 <div className="space-y-3">
                   {course.features.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#02664f]" />
                       <span className="text-muted-foreground">{item}</span>
                     </div>
                   ))}
@@ -1446,11 +1451,9 @@ const CourseDetail = () => {
               </CardContent>
             </Card>
           </div>
-
-
-
         </div>
       </section>
+
 
       {/* FAQ Section */}
       <section className="py-20 bg-white">
@@ -1549,16 +1552,11 @@ const CourseDetail = () => {
             healthcare careers with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="xl" variant="metallic">
-              Apply Now
-            </Button>
-            <Button
-              size="xl"
-              variant="outline"
-              className="border-primary-foreground/30 text-dark-foreground hover:bg-primary-foreground/10"
-            >
-              Schedule a Visit
-            </Button>
+            <Link to="/contact">
+              <Button size="xl" variant="metallic">
+                Enroll Now
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

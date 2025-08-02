@@ -7,6 +7,7 @@ import {
   CheckCircle,
   Calendar,
   Briefcase,
+  Rocket,
   Stethoscope,
   Microscope,
   Globe,
@@ -22,7 +23,7 @@ import medicalStudents from "@/assets/medical-students.jpg";
 import clinicInterior from "@/assets/clinic-interior.jpg";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import Underline from "/line.png";
+import underlineImage from "/line.png";
 import { useRef } from "react";
 import { ArrowLeft } from "lucide-react";
 import { CalendarDays } from "lucide-react";
@@ -40,56 +41,18 @@ import { Line } from "recharts";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import InternshipBg from "@/assets/InternshipPage.jpg";
-
+import ChemicalPeel from "@/assets/Chemical-Peel.png";
+import Lasers from "@/assets/Lasers.png";
+// import Makeup from "@/assets/Makeup.png";
+import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
+import CertificateInjectables from "@/assets/Certificate-Injectables.png";
 dayjs.extend(duration);
 
 const targetDate = dayjs("2025-07-31T00:00:00");
 
+
 const Internship = () => {
-  const courses = [
-    {
-      title: "Master in Facial Injectables",
-      duration: "5 Days",
-      description:
-        "This specialized postgraduate program trains medical professionals in injectable treatments like Botox, dermal fillers, and threads. Emphasizing facial aesthetics and aging, it delivers deep theoretical insights and hands-on experience.",
-      image: Facialinjectables,
-    },
-    {
-      title: "PG Diploma in Clinical Cosmetology",
-      duration: "2 Months",
-      description:
-        "An advanced program tailored for medical professionals looking to master cosmetic treatments for skin, hair, and laser. Blends deep theoretical knowledge with practical training using the latest aesthetic equipment.",
-      image: ClinicalCosmetology,
-    },
-    {
-      title: "Fellowship in Clinical Cosmetology",
-      duration: "6 months",
-      description:
-        "In-depth training in clinical cosmetology with a focus on advanced skin care, anti-aging treatments, and non-surgical aesthetic techniques. Blends theoretical learning with real-world skills.",
-      image: DiplomaClinicalCosmetology,
-    },
-    {
-      title: "Fellowship in Facial Aesthetics",
-      duration: "6 months",
-      description:
-        "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
-      image: FacialAesthetics,
-    },
-    {
-      title: "Certificate Course in Medi Facial",
-      duration: "2 Days",
-      description:
-        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
-      image: MediFacial,
-    },
-    {
-      title: "Workshop in Semi-Permanent Makeup (SPMU)",
-      duration: "2 Days",
-      description:
-        "Comprehensive workshop on microblading, powder brows, lip blush, and eyeliner enhancement. Covers client consultation, pigment selection, tool handling, and aftercare guidance.",
-      image: Makeup,
-    },
-  ];
+  
   const programs = [
     {
       title: "Clinical Medical Assistant Internship",
@@ -147,6 +110,90 @@ const Internship = () => {
     },
   ];
 
+   const courses = [
+    {
+      title: "Master in Facial Injectables",
+      duration: "5 Days",
+      description:
+        "This specialized postgraduate program trains medical professionals in injectable treatments like Botox, dermal fillers, and threads. Emphasizing facial aesthetics and aging, it delivers deep theoretical insights and hands-on experience.",
+      image: Facialinjectables,
+    },
+    {
+      title: "PG Diploma in Clinical Cosmetology",
+      duration: "2 Months",
+      description:
+        "An advanced program tailored for medical professionals looking to master cosmetic treatments for skin, hair, and laser. Blends deep theoretical knowledge with practical training using the latest aesthetic equipment.",
+      image: ClinicalCosmetology,
+    },
+    {
+      title: "Fellowship in Clinical Cosmetology",
+      duration: "6 months",
+      description:
+        "In-depth training in clinical cosmetology with a focus on advanced skin care, anti-aging treatments, and non-surgical aesthetic techniques. Blends theoretical learning with real-world skills.",
+      image: DiplomaClinicalCosmetology,
+    },
+    {
+      title: "Fellowship in Facial Aesthetics",
+      duration: "6 months",
+      description:
+        "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
+      image: FacialAesthetics,
+    },
+    
+    {
+      title: "Workshop in Semi-Permanent Makeup (SPMU)",
+      duration: "2 Days",
+      description:
+        "Comprehensive workshop on microblading, powder brows, lip blush, and eyeliner enhancement. Covers client consultation, pigment selection, tool handling, and aftercare guidance.",
+      image: Makeup,
+    },
+  ];
+
+  const certificationcourses = [
+    {
+      title: "Certificate Course in Medi Facial",
+      duration: "5 Days",
+      description:
+        "Covers advanced facial treatments targeting skin concerns like acne, pigmentation, and dullness. Focuses on rejuvenation using non-invasive techniques with an emphasis on patient assessment and treatment customization.",
+      image: MediFacial,
+    },
+    {
+      title: "Certificate Course in Chemical Peel",
+      duration: "2 Months",
+      description:
+        "Focused on chemical exfoliation and skin rejuvenation techniques. Teaches appropriate peel selection, application, safety, and combination treatments for various skin conditions.",
+      image: ChemicalPeel,
+    },
+    {
+      title: "Certificate Course in Lasersy",
+      duration: "6 months",
+      description:
+        "A deep dive into laser technology in medical aesthetics. Learn laser physics, patient assessment, and perform treatments like hair removal, pigmentation correction, and scar revision safely.",
+      image: Lasers,
+    },
+    {
+      title: "Certificate Course in Semi-permanent Make Up",
+      duration: "6 months",
+      description:
+        "Trains practitioners in cosmetic tattooing including microblading, lip blush, eyeliner, and scalp micropigmentation. Includes safety, pigment theory, and client customization.",
+      image: Makeup,
+    },
+    {
+      title: "Certificate Course in Advanced Semi-Permanent Makeup",
+      duration: "2 Days",
+      description:
+        "An advanced version of the SPMU course, covering detailed cosmetic tattooing with expert-level techniques and tools for enhanced facial aesthetics.",
+      image: AdvancedMakeup,
+    },
+    {
+      title: "Certificate Course in Injectables",
+      duration: "2 Days",
+      description:
+        "Specialized training in skin rejuvenation and injectable procedures such as botulinum toxin and dermal fillers. Combines facial anatomy with hands-on skills in contouring and anti-aging.",
+      image: CertificateInjectables,
+    },
+  ];
+
   const benefits = [
     {
       icon: Briefcase,
@@ -200,7 +247,8 @@ const Internship = () => {
       timeframe: "Program completion",
     },
   ];
-
+const featuredRef = useRef(null);
+  const certificationRef = useRef(null);
   const requirements = [
     "Completion of core program coursework with minimum 3.0 GPA",
     "Current CPR certification and basic life support training",
@@ -377,7 +425,7 @@ const Internship = () => {
         </div>
       </section>
 
-      <section
+       <section
         className="py-24"
         style={{
           backgroundColor: "#e0f7f4", // light pastel teal
@@ -395,7 +443,7 @@ const Internship = () => {
               Our Core Values
             </h2>
             <img
-              src={Underline}
+              src={underlineImage}
               alt="Decorative Line"
               className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
             />
@@ -411,31 +459,37 @@ const Internship = () => {
                 title: "In-Depth Expert Training",
                 description:
                   "Comprehensive, hands-on training led by industry experts.",
+                Icon: UserCheck,
               },
               {
                 title: "Govt. & International Accredited Certificate",
                 description:
                   "Recognized certifications to enhance your professional credibility.",
+                Icon: Award,
               },
               {
                 title: "Guaranteed Placement & Refund Policy",
                 description:
                   "Confidence in your career with assured placement and refund options.",
+                Icon: Briefcase,
               },
               {
                 title: "Medico-Legal Expert & Vendor Assist",
                 description:
                   "Guidance on legal matters and vendor partnerships to support your journey.",
+                Icon: ShieldCheck,
               },
               {
                 title: "Business Launch Support",
                 description:
                   "Help to successfully start, scale, and sustain your aesthetic practice.",
+                Icon: Rocket,
               },
               {
                 title: "Lifelong Alumni Access",
                 description:
                   "Stay connected, upskill and grow through our lifetime alumni support.",
+                Icon: Users,
               },
             ].map((value, index) => (
               <div
@@ -445,9 +499,13 @@ const Internship = () => {
                 data-aos-delay={index * 100}
               >
                 <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full blur-lg opacity-50 group-hover:opacity-80 transition-all duration-300" />
-                <h3 className="text-lg font-bold text-[#032c40] mb-2">
-                  {value.title}
-                </h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <value.Icon className="h-6 w-6 flex-shrink-0 text-[#032c40]" />
+                  <h3 className="text-lg font-bold text-[#032c40] leading-tight">
+                    {value.title}
+                  </h3>
+                </div>
+
                 <p className="text-gray-700 text-sm leading-relaxed">
                   {value.description}
                 </p>
@@ -467,7 +525,7 @@ const Internship = () => {
             </span>
           </h2>
           <img
-            src={Underline}
+            src={underlineImage}
             alt="Decorative Line"
             className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
           />
@@ -490,16 +548,16 @@ const Internship = () => {
         </div>
       </section>
 
-      <section className="py-20 " data-aos="fade-up">
+       <section className="py-20 bg-foreground" data-aos="fade-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-manrope text-4xl lg:text-5xl text-primary mb-6">
-              Expert Level Courses
+            <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
+              Featured Courses
             </h2>
             <img
-              src={Underline} // Replace with actual import or path
+              src={underlineImage} // Replace with actual import or path
               alt="Underline design"
-              className="w-[180px] lg:w-[220px] mx-auto mt-2 mb-6 inline-block"
+              className="w-[180px] lg:w-[220px] mx-auto mt-3 mb-6 inline-block"
               data-aos="fade-up"
             />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -509,22 +567,138 @@ const Internship = () => {
           </div>
 
           <div className="relative">
+            {/* Scroll Buttons */}
+            {/* Buttons */}
             <button
-              onClick={() => scroll("left")}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10  bg-pastel-teal/80 hover:bg-white rounded-full p-2 shadow transition"
+              onClick={() => scroll(featuredRef, "left")}
+              className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
             >
-              <ArrowLeft className="h-5 w-5 text-primary" />
+              <ArrowLeft className="h-6 w-6 text-primary" />
+            </button>
+            <button
+              onClick={() => scroll(featuredRef, "right")}
+              className="absolute -right-12 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+            >
+              <ArrowRight className="h-6 w-6 text-primary" />
             </button>
 
             {/* Carousel */}
             <div
-              ref={scrollRef}
+              ref={featuredRef}
               className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
             >
+              {/* course cards here */}
+
               {courses.map((course, index) => (
+  <Card
+    key={index}
+    className="group relative min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col py-4 px-4"
+    style={{ animationDelay: `${index * 0.2}s` }}
+  >
+    {/* Internship label top-right except excluded categories / specific course */}
+    {course.category !== "certificate" &&
+     course.category !== "workshop" &&
+     course.id !== 5 && (
+      <div className="pointer-events-none absolute top-2 right-2 z-30">
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 text-white">
+          Internship available
+        </div>
+      </div>
+    )}
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg"
+                    />
+                  </div>
+
+                  {/* Make CardContent grow and push button to bottom */}
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xl font-semibold text-primary">
+                        {course.title}
+                      </h3>
+                      {/* If you want to add duration badge again, do it here */}
+                    </div>
+
+                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
+                      {course.description}
+                    </p>
+
+                    {/* Button aligned at bottom */}
+                    <div className="mt-auto pt-4">
+                      <Link to="/courses" className="block">
+                        <Button
+                          variant="outline"
+                          className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link to="/courses">
+                <Button size="xl" variant="metallic" data-aos="fade-up">
+                  Explore Our Courses
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20" data-aos="fade-up">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
+              Certification Courses
+            </h2>
+            <img
+              src={underlineImage} // Replace with actual import or path
+              alt="Underline design"
+              className="w-[180px] lg:w-[220px] mx-auto mt-3 mb-6 inline-block"
+              data-aos="fade-up"
+            />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Discover our most popular training programs designed to launch
+              your healthcare career with confidence and expertise.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Scroll Buttons */}
+            {/* Buttons */}
+            <button
+              onClick={() => scroll(certificationRef, "left")}
+              className="absolute -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-foreground rounded-full p-2 shadow"
+            >
+              <ArrowLeft className="h-6 w-6 text-white" />
+            </button>
+            <button
+              onClick={() => scroll(certificationRef, "right")}
+              className="absolute -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-foreground rounded-full p-2 shadow"
+            >
+              <ArrowRight className="h-6 w-6 text-white" />
+            </button>
+
+            {/* Carousel */}
+            <div
+              ref={certificationRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth pb-2 px-2 hide-scrollbar"
+            >
+              {/* certification course cards here */}
+
+              {certificationcourses.map((course, index) => (
                 <Card
                   key={index}
-                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col"
+                  className="min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col px-4 py-4"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="aspect-video overflow-hidden">
@@ -554,7 +728,6 @@ const Internship = () => {
                         <Button
                           variant="outline"
                           className="w-full group border-[#032c40] text-[#032c40] hover:bg-[#032c40] hover:text-white transition-colors"
-                          onClick={() => navigate("/course")}
                         >
                           Learn More
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -566,23 +739,14 @@ const Internship = () => {
               ))}
             </div>
             <div className="mt-10 text-center">
-              <Link to="/courses">
-                <Button
-                  size="xl"
-                  variant="hero"
-                  className="group bg-[#032c40] text-white hover:bg-[#054458] transition-colors"
-                >
-                  Explore Our Courses
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <Link to="/courses?category=certificate">
+
+                <Button size="xl" variant="gradient" data-aos="fade-up">
+                  Explore Our Programs
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
             </div>
-            <button
-              onClick={() => scroll("right")}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-pastel-teal/80 hover:bg-white rounded-full p-2 shadow transition"
-            >
-              <ArrowRight className="h-5 w-5 text-primary" />
-            </button>
           </div>
         </div>
       </section>
@@ -881,22 +1045,19 @@ const Internship = () => {
               healthcare field.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="xl"
-                variant="outline"
-                className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
-                onClick={() => navigate("/contact")}
-              >
-                Apply for Internship
-              </Button>
-              <Button
+                  <Link to="/courses" className="inline-block">
+                                 <Button size="xl" variant="metallic" data-aos="fade-left">
+                                   Explore all courses
+                                 </Button>
+                               </Link>
+              {/* <Button
                 size="xl"
                 variant="outline"
                 className="border-primary-foreground/30 text-white-foreground hover:bg-primary-foreground/10"
                 onClick={() => navigate("/courses")}
               >
                 Learn More
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

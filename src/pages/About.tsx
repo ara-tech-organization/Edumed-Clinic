@@ -23,7 +23,8 @@ import Underline from "/line.png";
 import React from "react";
 import { useEffect } from "react";
 import AboutUsBg from "@/assets/About Us Page.jpg";
-
+import {  Rocket,  UserCheck,Briefcase,ShieldCheck
+} from "lucide-react";
 
 const About = () => {
   useEffect(() => {
@@ -162,34 +163,35 @@ const About = () => {
     <div>
       {/* Hero Section */}
 
-      <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
-        {/* Image container with background, padding, and rounded corners */}
-        <div
-          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
-          style={{
-             backgroundImage: `url(${AboutUsBg})`,
-          }}
-        >
-          {/* Optional overlay if needed for text readability */}
-          <div className="absolute inset-0 rounded-3xl" />
+     <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
+  <div
+    className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+    style={{
+      backgroundImage: `url(${AboutUsBg})`,
+      // ensure min height so text doesn't crowd
+      minHeight: "400px",
+    }}
+  >
+    {/* overlay for readability */}
+    <div className="absolute inset-0 rounded-3xl bg-black/20 pointer-events-none" />
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
-            <div className="max-w-4xl" data-aos="fade-up">
-              <div className="inline-block relative">
-                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
-                  Our Story
-                </h1>
-              </div>
-              <div className="max-w-xl">
-                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-                  Two decades of excellence in medical education, shaping the
-                  future of healthcare one student at a time.
-                </p>
-              </div>
-            </div>
-          </div>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
+      <div className="max-w-4xl" data-aos="fade-up">
+        <div className="inline-block relative mb-6">
+          <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight mb-5">
+            Our Story
+          </h1>
         </div>
-      </section>
+        <div className="max-w-xl">
+          <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+            Two decades of excellence in medical education, shaping the future
+            of healthcare one student at a time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Decorative blob */}
@@ -354,7 +356,7 @@ const About = () => {
 
       {/* Values - Diamond Grid Pattern */}
       <section
-        className="py-24 mt-10 mb-8"
+        className="py-24"
         style={{
           backgroundColor: "#e0f7f4", // light pastel teal
           marginLeft: "2rem", // left gap
@@ -387,31 +389,37 @@ const About = () => {
                 title: "In-Depth Expert Training",
                 description:
                   "Comprehensive, hands-on training led by industry experts.",
+                Icon: UserCheck,
               },
               {
                 title: "Govt. & International Accredited Certificate",
                 description:
                   "Recognized certifications to enhance your professional credibility.",
+                Icon: Award,
               },
               {
                 title: "Guaranteed Placement & Refund Policy",
                 description:
                   "Confidence in your career with assured placement and refund options.",
+                Icon: Briefcase,
               },
               {
                 title: "Medico-Legal Expert & Vendor Assist",
                 description:
                   "Guidance on legal matters and vendor partnerships to support your journey.",
+                Icon: ShieldCheck,
               },
               {
                 title: "Business Launch Support",
                 description:
                   "Help to successfully start, scale, and sustain your aesthetic practice.",
+                Icon: Rocket,
               },
               {
                 title: "Lifelong Alumni Access",
                 description:
                   "Stay connected, upskill and grow through our lifetime alumni support.",
+                Icon: Users,
               },
             ].map((value, index) => (
               <div
@@ -421,9 +429,13 @@ const About = () => {
                 data-aos-delay={index * 100}
               >
                 <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full blur-lg opacity-50 group-hover:opacity-80 transition-all duration-300" />
-                <h3 className="text-lg font-bold text-[#032c40] mb-2">
-                  {value.title}
-                </h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <value.Icon className="h-6 w-6 flex-shrink-0 text-[#032c40]" />
+                  <h3 className="text-lg font-bold text-[#032c40] leading-tight">
+                    {value.title}
+                  </h3>
+                </div>
+
                 <p className="text-gray-700 text-sm leading-relaxed">
                   {value.description}
                 </p>
@@ -573,7 +585,7 @@ const About = () => {
       </section> */}
 
       {/* CTA Section */}
-      <section className="py-20 gradient-hero relative overflow-hidden">
+      <section className="py-20 gradient-hero relative overflow-hidden" data-aos="fade-left">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-3xl mx-auto" data-aos="zoom-in">
@@ -592,9 +604,9 @@ const About = () => {
               designed to prepare you for success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="inline-block">
+              <Link to="/courses" className="inline-block">
                 <Button size="xl" variant="metallic">
-                  Contact Admissions
+                  Explore all courses
                 </Button>
               </Link>
               {/* <Button

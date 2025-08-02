@@ -9,7 +9,7 @@ const BannerWithCountdown = () => {
   const [isModalOpen, setModalOpen] = useState(false);
      const [isOpen, setIsOpen] = useState(false);
 
-  const targetDate = new Date("2025-07-31T00:00:00").getTime();
+  const targetDate = new Date("2025-08-10T00:00:00").getTime();
   const [timeLeft, setTimeLeft] = React.useState({});
 
   React.useEffect(() => {
@@ -57,7 +57,7 @@ const BannerWithCountdown = () => {
             <CalendarDaysIcon className="w-12 h-12 sm:w-10 sm:h-10 text-gray-300" />
             <div>
               <p>
-                Starting at <strong className="text-white">July 31, 2025</strong>
+                Starting at <strong className="text-white">Aug 10, 2025</strong>
               </p>
             </div>
           </div>
