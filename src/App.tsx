@@ -13,6 +13,7 @@ import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import Internship from "./pages/Internship";
 import Contact from "./pages/Contact";
+import Contact1 from "./pages/Contact1"
 import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 import ScrollToTop from "./components/ScrollToTop";
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/internship" element={<Internship />} />
               <Route path="/volunteering" element={<Volunteering />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/contactpage" element={<Contact1 />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>

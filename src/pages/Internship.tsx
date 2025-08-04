@@ -46,13 +46,13 @@ import Lasers from "@/assets/Lasers.png";
 // import Makeup from "@/assets/Makeup.png";
 import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
 import CertificateInjectables from "@/assets/Certificate-Injectables.png";
+import InternshipDr from "@/assets/Doctors.png"
+import InternForm from "./InternshipForm";
 dayjs.extend(duration);
 
 const targetDate = dayjs("2025-07-31T00:00:00");
 
-
 const Internship = () => {
-  
   const programs = [
     {
       title: "Clinical Medical Assistant Internship",
@@ -110,7 +110,7 @@ const Internship = () => {
     },
   ];
 
-   const courses = [
+  const courses = [
     {
       title: "Master in Facial Injectables",
       duration: "5 Days",
@@ -139,7 +139,7 @@ const Internship = () => {
         "Comprehensive program focused on Hair & Skin Science, cosmetic procedures, non-surgical aesthetic techniques, and ethics in practice. Designed for professionals in aesthetic medicine.",
       image: FacialAesthetics,
     },
-    
+
     {
       title: "Workshop in Semi-Permanent Makeup (SPMU)",
       duration: "2 Days",
@@ -247,7 +247,7 @@ const Internship = () => {
       timeframe: "Program completion",
     },
   ];
-const featuredRef = useRef(null);
+  const featuredRef = useRef(null);
   const certificationRef = useRef(null);
   const requirements = [
     "Completion of core program coursework with minimum 3.0 GPA",
@@ -336,7 +336,7 @@ const featuredRef = useRef(null);
         <div
           className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
           style={{
-             backgroundImage: `url(${InternshipBg})`,
+            backgroundImage: `url(${InternshipBg})`,
           }}
         >
           {/* Optional semi-transparent overlay for better text visibility */}
@@ -425,7 +425,7 @@ const featuredRef = useRef(null);
         </div>
       </section>
 
-       <section
+      <section
         className="py-24"
         style={{
           backgroundColor: "#e0f7f4", // light pastel teal
@@ -548,7 +548,7 @@ const featuredRef = useRef(null);
         </div>
       </section>
 
-       <section className="py-20 bg-foreground" data-aos="fade-up">
+      <section className="py-20 bg-foreground" data-aos="fade-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-manrope text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-6">
@@ -590,21 +590,21 @@ const featuredRef = useRef(null);
               {/* course cards here */}
 
               {courses.map((course, index) => (
-  <Card
-    key={index}
-    className="group relative min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col py-4 px-4"
-    style={{ animationDelay: `${index * 0.2}s` }}
-  >
-    {/* Internship label top-right except excluded categories / specific course */}
-    {course.category !== "certificate" &&
-     course.category !== "workshop" &&
-     course.id !== 5 && (
-      <div className="pointer-events-none absolute top-2 right-2 z-30">
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 text-white">
-          Internship available
-        </div>
-      </div>
-    )}
+                <Card
+                  key={index}
+                  className="group relative min-w-[300px] md:min-w-[340px] shadow-card hover-lift hover:shadow-hover transition-all duration-300 animate-fade-in flex flex-col py-4 px-4"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  {/* Internship label top-right except excluded categories / specific course */}
+                  {course.category !== "certificate" &&
+                    course.category !== "workshop" &&
+                    course.id !== 5 && (
+                      <div className="pointer-events-none absolute top-2 right-2 z-30">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 text-white">
+                          Internship available
+                        </div>
+                      </div>
+                    )}
                   <div className="aspect-video overflow-hidden">
                     <img
                       src={course.image}
@@ -740,7 +740,6 @@ const featuredRef = useRef(null);
             </div>
             <div className="mt-10 text-center">
               <Link to="/courses?category=certificate">
-
                 <Button size="xl" variant="gradient" data-aos="fade-up">
                   Explore Our Programs
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -1033,6 +1032,100 @@ const featuredRef = useRef(null);
         </div>
       </section> */}
 
+      <section className="bg-white py-16 px-4 lg:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Image */}
+          <div className="flex justify-center">
+            <img
+              src={InternshipDr} // 🔁 Replace with your actual path
+              alt="Join Us as an Intern"
+              className="w-full max-w-md lg:max-w-full object-contain"
+            />
+          </div>
+
+          {/* Right Side - Form */}
+          <div className="bg-white w-full">
+            <h2 className="text-3xl font-bold text-[#032c40] mb-2">
+              Join Us as an Intern!
+            </h2>
+            <p className="text-gray-600 mb-8">
+              Complete this form and we’ll respond as required
+            </p>
+
+            <form className="space-y-4">
+              <h3 className="text-[#0071bc] font-semibold mb-2">
+                Candidate’s Details
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium">Candidate Name</label>
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Contact Number</label>
+                  <input
+                    type="text"
+                    placeholder="Contact Number"
+                    className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Course Chosen</label>
+                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
+                  <option>Select Course</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Batch Start Date</label>
+                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
+                  <option>Select Batch</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">
+                  Certificate Received
+                </label>
+                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
+                  <option>Select</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Internship Type</label>
+                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
+                  <option>Select Internship</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                className="bg-[#002d4b] text-white font-semibold px-6 py-2 rounded-md hover:bg-[#014166] transition mt-4"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 gradient-hero">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -1045,11 +1138,11 @@ const featuredRef = useRef(null);
               healthcare field.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/courses" className="inline-block">
-                                 <Button size="xl" variant="metallic" data-aos="fade-left">
-                                   Explore all courses
-                                 </Button>
-                               </Link>
+              <Link to="/courses" className="inline-block">
+                <Button size="xl" variant="metallic" data-aos="fade-left">
+                  Explore all courses
+                </Button>
+              </Link>
               {/* <Button
                 size="xl"
                 variant="outline"

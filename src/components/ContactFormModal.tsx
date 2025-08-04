@@ -1,71 +1,120 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
-export default function ContactModal({ isOpen, setIsOpen }) {
+export default function ContactModal({ isOpen, onClose }) {
   const courses = [
-    'Fellowship in Clinical Cosmetology',
-    'Fellowship in Facial Aesthetics',
-    'Fellowship in Clinical Trichology',
-    'PG Diploma in Clinical Cosmetology',
-    'PG Diploma in Facial Injectables',
-    'Master in Facial Injectables',
-    'Master in Hair Transplant',
-    'Certificate Course in Medi Facial',
-    'Certificate Course in Chemical Peel',
-    'Certificate Course in Lasers',
-    'Certificate Course in Semi-permanent Make up',
-    'Certificate Course in Advanced Semi-Permanent Makeup',
-    'Certificate Course in Injectables',
-    'Workshop in Hydrafacial & Basic Chemical Peels',
-    'Workshop in Semi-Permanent Makeup',
-    'Diploma in Aesthetic Skin Technician'
+    "Fellowship in Clinical Cosmetology",
+    "Fellowship in Facial Aesthetics",
+    "Fellowship in Clinical Trichology",
+    "PG Diploma in Clinical Cosmetology",
+    "PG Diploma in Facial Injectables",
+    "Master in Facial Injectables",
+    "Master in Hair Transplant",
+    "Certificate Course in Medi Facial",
+    "Certificate Course in Chemical Peel",
+    "Certificate Course in Lasers",
+    "Certificate Course in Semi-permanent Make up",
+    "Certificate Course in Advanced Semi-Permanent Makeup",
+    "Certificate Course in Injectables",
+    "Workshop in Hydrafacial & Basic Chemical Peels",
+    "Workshop in Semi-Permanent Makeup",
+    "Diploma in Aesthetic Skin Technician",
   ];
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={() => setIsOpen(false)}>
+      <Dialog
+        as="div"
+        className="relative z-50"
+        onClose={() => setIsOpen(false)}
+      >
+        {/* Overlay */}
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
-            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left shadow-xl transition-all">
-                
+            <Dialog.Panel className="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left shadow-xl transition-all">
+              {/* ❌ Close Button */}
+              <button
+                onClick={onClose}
+                className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
+              >
+                <XMarkIcon className="h-6 w-6" />
+              </button>
+
+              {/* Title & Description */}
               <Dialog.Title className="text-2xl font-bold text-[#032c40] mb-2">
                 Get in touch
               </Dialog.Title>
               <p className="text-sm text-gray-600 mb-6">
-                Fill out this form and await our response if you have an enquiry.
+                Fill out this form and await our response if you have an
+                enquiry.
               </p>
 
               {/* FORM START */}
               <form className="space-y-4">
                 <div>
-                  <label className="text-sm font-semibold text-[#032c40]">Full name</label>
-                  <input type="text" placeholder="Full Name" className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none" />
+                  <label className="text-sm font-semibold text-[#032c40]">
+                    Full name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none"
+                  />
                 </div>
 
                 <div>
-                  <label className="text-sm font-semibold text-[#032c40]">Email address</label>
-                  <input type="email" placeholder="Email address" className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none" />
+                  <label className="text-sm font-semibold text-[#032c40]">
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none"
+                  />
                 </div>
 
                 <div>
-                  <label className="text-sm font-semibold text-[#032c40]">Phone number</label>
-                  <input type="tel" placeholder="Phone number" className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none" />
+                  <label className="text-sm font-semibold text-[#032c40]">
+                    Phone number
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="Phone number"
+                    className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none"
+                  />
                 </div>
 
                 <div>
-                  <label className="text-sm font-semibold text-[#032c40]">Course</label>
-                  <select className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none">
-                    <option disabled selected>Course</option>
+                  <label className="text-sm font-semibold text-[#032c40]">
+                    Course
+                  </label>
+                  <select
+                    defaultValue=""
+                    className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none"
+                  >
+                    <option value="" disabled>
+                      Select a course
+                    </option>
                     {courses.map((course, idx) => (
-                      <option key={idx}>{course}</option>
+                      <option key={idx} value={course}>
+                        {course}
+                      </option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label className="text-sm font-semibold text-[#032c40]">Message</label>
-                  <textarea rows="3" placeholder="Write your message here" className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none" />
+                  <label className="text-sm font-semibold text-[#032c40]">
+                    Message
+                  </label>
+                  <textarea
+                    rows="3"
+                    placeholder="Write your message here"
+                    className="mt-1 w-full rounded-md bg-gray-100 px-4 py-2 outline-none"
+                  />
                 </div>
 
                 {/* BUTTONS */}
