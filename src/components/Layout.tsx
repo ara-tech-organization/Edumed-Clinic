@@ -10,7 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
 
   // List of routes where Header should not be shown
-  const hideHeaderRoutes = ["/contactpage",];
+  const hideHeaderRoutes = ["/contactpage","/faceinjectables","/semipermanentmakeup","/hydrafacial","/injectables","/adv-semi-makeup","/semi-makeup","/laser","/chemical-peel","/medi-facial","/trichology","/HairTransplant","/ClinicalCosmetology","/SkinTechnicians","/FellowCosmetology","/FacialAesthetic","/diploma-facial-injectables"];
 
   return (
     <div className="min-h-screen flex flex-col">

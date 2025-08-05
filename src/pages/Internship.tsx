@@ -40,13 +40,14 @@ import Makeup from "@/assets/Makeup.png";
 import { Line } from "recharts";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import InternshipBg from "@/assets/InternshipPage.jpg";
+import InternshipBg from "@/assets/About Us Page.png";
 import ChemicalPeel from "@/assets/Chemical-Peel.png";
 import Lasers from "@/assets/Lasers.png";
 // import Makeup from "@/assets/Makeup.png";
 import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
 import CertificateInjectables from "@/assets/Certificate-Injectables.png";
 import InternshipDr from "@/assets/Doctors.png"
+import AboutUsBg from "@/assets/About Us Page.png";
 import InternForm from "./InternshipForm";
 dayjs.extend(duration);
 
@@ -331,29 +332,34 @@ const Internship = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
-        {/* 🟦 Container with background image, padding, and curved corners */}
-        <div
-          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
-          style={{
-            backgroundImage: `url(${InternshipBg})`,
-          }}
-        >
-          {/* Optional semi-transparent overlay for better text visibility */}
-          <div className="absolute inset-0 rounded-3xl" />
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
-            <div className="max-w-4xl" data-aos="fade-up">
-              <div className="inline-block relative">
-                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight relative z-10 mb-5">
-                  Experience-Based Learning
-                </h1>
-              </div>
-              <div className="max-w-xl">
-                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-                  Global & Pan-India Internship & Career Opportunities
-                </p>
-              </div>
+       <section className="relative overflow-hidden bg-white py-12 lg:py-12">
+        {/* Outer Container with Rounded Corners */}
+        {/* Main Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-0">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-3xl"
+              style={{
+                backgroundImage: `url(${AboutUsBg})`,
+              }}
+            />
+            <div className="w-full md:w-5/12" data-aos="fade-up">
+              <h1 className="font-manrope text-5xl lg:text-6xl text-primary leading-tight mb-6">
+                Experience-Based Learning
+              </h1>
+              <p className="text-xl lg:text-2xl text-primary text-muted-foreground leading-relaxed">
+                 Global & Pan-India Internship & Career Opportunities
+              </p>
+            </div>
+            <div
+              className="w-full md:w-8/12 flex justify-end h-full"
+              data-aos="fade-up"
+            >
+              <img
+                src="./src/assets/Internship.png"
+                alt="Our Story Visual"
+                className="w-full h-full object-cover rounded-3xl"
+              />
             </div>
           </div>
         </div>

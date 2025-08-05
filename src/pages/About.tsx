@@ -22,9 +22,8 @@ import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
 import React from "react";
 import { useEffect } from "react";
-import AboutUsBg from "@/assets/About Us Page.jpg";
-import {  Rocket,  UserCheck,Briefcase,ShieldCheck
-} from "lucide-react";
+import AboutUsBg from "@/assets/About Us Page.png";
+import { Rocket, UserCheck, Briefcase, ShieldCheck } from "lucide-react";
 
 const About = () => {
   useEffect(() => {
@@ -162,36 +161,40 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
+      <section className="relative overflow-hidden bg-white py-12 lg:py-12">
+        {/* Outer Container with Rounded Corners */}
+        {/* Main Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-0">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-3xl"
+              style={{
+                backgroundImage: `url(${AboutUsBg})`,
+              }}
+            />
+            <div className="w-full md:w-5/12" data-aos="fade-up">
+              <h1 className="font-manrope text-5xl lg:text-6xl text-primary leading-tight mb-6">
+                Our Story
+              </h1>
+              <p className="text-xl lg:text-2xl text-primary text-muted-foreground leading-relaxed">
+                  Two decades of excellence in medical education, shaping the
+                  future of healthcare one student at a time.
 
-     <section className="relative py-8 lg:py-12 bg-white overflow-hidden">
-  <div
-    className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
-    style={{
-      backgroundImage: `url(${AboutUsBg})`,
-      // ensure min height so text doesn't crowd
-      minHeight: "400px",
-    }}
-  >
-    {/* overlay for readability */}
-    <div className="absolute inset-0 rounded-3xl bg-black/20 pointer-events-none" />
-
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
-      <div className="max-w-4xl" data-aos="fade-up">
-        <div className="inline-block relative mb-6">
-          <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight mb-5">
-            Our Story
-          </h1>
+              </p>
+            </div>
+            <div
+              className="w-full md:w-8/12 flex justify-end h-full"
+              data-aos="fade-up"
+            >
+              <img
+                src="./src/assets/About Us.png"
+                alt="Our Story Visual"
+                className="w-full h-full object-cover rounded-3xl"
+              />
+            </div>
+          </div>
         </div>
-        <div className="max-w-xl">
-          <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-            Two decades of excellence in medical education, shaping the future
-            of healthcare one student at a time.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Decorative blob */}
@@ -585,7 +588,10 @@ const About = () => {
       </section> */}
 
       {/* CTA Section */}
-      <section className="py-20 gradient-hero relative overflow-hidden" data-aos="fade-left">
+      <section
+        className="py-20 gradient-hero relative overflow-hidden"
+        data-aos="fade-left"
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-3xl mx-auto" data-aos="zoom-in">

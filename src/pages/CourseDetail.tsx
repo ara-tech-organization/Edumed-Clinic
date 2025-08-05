@@ -1070,6 +1070,8 @@ const CourseDetail = () => {
           answer:
             "Yes, the course is designed for beginners who have basic knowledge of aesthetics. It builds from foundational concepts to advanced injectable techniques.",
         },
+      ],
+    },
         {
           id: 15,
           title: "Workshop in Hydrafacial & Basic Chemical Peels",
@@ -1155,8 +1157,7 @@ const CourseDetail = () => {
                 "Yes, the course includes training on various peels like AHA, BHA, and combination peels, including application and patient selection.",
             },
           ],
-        },
-      ],
+        
     },
     {
       id: 16,
