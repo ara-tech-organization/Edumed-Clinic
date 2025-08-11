@@ -113,7 +113,7 @@ const HydraFacial: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Button
             variant="ghost"
-            onClick={() => navigate("/courses")}
+            onClick={() => navigate("/landingpage")}
             className="mb-6"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />

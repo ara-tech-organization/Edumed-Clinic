@@ -40,7 +40,7 @@ const BannerWithCountdown = () => {
       </div>
 
       {/* Workshop Image */}
-      <div className="relative mt-8">
+      {/* <div className="relative mt-8">
         <div className="rounded-xl overflow-hidden shadow-lg">
           <img
   src={workshopBanner}
@@ -48,10 +48,10 @@ const BannerWithCountdown = () => {
   className="w-full h-full object-cover"
 />
         </div>
-      </div>
+      </div> */}
 
       {/* Countdown Timer */}
-      <div className="relative z-10 flex justify-center mt-[-10px] sm:mt-[-60px]">
+      {/* <div className="relative z-10 flex justify-center mt-[-10px] sm:mt-[-60px]">
         <div className="bg-[#002d4b] text-white px-4 py-4 sm:px-6 sm:py-6 rounded-xl shadow-xl w-[95%] sm:w-4/5 md:w-4/5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center">
           <div className="flex items-center gap-2 text-xs sm:text-sm">
             <CalendarDaysIcon className="w-12 h-12 sm:w-10 sm:h-10 text-gray-300" />
@@ -82,7 +82,7 @@ const BannerWithCountdown = () => {
             Enroll now
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Spacer */}
       <div className="pb-12 sm:pb-12"></div>

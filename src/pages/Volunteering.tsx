@@ -36,6 +36,7 @@ import {
   Dna,
   Droplet, // PRP for Hair (blood/plasma vibe)
   Target,
+  Clock,
   ZapOff, // laser hair removal (alt icon to differentiate)
   Syringe, // botox (makes sense to reuse)
   Brush, // micropigmentation (tattoo brush)
@@ -44,7 +45,12 @@ import {
 import volunteerHero from "@/assets/volunteer-hero.jpg";
 import volunteerForm from "@/assets/facial.jpg";
 import AboutUsBg from "@/assets/About Us Page.png";
+import VolunteerDoctor from "@/assets/Volunteer.png";
 import volunteerImg from "@/assets/lipfillers.jpg";
+import emailjs from "@emailjs/browser";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 interface VolunteerFormData {
   fullName: string;
@@ -195,14 +201,42 @@ const Volunteering = () => {
     },
   ];
 
-  const onSubmit = async (data: VolunteerFormData) => {
-    setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Form submitted:", data);
-    setIsSubmitting(false);
+  const { watch } = form;
+  const previousSurgeryValue = watch("previousSurgery");
+  const allergiesValue = watch("allergies");
+
+  const onSubmit = async (data: any) => {
+  setIsSubmitting(true);
+
+ const templateParams = {
+  fullName: data.fullName,
+  email: data.email,
+  age: data.age,
+  contactNumber: data.contactNumber,
+  gender: data.gender,
+  services: data.services,
+  previousSurgery: data.previousSurgery,
+  previousSurgeryDetails: data.previousSurgeryDetails || "N/A",
+  allergies: data.allergies,
+  allergyDetails: data.allergyDetails || "N/A",
+};
+
+  try {
+    await emailjs.send(
+      "service_3eqeb9u",           // Your EmailJS service ID
+      "template_ied3t37",          // Your EmailJS template ID
+      templateParams,
+      "-YMU6xZ6akcHfqDEc"          // Your EmailJS public key
+    );
+    alert("Application submitted successfully!");
     form.reset();
-  };
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    alert("Failed to submit application.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen">
@@ -210,7 +244,7 @@ const Volunteering = () => {
       <section className="relative overflow-hidden bg-white py-12 lg:py-12">
         {/* Outer Container with Rounded Corners */}
         {/* Main Content */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-0">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-10">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-3xl"
@@ -232,7 +266,7 @@ const Volunteering = () => {
               data-aos="fade-up"
             >
               <img
-                src="./src/assets/Volunteer.png"
+                src={VolunteerDoctor}
                 alt="Our Story Visual"
                 className="w-full h-full object-cover rounded-3xl"
               />
@@ -742,6 +776,28 @@ const Volunteering = () => {
                         )}
                       />
 
+                      {previousSurgeryValue === "yes" && (
+                        <FormField
+                          control={form.control}
+                          name="previousSurgeryDetails"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-primary font-medium">
+                                Please specify the surgery details
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Please provide details"
+                                  className="border-primary/20 focus:border-primary transition-colors"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      )}
+
                       <FormField
                         control={form.control}
                         name="allergies"
@@ -768,6 +824,28 @@ const Volunteering = () => {
                           </FormItem>
                         )}
                       />
+
+                      {allergiesValue === "yes" && (
+                        <FormField
+                          control={form.control}
+                          name="allergyDetails"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-primary font-medium">
+                                Please specify your allergies
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Please provide details"
+                                  className="border-primary/20 focus:border-primary transition-colors"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      )}
                     </div>
 
                     <Button

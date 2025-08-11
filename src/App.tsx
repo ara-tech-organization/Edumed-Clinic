@@ -35,6 +35,8 @@ import SkinTechnicians from "./pages/CourseDetails/SkinTechnician";
 import FellowCosmetology from "./pages/CourseDetails/FellowCosmetology";
 import FaceAesthetics from "./pages/CourseDetails/FacialAesthetics";
 import DiplomaFacialInjectables from "./pages/CourseDetails/DiplomaFacialInjectables";
+import LandingPage from "./pages/LandingPage";
+import ThankYou from "./pages/Thankyou";
 
 const queryClient = new QueryClient();
 
@@ -53,12 +55,13 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/Edumed-Clinic">
+        <BrowserRouter basename="/">
           {/* <LoadingSpinner /> */}
           <ScrollToTop />
           <Layout>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/landingpage" element={<LandingPage />} />
               <Route path="/about" element={<About />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/course/:id" element={<CourseDetail />} />
@@ -100,13 +103,14 @@ const App = () => {
               <Route path="/SkinTechnicians" element={<SkinTechnicians />} />
               <Route path="/FellowCosmetology" element={<FellowCosmetology />} />
               <Route path="/FacialAesthetic" element={<FaceAesthetics />} />
-
+                <Route path="/thankyou" element={<ThankYou />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
         </BrowserRouter>
+
         <a
-          href="https://wa.me/919876543210" // replace with your number
+          href="https://wa.me/9751510000" // replace with your number
           className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 z-50"
           target="_blank"
           rel="noopener noreferrer"

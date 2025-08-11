@@ -173,105 +173,70 @@ const Contact = () => {
 </section>
 
       {/* Contact Information Cards */}
-     <section className="text-white w-full py-16 bg-white px-4 sm:px-6 lg:px-20" data-aos="fade-up">
-  <div className="mx-auto py-16 px-16 md:px-8 grid md:grid-cols-2 gap-10 items-start rounded-3xl overflow-hidden bg-[#002B40]">
-    {/* Left Side – Contact Info */}
-    <div>
-      <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get in touch with us</h2>
-      <p className="text-lg text-white/80 mb-10">
-        Fill out this form and await our response if you have an enquiry.
+ <section className="bg-[#002B40] text-white w-full py-16 px-4 sm:px-6 lg:px-20" data-aos="fade-up">
+  <div className="max-w-6xl mx-auto">
+    {/* Section Heading (optional) */}
+    <div className="mb-10 text-center">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-2">Get in touch with us</h2>
+      <p className="text-lg text-white/80">
+        Fill out this form and we'll get back to you as soon as possible.
       </p>
-
-      <div className="space-y-8">
-        {/* Corporate Address */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fas fa-map-marker-alt text-xl"></i>
-          </div>
-          <div>
-            <p className="text-sm font-semibold">Corporate Address</p>
-            <p className="text-sm text-white/80">
-              Edumed Tech Private Limited, Anugraha Apartments, 4th Floor, Nungambakkam High Rd, Tirumurthy Nagar, Thousand Lights, Chennai, (Tamil Nadu), 600034
-            </p>
-          </div>
-        </div>
-
-        {/* WhatsApp */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fab fa-whatsapp text-xl"></i>
-          </div>
-          <div>
-            <p className="text-sm font-semibold">WhatsApp</p>
-            <p className="text-sm text-white/80">+91 8072913539</p>
-          </div>
-        </div>
-
-        {/* Toll Free Number */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fas fa-phone-alt text-xl"></i>
-          </div>
-          <div>
-            <p className="text-sm font-semibold">Toll Free Number</p>
-            <p className="text-sm text-white/80">18008904303</p>
-          </div>
-        </div>
-
-        {/* Email */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fas fa-envelope text-xl"></i>
-          </div>
-          <div>
-            <p className="text-sm font-semibold">Email</p>
-            <p className="text-sm text-white/80">info@dredumed.com</p>
-          </div>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex gap-4 mt-6">
-          {["twitter", "instagram", "facebook", "linkedin", "youtube"].map((platform, i) => (
-            <a key={i} href="#" className="text-white transition">
-              <i className={`fab fa-${platform} text-lg`}></i>
-            </a>
-          ))}
-        </div>
-      </div>
     </div>
 
-    {/* Right Side – Contact Form */}
-    <div className="bg-[#f9f9f9] text-gray-800 rounded-2xl shadow-xl p-8">
-      <form className="space-y-6">
+    {/* Full-width Form */}
+    <div className="bg-[#f9f9f9] text-gray-800 rounded-2xl shadow-xl p-8 w-full">
+      <form className="space-y-6 w-full">
         <div>
           <label className="text-sm font-medium">First name</label>
-          <input type="text" placeholder="First name" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+          <input
+            type="text"
+            placeholder="First name"
+            className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+          />
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label className="text-sm font-medium">Email address</label>
-            <input type="email" placeholder="Email address" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+            <input
+              type="email"
+              placeholder="Email address"
+              className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+            />
           </div>
           <div>
             <label className="text-sm font-medium">Phone number</label>
-            <input type="tel" placeholder="Phone number" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+            <input
+              type="tel"
+              placeholder="Phone number"
+              className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+            />
           </div>
         </div>
 
         <div>
           <label className="text-sm font-medium">Message</label>
-          <textarea rows={6} placeholder="Write your message here" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
+          <textarea
+            rows={6}
+            placeholder="Write your message here"
+            className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+          />
         </div>
 
-        <button type="submit" className="w-full bg-[#002B40] hover:bg-[#01465d] text-white py-3 rounded-lg flex items-center justify-center gap-2 font-semibold">
-          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z"/></svg>
+        <button
+          type="submit"
+          className="w-full bg-[#002B40] hover:bg-[#01465d] text-white py-3 rounded-lg flex items-center justify-center gap-2 font-semibold"
+        >
+          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z" />
+          </svg>
           SEND MESSAGE
         </button>
       </form>
     </div>
   </div>
 </section>
+
 
 
       <section

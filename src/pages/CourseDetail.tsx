@@ -73,9 +73,12 @@ const CourseDetail = () => {
       longDescription:
         "Masters in Facial Injectables is a specialized postgraduate program designed for medical professionals who desire to gain proficiency in performing injectable treatments like Botox, dermal fillers, and threads. This program provides in-depth knowledge, enormous hands-on experience, and expertise in non-surgical facial treatments aimed at uplifting facial aesthetics in the gravity of ageing.",
       curriculum: [
-        "Module 1: Introduction to Skin",
-        "Module 2: Deformities in Skin",
+        "Module 1: Introduction to skin",
+        "Module 2: Deformities in skin",
         "Module 3: Indication of Injectables",
+        "Module 4: Types of injectables",
+        "Module 5: Treatment Execution",
+        "Module 6: Post Care",
       ],
       careerOutcomes: [
         "Open your own clinic",
@@ -141,9 +144,12 @@ const CourseDetail = () => {
         "A Master’s in Hair Transplant is a specialized postgraduate program designed for medical professionals, particularly surgeons and dermatologists, who aim to enhance skills in hair restoration techniques. This module provides in-depth knowledge and practical training in the latest hair transplant procedures involving both surgical and non-surgical methods to help patients retain hair and regain confidence.",
       curriculum: [
         "Module 1: Trichology",
-        "Module 2: Hair Loss Pattern",
-        "Module 3: Factors Affecting Hair Fall",
+        "Module 2: Hair loss Pattern",
+        "Module 3: Factors affecting hair fall",
         "Module 4: Meso Treatments",
+        "Module 5: Dandruff & Treatment",
+        "Module 6: Available Treatments for Hair Restoration",
+        "Module 7: Post Care follow-up’s",
       ],
       careerOutcomes: [
         "Hair Transplant Specialist",
@@ -207,7 +213,13 @@ const CourseDetail = () => {
         "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, BNYS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, MDS (Oral Maxillofacial Surgeon)",
       longDescription:
         "A Postgraduate Diploma (PG Diploma) in Clinical Cosmetology is a specialized, advanced training program for medical professionals seeking knowledge in clinical cosmetic treatments. This diploma combines theory, hands-on practice, and assessments to enhance appearance through safe and ethical skin, hair, and laser treatments. Graduates will gain confidence in performing aesthetic procedures while understanding the legal and safety standards that govern clinical cosmetology.",
-      curriculum: ["Module 1: Trichology", "Module 2: Introduction to Skin"],
+      curriculum: [
+        "Module 1: Trichology",
+        "Module 2: Introduction to Skin",
+        "Module 3: Chemical Peel",
+        "Module 4: Lasers",
+        "Module 5: Machineries in Aesthetics",
+      ],
       careerOutcomes: [
         "Clinical Cosmetologist",
         "Aesthetic Consultant",
@@ -273,9 +285,12 @@ const CourseDetail = () => {
       longDescription:
         "A PG Diploma in Facial Injectables is a specialized postgraduate program designed for medical professionals. It offers advanced skills in performing injectable treatments like Botox, dermal fillers, and threads. The program emphasizes non-surgical facial enhancement, safety, ethics, and legal considerations to boost practitioner confidence and career opportunities.",
       curriculum: [
-        "Introduction to Skin",
-        "Deformities in Skin",
-        "Indication of Injectables",
+        "Module 1: Introduction to skin",
+        "Module 2: Deformities in skin",
+        "Module 3: Indication of Injectables",
+        "Module 4: Types of injectables",
+        "Module 5: Treatment Execution",
+        "Module 6: Post Care",
       ],
       careerOutcomes: [
         "Aesthetic Practitioner",
@@ -346,7 +361,12 @@ const CourseDetail = () => {
         "MBBS, MD, MDS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Nurses, OT Technicians, MDS (Oral Maxillofacial Surgeon)",
       longDescription:
         "The Diploma in Aesthetic Skin Technician is crafted for nurses and OT professionals aiming to enter the aesthetic industry. This program combines essential theoretical knowledge with immersive, hands-on training in advanced skin procedures like lasers and chemical peels. Taught by industry experts, the course prepares learners to assist in clinical environments, ensuring both safety and precision.",
-      curriculum: ["Module 1: Lasers"],
+      curriculum: [
+        "Module 1: Lasers",
+        "Module 2: Peels",
+        "Module 3: Medifacial",
+        "Module 4: Non-Surgical/Non-Injectables",
+      ],
       careerOutcomes: [
         "Aesthetic Assistant",
         "Laser Technician",
@@ -416,6 +436,9 @@ const CourseDetail = () => {
         "Module 2: Introduction To Skin",
         "Module 3: Chemical Peel",
         "Module 4: Lasers",
+        "Module 5: Machineries in Aesthetics",
+        "Module 6: Basics In Semi Permanent Makeup",
+        "Module 7: Introduction to Injectables",
       ],
       careerOutcomes: [
         "Clinical Cosmetologist",
@@ -486,6 +509,9 @@ const CourseDetail = () => {
         "Module 2: Introduction To Skin",
         "Module 3: Chemical Peel",
         "Module 4: Lasers",
+        "Module 5: Machineries in Aesthetics",
+        "Module 6: Basics In Semi Permanent Makeup",
+        "Module 7: Introduction to Injectables",
       ],
       careerOutcomes: [
         "Aesthetic Practitioner",
@@ -538,12 +564,12 @@ const CourseDetail = () => {
       description:
         "Fellowship in Clinical Trichology is an advanced training program for medical professionals to deepen their knowledge in diagnosing and treating hair and scalp disorders, including modern approaches like artificial prosthesis and scalp micropigmentation.",
       features: [
-        "Comprehensive Course Framework",
-        "Hands-On Practical Training",
-        "Expert-Led Sessions",
-        "Specialized Internships in Medical Aesthetics",
-        "Certification & Career Advancement",
-        "Post Career Support",
+        "Module 1: Trichology",
+        "Module 2: Hair loss Pattern",
+        "Module 3: Factors affecting hair fall",
+        "Module 4: Meso Treatments",
+        "Module 5: Dandruff & Treatment",
+        "Module 6: Available Treatments for Hair Restoration",
       ],
       image: ClinicalTrichology, // placeholder
       featured: false,
@@ -628,6 +654,9 @@ const CourseDetail = () => {
         "Module 6: Selection of Peels",
         "Module 7: Infusion & Enhancement",
         "Module 8: Different Techniques & Approach",
+        "Module 9: Patient Selection",
+        "Module 10: Treatment Procedure",
+        "Module 11: Precautions & Procedures",
       ],
       careerOutcomes: [
         "Medi Facial Specialist",
@@ -694,19 +723,21 @@ const CourseDetail = () => {
       longDescription:
         "The Certificate Course in Chemical Peel offers a detailed understanding of chemical exfoliation techniques for skin rejuvenation and treatment. Practitioners will master the science behind skin layers, types of peels, peel penetration, safety protocols, and post-care. From acne to pigmentation, this course equips participants with the knowledge to confidently perform customized peels in clinical settings.",
       curriculum: [
-        "Module 1: Detailed Function of Skin",
+        "Module 1: Detailed function of skin",
         "Module 2: Skin Abnormalities",
-        "Module 3: Types of Chemical Peel",
+        "Module 3: Types of Chemical peel",
         "Module 4: Peel Penetration",
-        "Module 5: Glycolic Peel",
-        "Module 6: Lactic Peel",
+        "Module 5: Glycolic peel",
+        "Module 6: Latic Peel",
         "Module 7: Salicylic Peel",
-        "Module 8: Phenol Peel",
-        "Module 9: TCA Peel",
-        "Module 10: Arginine Peel",
-        "Module 11: Retinol Peel",
-        "Module 12: Azelaic Acid Peel",
-        "Module 13: Benefits and Contraindications of a Peel",
+        "Module 8: Phenol peel",
+        "Module 9: TCA peel",
+        "Module 10: Arginine peel",
+        "Module 11: Retinol peel",
+        "Module 12: Azelaic Acid peel",
+        "Module 13: Benefits and contraindication of a peel",
+        "Module 14: Patient selection and procedure",
+        "Module 15: Post treatment care",
       ],
       careerOutcomes: [
         "Aesthetic Practitioner",
@@ -775,17 +806,20 @@ const CourseDetail = () => {
         "The Certificate Course in Lasers offers an in-depth understanding of laser technology and its medical aesthetic applications. Covering topics from laser physics to patient safety, this course equips professionals to confidently perform treatments such as hair removal, pigmentation correction, acne scar revision, and rejuvenation. With real-time training, practitioners will master clinical execution while ensuring safety and precision.",
       curriculum: [
         "Module 1: Introduction To Skin",
-        "Module 2: Detailed Function of Skin",
+        "Module 2: Detailed function of skin",
         "Module 3: Skin Abnormalities",
         "Module 4: Introduction to LASERS in Aesthetics",
         "Module 5: Functions of Lasers",
         "Module 6: Indications and Precautions",
-        "Module 7: Lasers in Hair Removal",
+        "Module 7: Lasers in hair removal",
         "Module 8: Lasers in Skin Resurfacing",
-        "Module 9: Tattoo Removal in Laser",
-        "Module 10: Hollywood Facial With Laser",
-        "Module 11: Skin Rejuvenation",
-        "Module 12: Patient Selection and Precautions",
+        "Module 9: Tattoo removal in Laser",
+        "Module 10: Hollywood Facial With laser",
+        "Module 11: Skin rejuvenation",
+        "Module 12: Patient selection and Precautions",
+        "Module 13: Steps in each Lasers",
+        "Module 14: Post treatment Care",
+        "Module 15: Post Home remedies",
       ],
       careerOutcomes: [
         "Laser Aesthetician",
@@ -852,14 +886,14 @@ const CourseDetail = () => {
       longDescription:
         "The Certificate Course in Semi-Permanent Makeup (SPMU) is a professional training program that equips practitioners with the skills to perform cosmetic tattooing procedures such as microblading, lip blush, and eyeliner tattooing. This course includes theory and practical modules covering pigment selection, skin anatomy, safety protocols, and precision techniques. Hands-on training ensures students learn safe application, custom treatment planning, and client aftercare. The program is ideal for anyone aiming to build a successful career in aesthetic enhancements.",
       curriculum: [
-        "Module 1: Introduction to the World of Cosmetology",
+        "Module 1: Introduction to the world of cosmetology",
         "Module 2: Different Treatments in SPMU",
         "Module 3: Skin Enhancement with SPMU",
         "Module 4: Eyebrow Stroke Practice",
-        "Module 5: Sheet/Latex Practice",
-        "Module 6: Eyebrow Mapping Practice",
-        "Module 7: Eyebrow Shading Practice",
-        "Module 8: Latex/Fruits Practice",
+        "Module 5: Sheet/latex practice",
+        "Module 6: Eyebrow mapping Practice",
+        "Module 7: Eyebrow Shading practice",
+        "Module 8: Latex /Fruits Practice",
         "Module 9: Lip Enhancement",
         "Module 10: Lip Neutralizer",
         "Module 11: Latex Practice",
@@ -867,7 +901,10 @@ const CourseDetail = () => {
         "Module 13: Cheek Blush",
         "Module 14: Beauty Spot Placement",
         "Module 15: Lash Extension",
-        "Module 16: Case Selections & Precaution",
+        "Module 16: Case selections & Precaution",
+        "Module 17: Treatment & Progress",
+        "Module 18: Post Treatment Care",
+        "Module 19: Post Home remedies",
       ],
       careerOutcomes: [
         "SPMU Artist",
@@ -935,14 +972,14 @@ const CourseDetail = () => {
       longDescription:
         "The Certificate Course in Advanced Semi-Permanent Make-Up (SPMU) offers comprehensive training in cosmetic procedures designed to enhance facial aesthetics. Covering everything from microblading to lash extensions, this program includes pigment theory, facial anatomy, safety protocols, and hands-on practice. Practitioners gain the skills needed to deliver customized, safe, and natural-looking results in modern aesthetic practice.",
       curriculum: [
-        "Module 1: Introduction to the World of Cosmetology",
+        "Module 1: Introduction to the world of cosmetology",
         "Module 2: Different Treatments in SPMU",
         "Module 3: Skin Enhancement with SPMU",
         "Module 4: Eyebrow Stroke Practice",
-        "Module 5: Sheet/Latex Practice",
-        "Module 6: Eyebrow Mapping Practice",
-        "Module 7: Eyebrow Shading Practice",
-        "Module 8: Latex/Fruits Practice",
+        "Module 5: Sheet/latex practice",
+        "Module 6: Eyebrow mapping Practice",
+        "Module 7: Eyebrow Shading practice",
+        "Module 8: Latex /Fruits Practice",
         "Module 9: Lip Enhancement",
         "Module 10: Lip Neutralizer",
         "Module 11: Latex Practice",
@@ -950,7 +987,10 @@ const CourseDetail = () => {
         "Module 13: Cheek Blush",
         "Module 14: Beauty Spot Placement",
         "Module 15: Lash Extension",
-        "Module 16: Case Selections & Precaution",
+        "Module 16: Case selections & Precaution",
+        "Module 17: Treatment & Progress",
+        "Module 18: Post Treatment Care",
+        "Module 19: Post Home remedies",
       ],
       careerOutcomes: [
         "SPMU Technician",
@@ -1018,8 +1058,8 @@ const CourseDetail = () => {
       longDescription:
         "This Certificate Course in Skin & Injectables offers specialized training in advanced skin treatments and injectable procedures. The curriculum covers facial anatomy, patient assessment, and precise application of injectables including botulinum toxin and dermal fillers. Practitioners gain practical experience in skin rejuvenation, tightening, and contouring with a strong emphasis on safety and ethical clinical practices.",
       curriculum: [
-        "Module 1: Botox in Detail",
-        "Module 2: Case Study",
+        "Module 1: Botox in detail",
+        "Module 2: Case study",
         "Module 3: Patient Assessment",
         "Module 4: Botox Skin Tightening",
         "Module 5: Botox Indication",
@@ -1031,7 +1071,10 @@ const CourseDetail = () => {
         "Module 11: Patient Assessment",
         "Module 12: Volume Creation",
         "Module 13: Filler Enhancement",
-        "Module 14: Case Study",
+        "Module 14: Case study",
+        "Module 15: Patient Assessment",
+        "Module 16: Face PRP",
+        "Module 17: Face Mesotherapy",
       ],
       careerOutcomes: [
         "Facial Injector",
@@ -1072,93 +1115,96 @@ const CourseDetail = () => {
         },
       ],
     },
+    {
+      id: 15,
+      title: "Workshop in Hydrafacial & Basic Chemical Peels",
+      category: "cosmetology",
+      duration: "2 Days",
+      students: "Not specified",
+      schedule: "Online - Live Sessions & Hands-on",
+      rating: 4.7,
+      price: "$TBD",
+      description:
+        "This workshop provides hands-on training in HydraFacial and basic chemical peels—two popular, non-invasive skin rejuvenation treatments for professional skincare practice.",
+      features: [
+        "Comprehensive Course Framework",
+        "Hands-On Practical Training",
+        "Expert-Led Sessions",
+        "Specialized Internships in Medical Aesthetics",
+        "Certification & Career Advancement",
+        "Post Career Support",
+      ],
+      image: Hydrafacial, // placeholder — update with your asset
+      featured: false,
+      eligibility:
+        "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Paramedical, MDS (Oral Maxillofacial Surgeon)",
+      longDescription:
+        "The Workshop in HydraFacial & Basic Chemical Peels equips medical and paramedical professionals with practical skills to perform two of the most in-demand skincare treatments. Covering everything from skin analysis to chemical peel application and HydraFacial protocols, the workshop blends theoretical insight with live patient training. Emphasis is placed on safety, ethics, client assessment, and post-treatment care.",
+      curriculum: [
+        "Module 1: Introduction to skin",
+        "Module 2: Skin function and Abnormalities",
+        "Module 3: Classification of Treatment with chemical peel",
+        "Module 4: Classification of Treatment with hydra facial",
+        "Module 5: Difference between Hydra facial and Chemical peel",
+        "Module 6: Individual Procedure",
+        "Module 7: Basic Hydrafacial",
+        "Module 8: Advance Hydrafacial Practice",
+        "Module 9: Hydra facial procedures",
+        "Module 10: AHA Peel",
+        "Module 11: BHA Peel",
+        "Module 12: Combination Peel",
+        "Module 13: Peel Application and Changes",
+        "Module 14: Patient Selection and Precautions",
+        "Module 15: Steps in Individual treatment",
+        "Module 16: Treatment & Progress",
+        "Module 17: Post Treatment Care",
+        "Module 18: Post Home remedies",
+      ],
+      careerOutcomes: [
+        "Hydrafacial Technician",
+        "Chemical Peel Specialist",
+        "Aesthetic Assistant",
+        "Medical Facialist",
+        "Clinical Aesthetician",
+      ],
+      requirements: [
+        "Background in medical or paramedical sciences",
+        "Understanding of skin anatomy",
+        "Willingness to perform hands-on skincare procedures",
+      ],
+      faq: [
         {
-          id: 15,
-          title: "Workshop in Hydrafacial & Basic Chemical Peels",
-          category: "cosmetology",
-          duration: "2 Days",
-          students: "Not specified",
-          schedule: "Online - Live Sessions & Hands-on",
-          rating: 4.7,
-          price: "$TBD",
-          description:
-            "This workshop provides hands-on training in HydraFacial and basic chemical peels—two popular, non-invasive skin rejuvenation treatments for professional skincare practice.",
-          features: [
-            "Comprehensive Course Framework",
-            "Hands-On Practical Training",
-            "Expert-Led Sessions",
-            "Specialized Internships in Medical Aesthetics",
-            "Certification & Career Advancement",
-            "Post Career Support",
-          ],
-          image: Hydrafacial, // placeholder — update with your asset
-          featured: false,
-          eligibility:
-            "MBBS, MD, MDS, BDS, BHMS, BAMS, BUMS, MDS Maxillofacial Surgeons, MD DVL, MS, MCh, Paramedical, MDS (Oral Maxillofacial Surgeon)",
-          longDescription:
-            "The Workshop in HydraFacial & Basic Chemical Peels equips medical and paramedical professionals with practical skills to perform two of the most in-demand skincare treatments. Covering everything from skin analysis to chemical peel application and HydraFacial protocols, the workshop blends theoretical insight with live patient training. Emphasis is placed on safety, ethics, client assessment, and post-treatment care.",
-          curriculum: [
-            "Module 1: Introduction to Skin",
-            "Module 2: Skin Function and Abnormalities",
-            "Module 3: Classification of Treatment with Chemical Peel",
-            "Module 4: Classification of Treatment with HydraFacial",
-            "Module 5: Difference Between HydraFacial and Chemical Peel",
-            "Module 6: Individual Procedure",
-            "Module 7: Basic HydraFacial",
-            "Module 8: Advanced HydraFacial Practice",
-            "Module 9: HydraFacial Procedures",
-            "Module 10: AHA Peel",
-            "Module 11: BHA Peel",
-            "Module 12: Combination Peel",
-            "Module 13: Peel Application and Changes",
-            "Module 14: Patient Selection and Precautions",
-            "Module 15: Steps in Individual Treatment",
-          ],
-          careerOutcomes: [
-            "Hydrafacial Technician",
-            "Chemical Peel Specialist",
-            "Aesthetic Assistant",
-            "Medical Facialist",
-            "Clinical Aesthetician",
-          ],
-          requirements: [
-            "Background in medical or paramedical sciences",
-            "Understanding of skin anatomy",
-            "Willingness to perform hands-on skincare procedures",
-          ],
-          faq: [
-            {
-              question:
-                "What does the Workshop in HydraFacial and Chemical Peel contain?",
-              answer:
-                "This is a hands-on training workshop that covers HydraFacial procedures and chemical peels. It includes cleansing, exfoliation, hydration, peel application, and post-care, all while prioritizing patient safety and treatment effectiveness.",
-            },
-            {
-              question:
-                "Who is eligible for a Workshop in HydraFacial & Chemical Peel?",
-              answer:
-                "MBBS, BDS, MDS, BHMS, BUMS, BAMS, BNYS, Paramedical professionals, and other qualified medical practitioners.",
-            },
-            {
-              question: "What is the duration of the course?",
-              answer:
-                "It is a 2-day program with full-fledged hands-on training on patients.",
-            },
-            {
-              question:
-                "What are the benefits of combining Chemical Peels and HydraFacial?",
-              answer:
-                "Combining both treatments allows for a comprehensive skincare approach, addressing multiple skin concerns in a single session.",
-            },
-            {
-              question:
-                "Will I learn how to use different types of chemical peels?",
-              answer:
-                "Yes, the course includes training on various peels like AHA, BHA, and combination peels, including application and patient selection.",
-            },
-          ],
-        
+          question:
+            "What does the Workshop in HydraFacial and Chemical Peel contain?",
+          answer:
+            "This is a hands-on training workshop that covers HydraFacial procedures and chemical peels. It includes cleansing, exfoliation, hydration, peel application, and post-care, all while prioritizing patient safety and treatment effectiveness.",
+        },
+        {
+          question:
+            "Who is eligible for a Workshop in HydraFacial & Chemical Peel?",
+          answer:
+            "MBBS, BDS, MDS, BHMS, BUMS, BAMS, BNYS, Paramedical professionals, and other qualified medical practitioners.",
+        },
+        {
+          question: "What is the duration of the course?",
+          answer:
+            "It is a 2-day program with full-fledged hands-on training on patients.",
+        },
+        {
+          question:
+            "What are the benefits of combining Chemical Peels and HydraFacial?",
+          answer:
+            "Combining both treatments allows for a comprehensive skincare approach, addressing multiple skin concerns in a single session.",
+        },
+        {
+          question:
+            "Will I learn how to use different types of chemical peels?",
+          answer:
+            "Yes, the course includes training on various peels like AHA, BHA, and combination peels, including application and patient selection.",
+        },
+      ],
     },
+
     {
       id: 16,
       title: "Workshop in Semi-Permanent Makeup",
@@ -1185,17 +1231,20 @@ const CourseDetail = () => {
       longDescription:
         "The Workshop in Semi-Permanent Makeup (SPMU) is an intensive, hands-on training program designed to empower professionals in delivering advanced cosmetic procedures. Covering microblading, lip blush, eyeliner enhancement, and more, the workshop dives deep into skin prep, pigment selection, safety standards, and aftercare guidance — enabling practitioners to confidently provide customized, natural-looking results.",
       curriculum: [
-        "Module 1: Introduction to the World of Cosmetology",
+        "Module 1: Introduction to the world of cosmetology",
         "Module 2: Different Treatments in SPMU",
         "Module 3: Skin Enhancement with SPMU",
         "Module 4: Eyebrow Stroke Practice",
-        "Module 5: Eyebrow Mapping Practice",
-        "Module 6: Eyebrow Shading Practice",
+        "Module 5: Eyebrow mapping Practice",
+        "Module 6: Eyebrow Shading practice",
         "Module 7: Lip Enhancement",
         "Module 8: Lip Neutralizer",
         "Module 9: Latex Practice",
         "Module 10: Beauty Spot Placement",
-        "Module 11: Case Selections & Precautions",
+        "Module 11: Case selections & Precaution",
+        "Module 12: Treatment & Progress",
+        "Module 13: Post Treatment Care",
+        "Module 14: Post Home remedies",
       ],
       careerOutcomes: [
         "Semi-Permanent Makeup Artist",
@@ -1328,13 +1377,13 @@ const CourseDetail = () => {
         {/* Apply Now Button Centered */}
         <div className="flex justify-center mt-8">
           <Button
-                size="xl"
-                variant="gradient"
-                data-aos="fade-up"
-                onClick={() => navigate("/contact")}
-              >
-                Enroll Now
-              </Button>
+            size="xl"
+            variant="gradient"
+            data-aos="fade-up"
+            onClick={() => navigate("/contact")}
+          >
+            Enroll Now
+          </Button>
         </div>
       </section>
 
@@ -1454,7 +1503,6 @@ const CourseDetail = () => {
           </div>
         </div>
       </section>
-
 
       {/* FAQ Section */}
       <section className="py-20 bg-white">

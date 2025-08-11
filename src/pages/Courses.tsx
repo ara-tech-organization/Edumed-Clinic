@@ -37,6 +37,7 @@ import HeadingWithUnderline from "@/components/HeadingWithUnderline";
 import Underline from "/line.png";
 import { useEffect } from "react";
 import AboutUsBg from "@/assets/About Us Page.png";
+import CourseDoctor from "@/assets/Courses.png"
 import { useLocation } from "react-router-dom";
 
 const Courses = () => {
@@ -479,7 +480,7 @@ const Courses = () => {
               data-aos="fade-up"
             >
               <img
-                src="./src/assets/Courses.png"
+                src={CourseDoctor}
                 alt="Our Story Visual"
                 className="w-full h-full object-cover rounded-3xl"
               />

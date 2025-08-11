@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Underline from "/line.png";
 import { AnimatePresence, motion } from "framer-motion";
 import FacialAesthetics from "@/assets/Facial-Aesthetics.png";
+import { Link } from "react-router-dom";
 import React from "react";
 
 interface FAQItem {
@@ -97,7 +98,7 @@ const FaceAesthetics: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Button
             variant="ghost"
-            onClick={() => navigate("/courses")}
+            onClick={() => navigate("/landingpage")}
             className="mb-6"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -169,9 +170,11 @@ const FaceAesthetics: React.FC = () => {
         </div>
 
         <div className="flex justify-center mt-8">
-          <Button className="w-[300px]" size="xl" variant="metallic">
-            Apply Now
-          </Button>
+          <Link to="/landingpage#enroll-section">
+            <Button className="w-[300px]" size="xl" variant="metallic">
+              Apply Now
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -315,29 +318,6 @@ const FaceAesthetics: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 gradient-hero">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-manrope text-3xl lg:text-3xl text-white">
-            Ready to Start Your Journey?
-          </h2>
-          <img
-            src={Underline}
-            alt="Decorative Line"
-            className="mt-4 mb-3 mx-auto w-[150px] h-[10px] lg:w-[290px] lg:h-[10px]"
-          />
-          <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl mx-auto">
-            Join thousands of successful graduates who have launched their
-            healthcare careers with us.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="xl" variant="metallic">
-              Apply Now
-            </Button>
           </div>
         </div>
       </section>

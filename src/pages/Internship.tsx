@@ -48,7 +48,9 @@ import AdvancedMakeup from "@/assets/Advanced-Makeup.png";
 import CertificateInjectables from "@/assets/Certificate-Injectables.png";
 import InternshipDr from "@/assets/Doctors.png"
 import AboutUsBg from "@/assets/About Us Page.png";
+import InternshipDoctor from "@/assets/Internship.png"
 import InternForm from "./InternshipForm";
+import emailjs from "@emailjs/browser";
 dayjs.extend(duration);
 
 const targetDate = dayjs("2025-07-31T00:00:00");
@@ -290,6 +292,38 @@ const Internship = () => {
     },
   ];
 
+    const formRef = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = {
+      candidate_name: e.target.candidate_name.value,
+      contact_number: e.target.contact_number.value,
+      email: e.target.email.value,
+      course: e.target.course.value,
+      batch_start_date: e.target.batch_start_date.value,
+      certificate_received: e.target.certificate_received.value,
+      internship_type: e.target.internship_type.value,
+    };
+
+    emailjs
+      .send('service_3eqeb9u', 'template_cmq3nhc', formData, '-YMU6xZ6akcHfqDEc')
+      .then(
+        (result) => {
+          alert('Form submitted successfully!');
+          setIsSubmitting(false);
+          e.target.reset();
+        },
+        (error) => {
+          alert('Something went wrong.');
+          setIsSubmitting(false);
+        }
+      );
+  };
+
   const scrollRef = useRef(null);
   const navigate = useNavigate();
 
@@ -356,7 +390,7 @@ const Internship = () => {
               data-aos="fade-up"
             >
               <img
-                src="./src/assets/Internship.png"
+                src={InternshipDoctor}
                 alt="Our Story Visual"
                 className="w-full h-full object-cover rounded-3xl"
               />
@@ -1058,76 +1092,112 @@ const Internship = () => {
               Complete this form and we’ll respond as required
             </p>
 
-            <form className="space-y-4">
-              <h3 className="text-[#0071bc] font-semibold mb-2">
-                Candidate’s Details
-              </h3>
+             
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+      <h3 className="text-[#0071bc] font-semibold mb-2">
+        Candidate’s Details
+      </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium">Candidate Name</label>
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Contact Number</label>
-                  <input
-                    type="text"
-                    placeholder="Contact Number"
-                    className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
-                  />
-                </div>
-              </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="text-sm font-medium">Candidate Name</label>
+          <input
+            type="text"
+            name="candidate_name"
+            placeholder="Full Name"
+            required
+            className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+          />
+        </div>
+        <div>
+          <label className="text-sm font-medium">Contact Number</label>
+          <input
+            type="text"
+            name="contact_number"
+            placeholder="Contact Number"
+            required
+            className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+          />
+        </div>
+      </div>
 
-              <div>
-                <label className="text-sm font-medium">Email</label>
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
-                />
-              </div>
+      <div>
+        <label className="text-sm font-medium">Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          required
+          className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+        />
+      </div>
 
-              <div>
-                <label className="text-sm font-medium">Course Chosen</label>
-                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
-                  <option>Select Course</option>
-                </select>
-              </div>
+      <div>
+        <label className="text-sm font-medium">Course Chosen</label>
+        <select
+          name="course"
+          required
+          className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+        >
+          <option value="">Select Course</option>
+          <option>Master in Facial Injectables</option>
+          <option>PG Diploma in Clinical Cosmetology</option>
+          <option>Fellowship in Facial Aesthetics</option>
+          <option>Workshop in Semi-Permanent Makeup (SPMU)</option>
+          <option>Master in Hair Transplant</option>
+          <option>PG Diploma in Facial Injectables</option>
+          <option>Fellowship in Clinical Cosmetology</option>
+          <option>Fellowship in Clinical Trichology</option>
+        </select>
+      </div>
 
-              <div>
-                <label className="text-sm font-medium">Batch Start Date</label>
-                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
-                  <option>Select Batch</option>
-                </select>
-              </div>
+      <div>
+        <label className="text-sm font-medium">Batch Start Date</label>
+        <select
+          name="batch_start_date"
+          className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+        >
+          <option value="">Select Batch</option>
+          {/* <option>August 2025</option>
+          <option>September 2025</option>
+          <option>October 2025</option> */}
+        </select>
+      </div>
 
-              <div>
-                <label className="text-sm font-medium">
-                  Certificate Received
-                </label>
-                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
-                  <option>Select</option>
-                </select>
-              </div>
+      <div>
+        <label className="text-sm font-medium">Certificate Received</label>
+        <select
+          name="certificate_received"
+          required
+          className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+        >
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
 
-              <div>
-                <label className="text-sm font-medium">Internship Type</label>
-                <select className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1">
-                  <option>Select Internship</option>
-                </select>
-              </div>
+      <div>
+        <label className="text-sm font-medium">Internship Type</label>
+        <select
+          name="internship_type"
+          required
+          className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1"
+        >
+          <option value="">Select Internship</option>
+          <option>National</option>
+          <option>International</option>
+        </select>
+      </div>
 
-              <button
-                type="submit"
-                className="bg-[#002d4b] text-white font-semibold px-6 py-2 rounded-md hover:bg-[#014166] transition mt-4"
-              >
-                Submit
-              </button>
-            </form>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="bg-[#002d4b] text-white font-semibold px-6 py-2 rounded-md hover:bg-[#014166] transition mt-4"
+      >
+        {isSubmitting ? 'Submitting...' : 'Submit'}
+      </button>
+    </form>
           </div>
         </div>
       </section>

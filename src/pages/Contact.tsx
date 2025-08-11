@@ -25,15 +25,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import clinicInterior from "@/assets/clinic-interior.jpg";
-import Contactbg from "../assets/Contact Us Cover.png"
+import Contactbg from "../assets/Contact Us Cover.png";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    inquiry: "",
-    program: "",
     message: "",
   });
 
@@ -46,8 +45,34 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+
+    emailjs
+      .send(
+        "service_qwzr0ek", // Your EmailJS service ID
+        "template_wkm4avs", // Your EmailJS template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        "NfEcae-M2BEDXk3Po" // Your public key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.error("EmailJS error:", error);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -142,73 +167,82 @@ const Contact = () => {
   return (
     <div>
       {/* Hero Section */}
- <section className="relative py-8 lg:py-12 bg-white overflow-hidden" data-aos="fade-up">
-  <div
-    className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
-    style={{
-      backgroundImage: `url(${Contactbg})`,
-      // ensure min height so text doesn't crowd
-      minHeight: "400px",
-    }}
-  >
-    {/* overlay for readability */}
-    <div className="absolute inset-0 rounded-3xl bg-black/20 pointer-events-none" />
+      <section
+        className="relative py-8 lg:py-12 bg-white overflow-hidden"
+        data-aos="fade-up"
+      >
+        <div
+          className="mx-4 sm:mx-6 lg:mx-8 rounded-3xl bg-cover bg-center bg-no-repeat relative"
+          style={{
+            backgroundImage: `url(${Contactbg})`,
+            // ensure min height so text doesn't crowd
+            minHeight: "400px",
+          }}
+        >
+          {/* overlay for readability */}
+          <div className="absolute inset-0 rounded-3xl bg-black/20 pointer-events-none" />
 
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
-      <div className="max-w-4xl" data-aos="fade-up">
-        <div className="inline-block relative mb-6">
-          <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight mb-5">
-           Contact Us
-          </h1>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32">
+            <div className="max-w-4xl" data-aos="fade-up">
+              <div className="inline-block relative mb-6">
+                <h1 className="font-manrope text-5xl lg:text-7xl text-primary leading-tight mb-5">
+                  Contact Us
+                </h1>
+              </div>
+              <div className="max-w-xl">
+                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
+                  Ready to start your healthcare career? Get in touch with our
+                  admissions team to learn more about our programs.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="max-w-xl">
-          <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-primary">
-            Ready to start your healthcare career? Get in touch with our
-              admissions team to learn more about our programs.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Contact Information Cards */}
-     <section className="text-white w-full py-16 bg-white px-4 sm:px-6 lg:px-20" data-aos="fade-up">
-  <div className="mx-auto py-16 px-16 md:px-8 grid md:grid-cols-2 gap-10 items-start rounded-3xl overflow-hidden bg-[#002B40]">
-    {/* Left Side – Contact Info */}
-    <div>
-      <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get in touch with us</h2>
-      <p className="text-lg text-white/80 mb-10">
-        Fill out this form and await our response if you have an enquiry.
-      </p>
-
-      <div className="space-y-8">
-        {/* Corporate Address */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fas fa-map-marker-alt text-xl"></i>
-          </div>
+      <section
+        className="text-white w-full py-16 bg-white px-4 sm:px-6 lg:px-20"
+        data-aos="fade-up"
+      >
+        <div className="mx-auto py-16 px-16 md:px-8 grid md:grid-cols-2 gap-10 items-start rounded-3xl overflow-hidden bg-[#002B40]">
+          {/* Left Side – Contact Info */}
           <div>
-            <p className="text-sm font-semibold">Corporate Address</p>
-            <p className="text-sm text-white/80">
-              Edumed Tech Private Limited, Anugraha Apartments, 4th Floor, Nungambakkam High Rd, Tirumurthy Nagar, Thousand Lights, Chennai, (Tamil Nadu), 600034
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Get in touch with us
+            </h2>
+            <p className="text-lg text-white/80 mb-10">
+              Fill out this form and await our response if you have an enquiry.
             </p>
-          </div>
-        </div>
 
-        {/* WhatsApp */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fab fa-whatsapp text-xl"></i>
-          </div>
-          <div>
-            <p className="text-sm font-semibold">WhatsApp</p>
-            <p className="text-sm text-white/80">+91 8072913539</p>
-          </div>
-        </div>
+            <div className="space-y-8">
+              {/* Corporate Address */}
+              <div className="flex items-start gap-4">
+                <div className="bg-white text-[#002B40] p-3 rounded-full">
+                  <i className="fas fa-map-marker-alt text-xl"></i>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Corporate Address</p>
+                  <p className="text-sm text-white/80">
+                    3rd Floor, 64, Variety Hall Rd, Town Hall, Coimbatore, Tamil
+                    Nadu 641001
+                  </p>
+                </div>
+              </div>
 
-        {/* Toll Free Number */}
-        <div className="flex items-start gap-4">
+              {/* WhatsApp */}
+              <div className="flex items-start gap-4">
+                <div className="bg-white text-[#002B40] p-3 rounded-full">
+                  <i className="fab fa-whatsapp text-xl"></i>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">WhatsApp</p>
+                  <p className="text-sm text-white/80">+91 97515 10000</p>
+                </div>
+              </div>
+
+              {/* Toll Free Number */}
+              {/* <div className="flex items-start gap-4">
           <div className="bg-white text-[#002B40] p-3 rounded-full">
             <i className="fas fa-phone-alt text-xl"></i>
           </div>
@@ -216,63 +250,111 @@ const Contact = () => {
             <p className="text-sm font-semibold">Toll Free Number</p>
             <p className="text-sm text-white/80">18008904303</p>
           </div>
-        </div>
+        </div> */}
 
-        {/* Email */}
-        <div className="flex items-start gap-4">
-          <div className="bg-white text-[#002B40] p-3 rounded-full">
-            <i className="fas fa-envelope text-xl"></i>
+              {/* Email */}
+              <div className="flex items-start gap-4">
+                <div className="bg-white text-[#002B40] p-3 rounded-full">
+                  <i className="fas fa-envelope text-xl"></i>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Email</p>
+                  <p className="text-sm text-white/80">
+                    coimbatore@dredumed.com
+                  </p>
+                </div>
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex gap-4 mt-6">
+                {[
+                  "twitter",
+                  "instagram",
+                  "facebook",
+                  "linkedin",
+                  "youtube",
+                ].map((platform, i) => (
+                  <a key={i} href="#" className="text-white transition">
+                    <i className={`fab fa-${platform} text-lg`}></i>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-semibold">Email</p>
-            <p className="text-sm text-white/80">info@dredumed.com</p>
+
+          {/* Right Side – Contact Form */}
+          <div className="bg-[#f9f9f9] text-gray-800 rounded-2xl shadow-xl p-8">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div>
+                <label className="text-sm font-medium">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
+                  placeholder="Your name"
+                  className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                  required
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium">Email address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    placeholder="Email address"
+                    className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Phone number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    placeholder="Phone number"
+                    className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Message</label>
+                <textarea
+                  name="message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => handleInputChange("message", e.target.value)}
+                  placeholder="Write your message here"
+                  className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#002B40] hover:bg-[#01465d] text-white py-3 rounded-lg flex items-center justify-center gap-2 font-semibold"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z" />
+                </svg>
+                SEND MESSAGE
+              </button>
+            </form>
           </div>
         </div>
-
-        {/* Social Icons */}
-        <div className="flex gap-4 mt-6">
-          {["twitter", "instagram", "facebook", "linkedin", "youtube"].map((platform, i) => (
-            <a key={i} href="#" className="text-white transition">
-              <i className={`fab fa-${platform} text-lg`}></i>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    {/* Right Side – Contact Form */}
-    <div className="bg-[#f9f9f9] text-gray-800 rounded-2xl shadow-xl p-8">
-      <form className="space-y-6">
-        <div>
-          <label className="text-sm font-medium">First name</label>
-          <input type="text" placeholder="First name" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label className="text-sm font-medium">Email address</label>
-            <input type="email" placeholder="Email address" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Phone number</label>
-            <input type="tel" placeholder="Phone number" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
-          </div>
-        </div>
-
-        <div>
-          <label className="text-sm font-medium">Message</label>
-          <textarea rows={6} placeholder="Write your message here" className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2" />
-        </div>
-
-        <button type="submit" className="w-full bg-[#002B40] hover:bg-[#01465d] text-white py-3 rounded-lg flex items-center justify-center gap-2 font-semibold">
-          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z"/></svg>
-          SEND MESSAGE
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       <section
         className="w-full py-16 bg-white px-4 sm:px-6 lg:px-20"

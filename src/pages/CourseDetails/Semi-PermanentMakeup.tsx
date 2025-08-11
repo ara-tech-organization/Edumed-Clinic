@@ -15,6 +15,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Facialinjectables from "@/assets/Facial-injectables.png";
 import React from "react";
 import Makeup from "@/assets/Makeup.png";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 interface FAQItem {
   question: string;
@@ -36,6 +38,50 @@ interface Course {
 const SemiPermanentMakeup: React.FC = () => {
   const navigate = useNavigate();
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+   const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_qwzr0ek", // Your EmailJS service ID
+        "template_wkm4avs", // Your EmailJS template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        "NfEcae-M2BEDXk3Po" // Your public key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.error("EmailJS error:", error);
+          alert("Failed to send message. Please try again.");
+        }
+      );
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
 
   // Hardcoded course data
   const course: Course = {
@@ -106,7 +152,7 @@ const SemiPermanentMakeup: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Button
             variant="ghost"
-            onClick={() => navigate("/courses")}
+            onClick={() => navigate("/landingpage")}
             className="mb-6"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -249,6 +295,87 @@ const SemiPermanentMakeup: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+       <section
+        className="bg-white py-16 px-4 sm:px-6 lg:px-8"
+        id="enroll-section"
+      >
+        <div className="max-w-3xl mx-auto">
+          <h3 className="font-manrope text-3xl lg:text-3xl text-primary text-center mb-5">
+            Contact Us
+          </h3>
+          <div className="bg-[#f9f9f9] text-gray-800 rounded-2xl shadow-xl p-8">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div>
+                <label className="text-sm font-medium">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
+                  placeholder="Your name"
+                  className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                  required
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium">Email address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    placeholder="Email address"
+                    className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Phone number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    placeholder="Phone number"
+                    className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Message</label>
+                <textarea
+                  name="message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => handleInputChange("message", e.target.value)}
+                  placeholder="Write your message here"
+                  className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#002B40] hover:bg-[#01465d] text-white py-3 rounded-lg flex items-center justify-center gap-2 font-semibold"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z" />
+                </svg>
+                SEND MESSAGE
+              </button>
+            </form>
           </div>
         </div>
       </section>

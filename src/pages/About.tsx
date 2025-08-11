@@ -23,6 +23,7 @@ import Underline from "/line.png";
 import React from "react";
 import { useEffect } from "react";
 import AboutUsBg from "@/assets/About Us Page.png";
+import AboutDoctor from "@/assets/About Us.png"
 import { Rocket, UserCheck, Briefcase, ShieldCheck } from "lucide-react";
 
 const About = () => {
@@ -187,7 +188,7 @@ const About = () => {
               data-aos="fade-up"
             >
               <img
-                src="./src/assets/About Us.png"
+                src={AboutDoctor}
                 alt="Our Story Visual"
                 className="w-full h-full object-cover rounded-3xl"
               />
